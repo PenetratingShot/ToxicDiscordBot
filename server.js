@@ -60,7 +60,7 @@ client.on('message', async message => {
             console.log(`Your app is listening on port ${listener.address().port}`)
         })
         
-        request('https://https://impartial-force.glitch.me/oof', function (error, res, body) {
+        request('https://https://toxicity-monitor.glitch.me/oof', function (error, res, body) {
           console.log('Error:', error);
           console.log(res.body.attributeScores.TOXICITY.spanScores.score.value[0]);
         });
