@@ -57,6 +57,7 @@ client.on('message', async message => {
         })
       
         got('https://toxicity-monitor.glitch.me/resp', { json: true }).then(response => {
+          const obj = JSON.parse(response.body.attributeScores.TOXICITY);
           console.log(response.body)
         })
         .catch(error => {
