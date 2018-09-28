@@ -8,6 +8,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const request = require('request');
+const axios = require('axios');
+const got = require('got');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -33,8 +35,12 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     if (message.author.bot) return;
-
-    const vowels = ["a", "e", "i", "o", "u", "y"];
+    
+    if (message.content === 'help') {
+      
+    }
+    else {
+      const vowels = ["a", "e", "i", "o", "u", "y"];
     if ( vowels.some(word => message.content.includes(word)) ) {
         const text = `${message.content}`;
         
@@ -43,27 +49,25 @@ client.on('message', async message => {
         //Just for testing purposes
         //console.log(result);
 
-        app.get("/oof/", (request, response) => {
+        app.get("/resp", (request, response) => {
            response.setHeader('content-type', 'application/json')
           //let disc = request.params.disc
           //response.send(text)
           response.send(result)
         })
-        
-        //DialogflowAI POST for adaptive help section
-        app.get("/help", (request, response) => {
-          response.setHeader('content-type', 'application/json')  
-          response.send("Coming Soon")
-        })
       
-        const listener = app.listen(process.env.PORT, () => {
-            console.log(`Your app is listening on port ${listener.address().port}`)
+        got('https://toxicity-monitor.glitch.me/resp', { json: true }).then(response => {
+          console.log(response.body)
         })
-        
-        request('https://https://toxicity-monitor.glitch.me/oof', function (error, res, body) {
-          console.log('Error:', error);
-          console.log(res.body.attributeScores.TOXICITY.spanScores.score.value[0]);
+        .catch(error => {
+          console.log(error)
         });
+          
+        
+        const listener = app.listen(1800, () => {
+            console.log(`Your app is listening on port ${listener.address().port}`);
+        })
+    }
     }
 });
 
