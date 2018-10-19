@@ -1,7 +1,7 @@
 {
   "name": "toxicbot",
-  "version": "0.0.2",
-  "description": "A bot on a mission to save to save Discord servres with it's sentience.",
+  "version": "0.0.3",
+  "description": "A bot on a mission to save to save Discord servers with its sentience.",
   "scripts": {
     "start": "node server.js"
   },
@@ -15,7 +15,9 @@
     "discord-anti-spam": "^1.1.2",
     "request": "^2.88.0",
     "axios": "^0.18.0",
-    "got": "^9.2.2"
+    "got": "^9.2.2",
+    "delay": "^4.0.1",
+    "randomcolor": "^0.5.3"
   },
   "engines": {
     "node": "10.x"
