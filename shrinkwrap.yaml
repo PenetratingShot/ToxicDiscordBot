@@ -1,6 +1,7 @@
 dependencies:
   axios: 0.18.0
   body-parser: 1.18.3
+  delay: 4.0.1
   discord-anti-spam: 1.1.2
   discord.js: 11.4.2
   express: 4.16.3
@@ -8,6 +9,7 @@ dependencies:
   got: 9.2.2
   perspective-api-client: 3.0.0
   plaintextparser: 1.0.3
+  randomcolor: 0.5.3
   request: 2.88.0
 packages:
   /@sindresorhus/is/0.11.0:
@@ -262,6 +264,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-2e0FJesseUqQj671gvZWfUyxpnFx/5n4xleamlpCD3U6Fm5dh5qzmmLNxNhtmHF06+SYVHH8QU6FACffYTnj0Q==
+  /delay/4.0.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-wOsrzqdl8Lphi0v3g4FPz7zf0sT4o/u+z+LB+s1q0qzB9xw6QzZbdY9D6IoCojRHIxbaHvpUkLt6//1KB6VNug==
   /delayed-stream/1.0.0:
     dev: false
     engines:
@@ -935,6 +943,10 @@ packages:
       node: '>=0.6'
     resolution:
       integrity: sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  /randomcolor/0.5.3:
+    dev: false
+    resolution:
+      integrity: sha1-f5Dy8qf21aUiMhYe6u6uqaw7WBU=
   /range-parser/1.2.0:
     dev: false
     engines:
@@ -1211,6 +1223,7 @@ shrinkwrapVersion: 3
 specifiers:
   axios: ^0.18.0
   body-parser: ^1.18.3
+  delay: ^4.0.1
   discord-anti-spam: ^1.1.2
   discord.js: ^11.4.2
   express: ^4.16.3
@@ -1218,4 +1231,5 @@ specifiers:
   got: ^9.2.2
   perspective-api-client: ^3.0.0
   plaintextparser: ^1.0.3
+  randomcolor: ^0.5.3
   request: ^2.88.0
