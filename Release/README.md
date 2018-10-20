@@ -1,6 +1,3 @@
-# Toxicity Monitor
+# Release
 
-***
-
-### About
-'Toxicity Monitor' is an advanced Discord moderation bot that scans all messages (except for it's own commands) and takes direct action if the messages are determined to be toxic. 
+This is the folder for the final version of the Toxicity Monitor bot that's being hosted to Discord. The testing version contains all experimental code so that the release doesn't actually break.
