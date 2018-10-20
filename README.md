@@ -15,5 +15,6 @@ The Toxicity Monitor bot is a small Discord bot that scans all messages sent thr
 
 - Contributions are **only allowed** in the 'Testing' folder
 - Any PRs that change the main code **will not be accepted**
+- Any PRs that even **touch** the 'glitch' branch will not even be given a second thought (no changing the host code)
 - In your PR (I don't care about your commits) try to explain what your code does and how it will benefit the bot in as much detail as possible
 - No BS kthx
