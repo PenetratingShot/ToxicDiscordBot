@@ -46,13 +46,16 @@ client.on('message', async message => {
     if (message.author.bot) return;
     
     if (message.content === '!help') {
-      message.channel.send({embed: {
-        "title": "Help Section",
-        "color": color,
-        "description": `**Commands:**\n!purge [number]: purges a specified number of messages from the chat` 
-      }});
+      const embed = new Discord.RichEmbed()
+        .setTitle("Toxicity Help Section")
+        .setColor(936362)
+        .setDescription(`**Commands**\n!purge [number]: purges a specified number of messages from the chat`)
+
+      message.author.send(embed);
     }
     else if (command === "purge") {
+      if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
+        
       const user = message.mentions.users.first();
       const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2])
       if (!amount) return message.reply('Must specify an amount to delete!');
@@ -66,6 +69,9 @@ client.on('message', async message => {
        }
          message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
 }    );
+      } else {
+        message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
+      }
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
