@@ -84,7 +84,10 @@ client.on('ready', () => {
 client.on('message', async message => {
      const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
+      const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
+  
 
+      if(message.content.indexOf(guildConf.prefix) !== 0) return;
   
     if (message.author.bot) return;
     
@@ -95,6 +98,33 @@ client.on('message', async message => {
         .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat`)
 
       message.author.send(embed);
+    }
+    else if (command === "setconf") {
+      const adminRole = message.guild.roles.find("name", guildConf.adminRole);
+      if(!adminRole) return message.reply("Administrator Role Not Found");
+
+     if(!message.member.roles.has(adminRole.id)) {
+        return message.reply("You're not an admin, sorry!");
+      }
+ 
+      const [prop, ...value] = args;
+
+      if(!client.settings.has(message.guild.id, prop)) {
+        return message.reply("This key is not in the configuration.");
+      }
+
+      client.settings.set(message.guild.id, value.join(" "), prop);
+    
+      message.channel.send(`Guild configuration item ${prop} has been changed to:\n\`${value.join(" ")}\``);
+    }
+    else if (command === "showconf") {
+      if(command === "showconf") {
+        let configProps = Object.keys(guildConf).map(prop => {
+          return `${prop}  :  ${guildConf[prop]}\n`;
+        });
+        message.channel.send(`The following are the server's current configuration:
+        \`\`\`${configProps}\`\`\``);
+      }
     }
     else if (command === "purge") {
       if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
