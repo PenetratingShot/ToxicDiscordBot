@@ -90,7 +90,7 @@ client.on('message', async message => {
           response.send(result.attributeScores);
         });
         
-        const listener = app.listen(1800, () => {
+        const listener = app.listen(8080, () => {
           console.log(`Your app is listening on port ${listener.address().port}`);
         })
 
