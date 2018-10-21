@@ -19,46 +19,6 @@ const hostname = '127.0.0.1';
 const port = '8080';
 const Enmap = require('enmap');
 
-client.settings = new Enmap({
-  name: "settings",
-  fetchAll: false,
-  autoFetch: true,
-  cloneLevel: 'deep'
-});
-
-const defaultSettings = {	
-  prefix: "!",	
-  modLogChannel: "mod-log",	
-  modRole: "Moderator",	
-  adminRole: "Administrator",	
-  welcomeChannel: "welcome",	
-  welcomeMessage: "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D"	
-}
-
-client.on("guildDelete", guild => {
-  // Removing an element uses `delete(key)`
-  client.settings.delete(guild.id);
-});
-
-client.on("guildMemberAdd", member => {
-  // This executes when a member joins, so let's welcome them!
-  
-  // First, ensure the settings exist
-  client.settings.ensure(member.guild.id, defaultSettings);
-  
-  // First, get the welcome message using get: 
-  let welcomeMessage = client.settings.get(member.guild.id, "welcomeMessage");
-  
-  // Our welcome message has a bit of a placeholder, let's fix that:
-  welcomeMessage = welcomeMessage.replace("{{user}}", member.user.tag)
-  
-  // we'll send to the welcome channel.
-  member.guild.channels
-    .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
-    .send(welcomeMessage)
-    .catch(console.error);
-});
-
 const http = require('http');
 app.get("/", (request, response) => {
   console.log(Date.now() + " Dood it just got pinged.");
@@ -98,33 +58,6 @@ client.on('message', async message => {
         .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat`)
 
       message.author.send(embed);
-    }
-    else if (command === "setconf") {
-      const adminRole = message.guild.roles.find("name", guildConf.adminRole);
-      if(!adminRole) return message.reply("Administrator Role Not Found");
-
-     if(!message.member.roles.has(adminRole.id)) {
-        return message.reply("You're not an admin, sorry!");
-      }
- 
-      const [prop, ...value] = args;
-
-      if(!client.settings.has(message.guild.id, prop)) {
-        return message.reply("This key is not in the configuration.");
-      }
-
-      client.settings.set(message.guild.id, value.join(" "), prop);
-    
-      message.channel.send(`Guild configuration item ${prop} has been changed to:\n\`${value.join(" ")}\``);
-    }
-    else if (command === "showconf") {
-      if(command === "showconf") {
-        let configProps = Object.keys(guildConf).map(prop => {
-          return `${prop}  :  ${guildConf[prop]}\n`;
-        });
-        message.channel.send(`The following are the server's current configuration:
-        \`\`\`${configProps}\`\`\``);
-      }
     }
     else if (command === "purge") {
       if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
