@@ -35,6 +35,29 @@ const defaultSettings = {
   welcomeMessage: "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D"	
 }
 
+client.on("guildDelete", guild => {
+  // Removing an element uses `delete(key)`
+  client.settings.delete(guild.id);
+});
+
+client.on("guildMemberAdd", member => {
+  // This executes when a member joins, so let's welcome them!
+  
+  // First, ensure the settings exist
+  client.settings.ensure(member.guild.id, defaultSettings);
+  
+  // First, get the welcome message using get: 
+  let welcomeMessage = client.settings.get(member.guild.id, "welcomeMessage");
+  
+  // Our welcome message has a bit of a placeholder, let's fix that:
+  welcomeMessage = welcomeMessage.replace("{{user}}", member.user.tag)
+  
+  // we'll send to the welcome channel.
+  member.guild.channels
+    .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
+    .send(welcomeMessage)
+    .catch(console.error);
+});
 
 const http = require('http');
 app.get("/", (request, response) => {
