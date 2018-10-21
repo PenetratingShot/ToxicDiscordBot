@@ -15,6 +15,9 @@ const prefix = "!";
 const delay = require('delay');
 const randomcolor = require('randomcolor');
 const color = randomcolor();
+const http = require('http');
+const hostname = '127.0.0.1';
+const port = '8080';
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -83,18 +86,19 @@ client.on('message', async message => {
         //Just for testing purposes
         //console.log(result.attributeScores.TOXICITY.spanScores[2]);
 
-        app.get("/", (request, response) => {
-           response.setHeader('content-type', 'application/json')
+        const server = http.createServer((req, res) => {
+          res.statusCode = 200;
+          res.setHeader('content-type', 'application/json')
           //let disc = request.params.disc
-          //response.send(text)
-          response.send(result.attributeScores);
-        });
-        
-        const listener = app.listen(8080, () => {
-          console.log(`Your app is listening on port ${listener.address().port}`);
+          //res.send(text)
+          res.send(result.attributeScores);
         })
+        
+        server.listen(port, hostname, () => {
+          console.log(`Server running at http://${hostname}:${port}/`)
+        }); 
 
-        request("localhost:1800", { json: true }, function (error, res, body) {
+        request("127.0.0.1:8080", { json: true }, function (error, res, body) {
           console.log("Successfully made request");
         });
     }
