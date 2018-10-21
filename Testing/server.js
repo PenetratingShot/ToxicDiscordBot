@@ -40,7 +40,7 @@ client.on('ready', () => {
     client.user.setActivity(`!help for help`);
     client.user.setStatus('dnd');
 });
-
+ 
 client.on('message', async message => {
      const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
