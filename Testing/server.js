@@ -48,7 +48,7 @@ client.on('message', async message => {
       message.channel.send({embed: {
         "title": "Help Section",
         "color": color,
-        "description": "This is the help section" 
+        "description": `**Commands:**\n!purge [number]: purges a specified number of messages from the chat` 
       }});
     }
     else if (command === "purge") {
