@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
-
+ 
 client.on('ready', () => {
     console.log('It works I guess..');
     client.user.setActivity(`!help for help`);
