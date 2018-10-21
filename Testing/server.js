@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
+require('dotenv').config();
 require('events').EventEmitter.prototype._maxListeners = 9999;
 const client = new Discord.Client;
 const Perspective = require('perspective-api-client');
-const perspective = new Perspective({apiKey: process.env.PERSPECTIVE})
+const perspective = new Perspective({apiKey: process.env.PERSPECTIVE1})
 const googleapis = require('googleapis');
 const express = require('express');
 const bodyParser = require('body-parser');
