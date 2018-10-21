@@ -10,7 +10,7 @@ const app = express();
 const request = require('request');
 const axios = require('axios');
 const got = require('got');
-const prefix = "pls";
+const prefix = "!";
 const delay = require('delay');
 const randomcolor = require('randomcolor');
 const color = randomcolor();
@@ -44,11 +44,11 @@ client.on('message', async message => {
   
     if (message.author.bot) return;
     
-    if (message.content === 'pls help') {
+    if (message.content === '!help') {
       message.channel.send({embed: {
         "title": "Help Section",
         "color": color,
-        "description": "This is the help sections" 
+        "description": "This is the help section" 
       }});
     }
     else if (command === "purge") {
@@ -76,20 +76,20 @@ client.on('message', async message => {
         //Just for testing purposes
         //console.log(result.attributeScores.TOXICITY.spanScores[2]);
 
-        app.get("/resp", (request, response) => {
+        app.get("/", (request, response) => {
            response.setHeader('content-type', 'application/json')
           //let disc = request.params.disc
           //response.send(text)
           response.send(result.attributeScores);
         });
         
-        request("https://toxicity-monitor.glitch.me", { json: true }, function (error, res, body) {
+        const listener = app.listen(1800, () => {
+          console.log(`Your app is listening on port ${listener.address().port}`);
+        })
+
+        request("localhost:1800", { json: true }, function (error, res, body) {
           console.log("Successfully made request");
         });
-        
-        const listener = app.listen(1800, () => {
-            console.log(`Your app is listening on port ${listener.address().port}`);
-        })
     }
     }
 });
