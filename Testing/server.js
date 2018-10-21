@@ -37,7 +37,7 @@ app.use(bodyParser.json())
 
 client.on('ready', () => {
     console.log('It works I guess..');
-    client.user.setActivity(`Type something...`);
+    client.user.setActivity(`!help for help`);
     client.user.setStatus('dnd');
 });
 
@@ -52,7 +52,7 @@ client.on('message', async message => {
       const embed = new Discord.RichEmbed()
         .setTitle("Toxicity Help Section")
         .setColor(936362)
-        .setDescription(`**Commands**\n!purge [number]: purges a specified number of messages from the chat`)
+        .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat`)
 
       message.author.send(embed);
     }
