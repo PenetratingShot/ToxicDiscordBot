@@ -19,6 +19,23 @@ const hostname = '127.0.0.1';
 const port = '8080';
 const Enmap = require('enmap');
 
+client.settings = new Enmap({
+  name: "settings",
+  fetchAll: false,
+  autoFetch: true,
+  cloneLevel: 'deep'
+});
+
+const defaultSettings = {	
+  prefix: "!",	
+  modLogChannel: "mod-log",	
+  modRole: "Moderator",	
+  adminRole: "Administrator",	
+  welcomeChannel: "welcome",	
+  welcomeMessage: "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D"	
+}
+
+
 const http = require('http');
 app.get("/", (request, response) => {
   console.log(Date.now() + " Dood it just got pinged.");
