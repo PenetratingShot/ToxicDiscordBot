@@ -9,15 +9,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const request = require('request');
-const axios = require('axios');
-const got = require('got');
 const prefix = "!";
 const delay = require('delay');
-const randomcolor = require('randomcolor');
-const color = randomcolor();
 const hostname = '127.0.0.1';
 const port = '8080';
-const Enmap = require('enmap');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -34,20 +29,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
- 
+
 client.on('ready', () => {
     console.log('It works I guess..');
     client.user.setActivity(`!help for help`);
     client.user.setStatus('dnd');
 });
- 
+
 client.on('message', async message => {
      const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
-      const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
-  
 
-      if(message.content.indexOf(guildConf.prefix) !== 0) return;
   
     if (message.author.bot) return;
     
