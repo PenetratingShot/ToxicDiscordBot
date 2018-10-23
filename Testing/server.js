@@ -74,7 +74,7 @@ client.on('message', async message => {
         message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
       }
     }
-    else if (commannd === "kick") {
+    else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 
