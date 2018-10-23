@@ -1,5 +1,4 @@
 // - Add role command
-// - Add ban command
 // - Add kick user from voice channel command
 // - Retry anti-spam
 
