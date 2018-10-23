@@ -36,9 +36,21 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      const command = args.shift().toLowerCase();
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
 
+    antispam(bot, {
+      warnBuffer: 3,
+      maxBuffer: 5,
+      interval: 1000,
+      warningMessage: "stop spamming please. You will be banned if this continues.",
+      banMessage: "has been banned because they were spamming and overloading the API.",
+      maxDuplicatesWarning: 7,
+      maxDuplicatesBan: 10,
+      deleteMessagesAfterBanForPastDays: 7,
+      exemptRoles: ["Admin"],
+      exemptUsers: ["404meemr#0194"]
+    });
   
     if (message.author.bot) return;
     
