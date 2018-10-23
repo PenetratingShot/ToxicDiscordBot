@@ -78,6 +78,15 @@ client.on('message', async message => {
         
         const result = await perspective.analyze(text);
         
+        let value = result.attributeScores.TOXICITY.summaryScore.value;
+
+        if (value > 0.4 || value == 0.4) {
+          message.channel.send("This message is toxic");
+        }
+        else {
+          return;
+        }
+
         console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
 
         //Just for testing purposes
