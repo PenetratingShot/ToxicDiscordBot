@@ -80,7 +80,7 @@ client.on('message', async message => {
 
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!member)
-        return message.reply("Fatal: You mus tmention a valid member on this server. Please try again.");
+        return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
       if(!member.kickable) 
         return message.reply("Unable to kick user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
 
@@ -90,6 +90,23 @@ client.on('message', async message => {
       await member.kick(reason)
         .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+    }
+    else if (command === "ban") {
+      if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+      return message.reply(`${message.author} you don't have the neccessary role {Admin} for this command.`);
+    
+    let member = message.mentions.members.first();
+    if(!member)
+      return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+    if(!member.bannable) 
+      return message.reply("Unable to ban user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
+
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason providedby Admins.";
+    
+    await member.ban(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
