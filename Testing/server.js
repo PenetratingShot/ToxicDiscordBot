@@ -11,6 +11,7 @@ const app = express();
 const request = require('request');
 const prefix = "!";
 const delay = require('delay');
+const antispam = require('discord-anti-spam');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -90,7 +91,7 @@ client.on('message', async message => {
           })();
         }
         else {
-          return;
+          console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
         }
     }
     }
