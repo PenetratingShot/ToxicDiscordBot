@@ -1,4 +1,3 @@
-// - Add kick command
 // - Add role command
 // - Add ban command
 // - Add kick user from voice channel command
