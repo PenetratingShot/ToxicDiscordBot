@@ -78,6 +78,8 @@ client.on('message', async message => {
         
         const result = await perspective.analyze(text);
         
+        console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
+
         let value = result.attributeScores.TOXICITY.summaryScore.value;
 
         if (value > 0.4 || value == 0.4) {
@@ -86,12 +88,6 @@ client.on('message', async message => {
         else {
           return;
         }
-
-        console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
-
-        //Just for testing purposes
-        //console.log(result.attributeScores.TOXICITY.spanScores[2]);
-        
     }
     }
 });
