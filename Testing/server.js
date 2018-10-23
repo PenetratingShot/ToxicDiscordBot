@@ -1,3 +1,9 @@
+// - Add kick command
+// - Add role command
+// - Add ban command
+// - Add kick user from voice channel command
+// - Retry anti-spam
+
 const Discord = require("discord.js");
 require('dotenv').config();
 require('events').EventEmitter.defaultMaxListeners = 15;
@@ -68,6 +74,23 @@ client.on('message', async message => {
       } else {
         message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
       }
+    }
+    else if (commannd === "kick") {
+      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+
+      let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      if(!member)
+        return message.reply("Fatal: You mus tmention a valid member on this server. Please try again.");
+      if(!member.kickable) 
+        return message.reply("Unable to kick user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
+
+      let reason = args.slice(1).join(' ');
+      if(!reason) reason = "No reason provided by Admins.";
+    
+      await member.kick(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
