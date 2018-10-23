@@ -11,8 +11,6 @@ const app = express();
 const request = require('request');
 const prefix = "!";
 const delay = require('delay');
-const hostname = '127.0.0.1';
-const port = '8080';
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -83,7 +81,13 @@ client.on('message', async message => {
         let value = result.attributeScores.TOXICITY.summaryScore.value;
 
         if (value > 0.4 || value == 0.4) {
-          message.channel.send("This message is toxic");
+          message.reply(`This message can be percieved as toxic. These messages will be deleted in 5 seconds.`);
+
+          (async () => {
+            await delay(5000);
+            message.delete();
+            message.delete();
+          })();
         }
         else {
           return;
