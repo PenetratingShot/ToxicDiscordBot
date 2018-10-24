@@ -75,6 +75,9 @@ client.on('message', async message => {
         message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
       }
     }
+    else if (command === "testimg") {
+      let img = mention.avatar
+    }
     else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
@@ -102,10 +105,10 @@ client.on('message', async message => {
     if(!member.bannable) 
       return message.reply("Unable to ban user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
     if (member.bannable) {
-
+      // add image here
     }
     let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason providedby Admins.";
+    if(!reason) reason = "No reason provided by Admins.";
     
     await member.ban(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
