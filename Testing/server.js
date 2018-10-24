@@ -104,13 +104,11 @@ client.on('message', async message => {
       return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
     if(!member.bannable) 
       return message.reply("Unable to ban user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
-    if (member.bannable) {
-      // add image here
-    }
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "No reason provided by Admins.";
     
     await member.ban(reason)
+      // add image here
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
