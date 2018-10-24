@@ -17,7 +17,7 @@ const request = require('request');
 const prefix = "!";
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
-const jimp = require('jimp');
+const Jimp = require('jimp');
 
 const http = require('http');
 app.get("/", (request, response) => {
