@@ -1,6 +1,11 @@
+// - Add role command
+// - Add kick user from voice channel command
+// - Retry anti-spam
+// - Add funny "banned" image after ban
+
 const Discord = require("discord.js");
 require('dotenv').config();
-require('events').EventEmitter.prototype._maxListeners = 9999;
+require('events').EventEmitter.defaultMaxListeners = 15;
 const client = new Discord.Client;
 const Perspective = require('perspective-api-client');
 const perspective = new Perspective({apiKey: process.env.PERSPECTIVE1})
@@ -9,15 +14,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const request = require('request');
-const axios = require('axios');
-const got = require('got');
 const prefix = "!";
 const delay = require('delay');
-const randomcolor = require('randomcolor');
-const color = randomcolor();
-const hostname = '127.0.0.1';
-const port = '8080';
-const Enmap = require('enmap');
+const antispam = require('discord-anti-spam');
+const Jimp = require('jimp');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -42,9 +42,8 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-      const command = args.shift().toLowerCase();
-
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
   
     if (message.author.bot) return;
     
@@ -76,6 +75,43 @@ client.on('message', async message => {
         message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
       }
     }
+    else if (command === "testimg") {
+      let img = mention.avatar
+    }
+    else if (command === "kick") {
+      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+
+      let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+      if(!member)
+        return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+      if(!member.kickable) 
+        return message.reply("Unable to kick user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
+
+      let reason = args.slice(1).join(' ');
+      if(!reason) reason = "No reason provided by Admins.";
+    
+      await member.kick(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+    }
+    else if (command === "ban") {
+      if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+      return message.reply(`${message.author} you don't have the neccessary role {Admin} for this command.`);
+    
+    let member = message.mentions.members.first();
+    if(!member)
+      return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+    if(!member.bannable) 
+      return message.reply("Unable to ban user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided by Admins.";
+    
+    await member.ban(reason)
+      // add image here
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
@@ -85,9 +121,20 @@ client.on('message', async message => {
         
         console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
 
-        //Just for testing purposes
-        //console.log(result.attributeScores.TOXICITY.spanScores[2]);
-        
+        let value = result.attributeScores.TOXICITY.summaryScore.value;
+
+        if (value > 0.4 || value == 0.4) {
+          message.reply(`This message can be percieved as toxic. These messages will be deleted in 5 seconds.`);
+
+          (async () => {
+            await delay(5000);
+            message.delete();
+            message.delete();
+          })();
+        }
+        else {
+          console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
+        }
     }
     }
 });
