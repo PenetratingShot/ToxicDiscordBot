@@ -1,6 +1,7 @@
 // - Add role command
 // - Add kick user from voice channel command
 // - Retry anti-spam
+// - Add funny "banned" image after ban
 
 const Discord = require("discord.js");
 require('dotenv').config();
@@ -16,6 +17,7 @@ const request = require('request');
 const prefix = "!";
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
+const jimp = require('jimp');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -99,7 +101,9 @@ client.on('message', async message => {
       return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
     if(!member.bannable) 
       return message.reply("Unable to ban user. Make sure that I have the necessary perms and that my role is above theirs in the role hierarchy.");
+    if (member.bannable) {
 
+    }
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "No reason providedby Admins.";
     
