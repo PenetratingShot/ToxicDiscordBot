@@ -76,7 +76,11 @@ client.on('message', async message => {
       }
     }
     else if (command === "testimg") {
-      let img = mention.avatar
+      let member = message.mentions.members.first();
+      let img = message.member.avatarURL;
+      if (!member) {
+        message.reply('You must mention a member in order to use this command.')
+      }
     }
     else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
@@ -108,7 +112,6 @@ client.on('message', async message => {
     if(!reason) reason = "No reason provided by Admins.";
     
     await member.ban(reason)
-      // add image here
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
