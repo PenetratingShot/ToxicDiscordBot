@@ -67,11 +67,7 @@ client.on('message', async message => {
       }
     }
     else if (command === "testimg") {
-      let member = message.mentions.members.first();
-      let img = message.member.avatarURL;
-      if (!member) {
-        message.reply('You must mention a member in order to use this command.')
-      }
+      
     }
     else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
