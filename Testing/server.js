@@ -29,12 +29,6 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
-app.use(bodyParser.json())
-
 client.on('ready', () => {
     console.log('It works I guess..');
     client.user.setActivity(`!help for help`);
@@ -59,7 +53,7 @@ client.on('message', async message => {
       if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
         
       const user = message.mentions.users.first();
-      const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2])
+      const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
       if (!amount) return message.reply('Must specify an amount to delete!');
       if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
       message.channel.fetchMessages({
@@ -126,7 +120,7 @@ client.on('message', async message => {
 
         let value = result.attributeScores.TOXICITY.summaryScore.value;
 
-        if (value > 0.4 || value == 0.4) {
+        if (value > 0.4 || value === 0.4) {
           message.reply(`This message can be percieved as toxic. These messages will be deleted in 5 seconds.`);
 
           (async () => {
