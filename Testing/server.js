@@ -120,7 +120,7 @@ client.on('message', async message => {
         let value = result.attributeScores.TOXICITY.summaryScore.value;
 
         if (value > 0.4 || value === 0.4) {
-          message.reply(`This message can be percieved as toxic. These messages will be deleted in 5 seconds.`);
+          message.reply(`This message can be perceived as toxic. These messages will be deleted in 5 seconds.`);
 
           (async () => {
             await delay(5000);
