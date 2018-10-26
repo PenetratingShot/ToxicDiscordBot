@@ -70,7 +70,16 @@ client.on('message', async message => {
       let mention = message.mentions.members.first();
       var loadedImage;
       if (mention) {
-          message.channel.send(mention.user.avatarURL);
+          Jimp.read(`${mention.user.avatarURL}`).then(function(image) {
+              loadedImage=image
+          }).then(function() {
+              loadedImage.resize(306,306).mask(`images/triggered.png`, 0, 69).write(`person.png`)
+          })
+          setTimeout(function() {
+              message.channel.send("loooooool", {
+                  file: "person.png"
+              });
+          }, 1500)
       } else {
           message.reply('You must mention a valid user. Please try again.');
       }
