@@ -79,7 +79,7 @@ client.on('message', async message => {
           Jimp.read("image.png", ).then(function(image) {
               loadedImage2=image
           }).then(function() {
-              loadedImage2.mask("image.png", 0, 69).write('final.png')
+              loadedImage2.mask("images/triggered.png", 0, 69).write('final.png')
           });
           setTimeout(function() {
               message.channel.send("loooooool", {
