@@ -72,12 +72,12 @@ client.on('message', async message => {
       if (mention) {
           message.channel.send(mention.user.avatarURL);
       } else {
-          message.reply('You must mention a user. Please try again.');
+          message.reply('You must mention a valid user. Please try again.');
       }
     }
     else if (command === "kick") {
-      if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
+      if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+      return message.reply("${message.author} you don't have the necessary role {Admin} for this command.");
 
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!member)
