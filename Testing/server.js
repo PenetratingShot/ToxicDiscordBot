@@ -69,15 +69,21 @@ client.on('message', async message => {
     else if (command === "testimg") {
       let mention = message.mentions.members.first();
       var loadedImage;
+      var loadedImage2;
       if (mention) {
           Jimp.read(`${mention.user.avatarURL}`).then(function(image) {
               loadedImage=image
           }).then(function() {
-              loadedImage.resize(306,306).mask(`images/triggered.png`, 0, 69).write(`person.png`)
-          })
+              loadedImage.resize(306,306).write("image.png")
+          });
+          Jimp.read("image.png", ).then(function(image) {
+              loadedImage2=image
+          }).then(function() {
+              loadedImage2.mask("image.png", 0, 69).write('final.png')
+          });
           setTimeout(function() {
               message.channel.send("loooooool", {
-                  file: "person.png"
+                  file: "final.png"
               });
           }, 1500)
       } else {
