@@ -67,7 +67,13 @@ client.on('message', async message => {
       }
     }
     else if (command === "testimg") {
-      
+      let mention = message.mentions.members.first();
+      var loadedImage;
+      if (mention) {
+          message.channel.send(mention.user.avatarURL);
+      } else {
+          message.reply('You must mention a user. Please try again.');
+      }
     }
     else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
