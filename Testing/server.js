@@ -66,30 +66,6 @@ client.on('message', async message => {
         message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
       }
     }
-    else if (command === "testimg") {
-      let mention = message.mentions.members.first();
-      var loadedImage;
-      var loadedImage2;
-      if (mention) {
-          Jimp.read(`${mention.user.avatarURL}`).then(function(image) {
-              loadedImage=image
-          }).then(function() {
-              loadedImage.resize(306,306).write("image.png")
-          });
-          Jimp.read("image.png", ).then(function(image) {
-              loadedImage2=image
-          }).then(function() {
-              loadedImage2.mask("images/triggered.png", 0, 69).write('final.png')
-          });
-          setTimeout(function() {
-              message.channel.send("loooooool", {
-                  file: "final.png"
-              });
-          }, 1500)
-      } else {
-          message.reply('You must mention a valid user. Please try again.');
-      }
-    }
     else if (command === "kick") {
       if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
       return message.reply("${message.author} you don't have the necessary role {Admin} for this command.");
