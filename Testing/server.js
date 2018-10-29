@@ -15,6 +15,9 @@ const prefix = "!";
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
 const Jimp = require('jimp');
+const googleapis = require('googleapis');
+const API_KEY = `${process.env.PERSPECTIVE1}`;
+const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -102,9 +105,14 @@ client.on('message', async message => {
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
+
         const text = `${message.content}`;
+        (async () => {
+            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene', 'spam', 'unsubstantial']});
+            console.log(JSON.stringify(result, null, 2));
+        })();
         
-        const result = await perspective.analyze(text);
+        /*const result = await perspective.analyze(text);
         
         console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
 
@@ -121,7 +129,7 @@ client.on('message', async message => {
         }
         else {
           console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
-        }
+        }*/
     }
     }
 });
