@@ -121,6 +121,12 @@ client.on('message', async message => {
             const v11 = `${result.attributeScores.OBSCENE.summaryScore.value}`;
             const v12 = `${result.attributeScores.SPAM.summaryScore.value}`;
             const v13 = `${result.attributeScores.UNSUBSTANTIAL.summaryScore.value}`;
+
+            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4 || v11 > 0.4 || v12 > 0.4 || v13 > 0.4) {
+                message.delete();
+                message.reply('Be careful! Next time you might get muted... or even BANNED!');
+            }
+            else {/*Don't need anything here*/}
         })();
         
         /*const result = await perspective.analyze(text);
