@@ -105,7 +105,6 @@ client.on('message', async message => {
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
-
         const text = `${message.content}`;
         (async () => {
             const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene', 'spam', 'unsubstantial']});
