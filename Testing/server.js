@@ -124,7 +124,21 @@ client.on('message', async message => {
 
             if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4 || v11 > 0.4 || v12 > 0.4 || v13 > 0.4) {
                 message.delete();
-                message.reply('Be careful! Next time you might get muted... or even BANNED!');
+                message.reply('Be careful! Your message was deleted for the following reasons:');
+                // Here we go again... :(
+                    if (v1 > 0.4) message.channel.send('Toxicity');
+                    if (v2 > 0.4) message.channel.send('Severe Toxicity');
+                    if (v3 > 0.4) message.channel.send('Identity Attack');
+                    if (v4 > 0.4) message.channel.send('Insult');
+                    if (v5 > 0.4) message.channel.send('Profanity');
+                    if (v6 > 0.4) message.channel.send('Sexually Explicit');
+                    if (v7 > 0.4) message.channel.send('Threat');
+                    if (v8 > 0.4) message.channel.send('Flirtation');
+                    if (v9 > 0.4) message.channel.send('Attack on Author');
+                    if (v10 > 0.4) message.channel.send('Attack on Commenter');
+                    if (v11 > 0.4) message.channel.send('Obscene');
+                    if (v12 > 0.4) message.channel.send('Spam');
+                    if (v13 > 0.4) message.channel.send('Unsubstantial');
             }
             else {/*Don't need anything here*/}
         })();
