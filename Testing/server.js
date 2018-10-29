@@ -108,7 +108,19 @@ client.on('message', async message => {
         const text = `${message.content}`;
         (async () => {
             const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene', 'spam', 'unsubstantial']});
-            console.log(JSON.stringify(result, null, 2));
+            const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
+            const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
+            const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
+            const v4 = `${result.attributeScores.INSULT.summaryScore.value}`;
+            const v5 = `${result.attributeScores.PROFANITY.summaryScore.value}`;
+            const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
+            const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
+            const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
+            const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
+            const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
+            const v11 = `${result.attributeScores.OBSCENE.summaryScore.value}`;
+            const v12 = `${result.attributeScores.SPAM.summaryScore.value}`;
+            const v13 = `${result.attributeScores.UNSUBSTANTIAL.summaryScore.value}`;
         })();
         
         /*const result = await perspective.analyze(text);
