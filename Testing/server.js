@@ -142,25 +142,6 @@ client.on('message', async message => {
             }
             else {/*Don't need anything here*/}
         })();
-        
-        /*const result = await perspective.analyze(text);
-        
-        console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
-
-        let value = result.attributeScores.TOXICITY.summaryScore.value;
-
-        if (value > 0.4 || value === 0.4) {
-          message.reply(`This message can be perceived as toxic. These messages will be deleted in 5 seconds.`);
-
-          (async () => {
-            await delay(5000);
-            message.delete();
-            message.delete();
-          })();
-        }
-        else {
-          console.log(`${result.attributeScores.TOXICITY.summaryScore.value}`);
-        }*/
     }
     }
 });
