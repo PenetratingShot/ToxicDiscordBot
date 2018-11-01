@@ -18,6 +18,7 @@ const Jimp = require('jimp');
 const googleapis = require('googleapis');
 const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
+const fs = require('fs');
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -28,6 +29,13 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
+
+// WHen bot joins a guild
+client.on("guildCreate", guild => {
+    console.log(`Joined a new guild: ` + guild.name);
+});
+
+// Don't need guildDelete here
 
 client.on('ready', () => {
     console.log('It works I guess..');
