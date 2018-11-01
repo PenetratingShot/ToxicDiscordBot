@@ -1,5 +1,6 @@
 {
   "prefix": "!",
   "adminRole": "Admin",
-  "modRole": "Moderator"
+  "modRole": "Moderator",
+  "owner": "No user id specified"
 }
