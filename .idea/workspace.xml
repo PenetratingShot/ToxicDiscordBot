@@ -42,7 +42,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="4530" />
+          <entry key="js" value="4532" />
           <entry key="json" value="89" />
           <entry key="txt" value="56" />
         </counts>
@@ -50,7 +50,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="89" />
-          <entry key="JavaScript" value="4530" />
+          <entry key="JavaScript" value="4532" />
           <entry key="PLAIN_TEXT" value="56" />
         </counts>
       </usages-collector>
@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="162" column="108" selection-start-line="162" selection-start-column="108" selection-end-line="162" selection-end-column="108" />
+            <state relative-caret-position="297">
+              <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -189,7 +189,7 @@
       <workItem from="1540526641722" duration="2049000" />
       <workItem from="1540776672452" duration="3389000" />
       <workItem from="1540954729938" duration="1500000" />
-      <workItem from="1541046052716" duration="1687000" />
+      <workItem from="1541046052716" duration="1820000" />
     </task>
     <task id="LOCAL-00001" summary="remove unnecessary body-parser code, fixed errors">
       <created>1540513403963</created>
@@ -202,7 +202,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15392000" />
+    <option name="totallyTimeSpent" value="15525000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -217,7 +217,7 @@
     <frame x="0" y="23" width="1440" height="809" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989858" visible="true" weight="0.24242425" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989858" visible="true" weight="0.24242425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5010142" side_tool="true" weight="0.24242425" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -231,7 +231,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.20970044" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.20970044" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32952926" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -291,8 +291,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="162" column="108" selection-start-line="162" selection-start-column="108" selection-end-line="162" selection-end-column="108" />
+        <state relative-caret-position="297">
+          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
