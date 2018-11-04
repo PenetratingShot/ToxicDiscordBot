@@ -11,7 +11,6 @@ const Perspective = require('perspective-api-client');
 const perspective = new Perspective({apiKey: process.env.PERSPECTIVE1})
 const express = require('express');
 const app = express();
-const prefix = "!";
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
 const Jimp = require('jimp');
@@ -91,12 +90,12 @@ client.on('message', async message => {
       if(!reason) reason = "No reason provided by Admins.";
     
       await member.kick(reason)
-        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of: ${error}`));
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "ban") {
       if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply(`${message.author} you don't have the neccessary role {Admin} for this command.`);
+      return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
     
     let member = message.mentions.members.first();
     if(!member)
