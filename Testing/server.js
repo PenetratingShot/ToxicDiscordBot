@@ -19,6 +19,7 @@ const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 const fs = require('fs');
 const original = require('./json/default.json');
+const prefix = "!";
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -106,7 +107,7 @@ client.on('message', async message => {
     if(!reason) reason = "No reason provided by Admins.";
     
     await member.ban(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of: ${error}`));
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else {
@@ -114,7 +115,7 @@ client.on('message', async message => {
       if ( vowels.some(word => message.content.includes(word)) ) {
         const text = `${message.content}`;
         (async () => {
-            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene', 'spam', 'unsubstantial']});
+            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene']});
             const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
             const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
             const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
@@ -126,10 +127,8 @@ client.on('message', async message => {
             const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
             const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
             const v11 = `${result.attributeScores.OBSCENE.summaryScore.value}`;
-            const v12 = `${result.attributeScores.SPAM.summaryScore.value}`;
-            const v13 = `${result.attributeScores.UNSUBSTANTIAL.summaryScore.value}`;
 
-            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4 || v11 > 0.4 || v12 > 0.4 || v13 > 0.4) {
+            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4 || v11 > 0.4) {
                 message.delete();
                 message.reply('Be careful! Your message was deleted for the following reasons:');
                 // Here we go again... :(
@@ -144,8 +143,6 @@ client.on('message', async message => {
                     if (v9 > 0.4) message.channel.send('Attack on Author');
                     if (v10 > 0.4) message.channel.send('Attack on Commenter');
                     if (v11 > 0.4) message.channel.send('Obscene');
-                    if (v12 > 0.4) message.channel.send('Spam');
-                    if (v13 > 0.4) message.channel.send('Unsubstantial');
             }
             else {/*Don't need anything here*/}
         })();
