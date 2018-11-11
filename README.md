@@ -10,6 +10,7 @@ The Toxicity Monitor bot is a small Discord bot that scans all messages sent thr
 - Sending message to mods and offender based on warning (if possible)
 - Ability to ban users based on number of infractions (configurable per-server)
 - Customizable settings (per-server)
+- Ability to mute users for specified number of minutes
 
 ## Contributing
 
