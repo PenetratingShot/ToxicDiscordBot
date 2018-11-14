@@ -21,7 +21,6 @@ const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 const fs = require('fs');
 const original = require('./json/default.json');
-const prefix = "!";
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -47,6 +46,8 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
+    const prefix = "!";
+
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
