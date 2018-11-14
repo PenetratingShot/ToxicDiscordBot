@@ -125,6 +125,13 @@ client.on('message', async message => {
         })
             .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
     }
+    else if (command === "unmute") {
+        if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+            return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        let member = message.mentions.members.first();
+
+        if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+    }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
