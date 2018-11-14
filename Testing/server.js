@@ -53,7 +53,7 @@ client.on('message', async message => {
       const embed = new Discord.RichEmbed()
         .setTitle("Toxicity Help Section")
         .setColor(936362)
-        .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat`)
+        .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
       message.author.send(embed);
     }
