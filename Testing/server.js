@@ -124,6 +124,7 @@ client.on('message', async message => {
             SEND_MESSAGES: false
         })
             .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
+            .catch(message.channel.send(error));
     }
     else if (command === "unmute") {
         if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
@@ -131,6 +132,13 @@ client.on('message', async message => {
         let member = message.mentions.members.first();
 
         if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+        if (member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${mention} already has permission to speak in chat`);
+
+        message.channel.overwritePermissions(member, {
+            SEND_MESSAGES: true
+        })
+            .then(updated => message.reply(`Successfully unmuted ${member}. They're now free to talk.`))
+            .catch(message.channel.send(error));
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
