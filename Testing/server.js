@@ -55,7 +55,7 @@ client.on('message', async message => {
       const embed = new Discord.RichEmbed()
         .setTitle("Toxicity Help Section")
         .setColor(936362)
-        .setDescription(`**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
+        .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
       message.author.send(embed);
     }
@@ -122,7 +122,7 @@ client.on('message', async message => {
       if ( vowels.some(word => message.content.includes(word)) ) {
         const text = `${message.content}`;
         (async () => {
-            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter', 'obscene']});
+            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter']});
             const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
             const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
             const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
@@ -133,9 +133,8 @@ client.on('message', async message => {
             const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
             const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
             const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
-            const v11 = `${result.attributeScores.OBSCENE.summaryScore.value}`;
 
-            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4 || v11 > 0.4) {
+            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4) {
                 message.delete();
                 message.reply('Be careful! Your message was deleted for the following reasons:');
                 // Here we go again... :(
@@ -149,7 +148,6 @@ client.on('message', async message => {
                     if (v8 > 0.4) message.channel.send('Flirtation');
                     if (v9 > 0.4) message.channel.send('Attack on Author');
                     if (v10 > 0.4) message.channel.send('Attack on Commenter');
-                    if (v11 > 0.4) message.channel.send('Obscene');
             }
             else {/*Don't need anything here*/}
         })();
