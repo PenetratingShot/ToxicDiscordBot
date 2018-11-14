@@ -116,7 +116,14 @@ client.on('message', async message => {
     else if (command === "mute") {
         if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
             return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        let member = message.mentions.members.first();
 
+        if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+        if (!member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already isn't able to speak in chat.`)
+        message.channel.overwritePermissions(member, {
+            SEND_MESSAGES: false
+        })
+            .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
