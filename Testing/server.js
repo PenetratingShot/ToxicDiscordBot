@@ -1,5 +1,7 @@
 // - Add role command
 // - Add kick user from voice channel command
+// Add mute command (working on it)
+// Allow Admins to remove certain permissions for a specific user
 // - Retry anti-spam
 // - Add funny "banned" image after ban
 
@@ -95,7 +97,7 @@ client.on('message', async message => {
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "ban") {
-      if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+      if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
       return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
     
     let member = message.mentions.members.first();
@@ -109,6 +111,11 @@ client.on('message', async message => {
     await member.ban(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of: ${error}`));
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    }
+    else if (command === "mute") {
+        if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+            return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
