@@ -76,7 +76,7 @@ client.on('message', async message => {
          message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
 }    );
       } else {
-        message.channel.send(`${message.author} you don't have the neccessary role {Admin} for this command.`);
+        message.channel.send(`${message.author} you don't have the necessary role {Admin} for this command.`);
       }
     }
     else if (command === "kick") {

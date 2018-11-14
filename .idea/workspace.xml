@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ccb00e3-d604-4deb-b477-ab0e1837a52c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Testing/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -69,8 +70,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="65" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="65" />
+            <state relative-caret-position="316">
+              <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -229,7 +233,7 @@
       <workItem from="1541744787842" duration="103000" />
       <workItem from="1541899295628" duration="838000" />
       <workItem from="1542078979760" duration="256000" />
-      <workItem from="1542161143705" duration="753000" />
+      <workItem from="1542161143705" duration="888000" />
     </task>
     <task id="LOCAL-00001" summary="remove unnecessary body-parser code, fixed errors">
       <created>1540513403963</created>
@@ -242,7 +246,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22396000" />
+    <option name="totallyTimeSpent" value="22531000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,8 +351,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="65" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="65" />
+        <state relative-caret-position="316">
+          <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
