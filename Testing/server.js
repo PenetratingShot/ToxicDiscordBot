@@ -120,11 +120,13 @@ client.on('message', async message => {
 
         if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
         if (!member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already isn't able to speak in chat.`)
-        message.channel.overwritePermissions(member, {
-            SEND_MESSAGES: false
-        })
-            .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
-            .catch(console.error);
+        if (member.hasPermission('SEND_MESSAGES')) {
+            message.channel.overwritePermissions(member, {
+                SEND_MESSAGES: false
+            })
+                .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
+                .catch(console.error);
+        }
     }
     else if (command === "unmute") {
         if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
