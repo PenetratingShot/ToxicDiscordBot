@@ -186,7 +186,7 @@ client.on('message', async message => {
             .setColor(0x00AE86)
             .setTimestamp()
             .setDescription(`\n**Create Invites:** ${v1}\n**Kick Members:** ${v2}\n**Ban Members:** ${v3}\n**Administrator:** ${v4}\n**Manage Channels:** ${v5}\n**Manage Guild:** ${v6}\n**Add Reactions:** ${v7}\n**Read Messages:** ${v8}\n**Send Messages:** ${v9}\n**Send TTS Messages:** ${v10}\n**Manage Messages:** ${v11}\n**Embed Links:** ${v12}\n**Attach Files:** ${v13}\n**Read Message History:** ${v14}\n**Mention Everyone:** ${v15}\n**External Emojies:** ${v16}\n**Connect to Voice:** ${v17}\n**Speak in Voice:** ${v18}\n**Mute People:** ${v19}\n**Deafen People:** ${v20}\n**Move People:** ${v21}\n**VAD:** ${v22}\n**Change Nickname:** ${v23}\n**Manage Nicknames:** ${v24}\n**Manage Roles/Permissions:** ${v25}\n**Manage Webhooks:** ${v26}\n**Manage Emojies:** ${v27}`)
-            .setThumbnail(user.avatarURL);
+            .setThumbnail(lol.avatarURL);
 
         message.channel.send({embed});
 
