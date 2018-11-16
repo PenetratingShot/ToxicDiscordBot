@@ -134,13 +134,62 @@ client.on('message', async message => {
         let member = message.mentions.members.first();
 
         if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
-        if (member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already has permission to speak in chat`);
+        if (member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already has permission to send messages`);
+        if (!member.hasPermission('SEND_MESSAGES')) {
+         message.channel.overwritePermissions(member, {
+             SEND_MESSAGES: true
+         })
+             .then(updated => message.reply(`Successfully unmuted ${member} indefinitely. `))
+             .catch(console.error);
+        }
+    }
+    else if (command === "viewperms") {
+        let user = message.mentions.members.first();
+        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
+        /*const possiblePermissions = ["CREATE_INSTANT_INVITE", "KICK_MEMBERS", "BAN_MEMBERS", "ADMINISTRATOR", "MANAGE_CHANNELS", "MANAGE_GUILD", "ADD_REACTIONS", "READ_MESSAGES", "SEND_MESSAGES", "SEND_TTS_MESSAGE", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "READ_MESSAGE_HISTORY", "MENTION_EVERYONE", "EXTERNAL_EMOJIS", "CONNECT", "SPEAK", "MUTE_MEMBERS", "DEAFEN_MEMBERS", "MOVE_MEMBERS", "USE_VAD", "CHANGE_NICKNAME", "MANAGE_NICKNAMES", "MANAGE_ROLES_OR_PERMISSIONS", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS"];
+        if (possiblePermissions.some(word => message.content.includes(word)) ) {
 
-        message.channel.overwritePermissions(member, {
-            SEND_MESSAGES: true
-        })
-            .then(updated => message.reply(`Successfully unmuted ${member}. They're now free to talk.`))
-            .catch(console.error);
+        }*/
+
+        if (!lol) return message.reply(`Fatal: You must mention a valid member on this server. Please try again.`);
+
+        const v1 = user.hasPermission('CREATE_INSTANT_INVITE');
+        const v2 = user.hasPermission('KICK_MEMBERS');
+        const v3 = user.hasPermission('BAN_MEMBERS');
+        const v4 = user.hasPermission('ADMINISTRATOR');
+        const v5 = user.hasPermission('MANAGE_CHANNELS');
+        const v6 = user.hasPermission('MANAGE_GUILD');
+        const v7 = user.hasPermission('ADD_REACTIONS');
+        const v8 = user.hasPermission('READ_MESSAGES');
+        const v9 = user.hasPermission('SEND_MESSAGES');
+        const v10 = user.hasPermission('SEND_TTS_MESSAGES');
+        const v11 = user.hasPermission('MANAGE_MESSAGES');
+        const v12 = user.hasPermission('EMBED_LINKS');
+        const v13 = user.hasPermission('ATTACH_FILES');
+        const v14 = user.hasPermission('READ_MESSAGE_HISTORY');
+        const v15 = user.hasPermission('MENTION_EVERYONE');
+        const v16 = user.hasPermission('EXTERNAL_EMOJIS');
+        const v17 = user.hasPermission('CONNECT');
+        const v18 = user.hasPermission('SPEAK');
+        const v19 = user.hasPermission('MUTE_MEMBERS');
+        const v20 = user.hasPermission('DEAFEN_MEMBERS');
+        const v21 = user.hasPermission('MOVE_MEMBERS');
+        const v22 = user.hasPermission('USE_VAD');
+        const v23 = user.hasPermission('CHANGE_NICKNAME');
+        const v24 = user.hasPermission('MANAGE_NICKNAMES');
+        const v25 = user.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+        const v26 = user.hasPermission('MANAGE_WEBHOOKS');
+        const v27 = user.hasPermission('MANAGE_EMOJIES');
+
+        const embed = new Discord.RichEmbed()
+            .setTitle(`Viewing Permissions for ${lol.username}`)
+            .setColor(0x00AE86)
+            .setTimestamp()
+            .setDescription(`\n**Create Invites:** ${v1}\n**Kick Members:** ${v2}\n**Ban Members:** ${v3}\n**Administrator:** ${v4}\n**Manage Channels:** ${v5}\n**Manage Guild:** ${v6}\n**Add Reactions:** ${v7}\n**Read Messages:** ${v8}\n**Send Messages:** ${v9}\n**Send TTS Messages:** ${v10}\n**Manage Messages:** ${v11}\n**Embed Links:** ${v12}\n**Attach Files:** ${v13}\n**Read Message History:** ${v14}\n**Mention Everyone:** ${v15}\n**External Emojies:** ${v16}\n**Connect to Voice:** ${v17}\n**Speak in Voice:** ${v18}\n**Mute People:** ${v19}\n**Deafen People:** ${v20}\n**Move People:** ${v21}\n**VAD:** ${v22}\n**Change Nickname:** ${v23}\n**Manage Nicknames:** ${v24}\n**Manage Roles/Permissions:** ${v25}\n**Manage Webhooks:** ${v26}\n**Manage Emojies:** ${v27}`)
+            .setThumbnail(user.avatarURL);
+
+        message.channel.send({embed});
+
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
