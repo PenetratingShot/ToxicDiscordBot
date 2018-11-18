@@ -296,7 +296,40 @@ client.on('message', async message => {
                     .then(updated => message.reply(`, ${lol} now has the ability to create instant invites.`))
                     .catch(console.error);
             }
-
+            const kickMembers = ['KICK_MEMBERS'];
+            if (kickMembers.some(word => message.content.includes(word)) ) {
+                if (user.hasPermission('KICK_MEMBERS')) {
+                    message.channel.overwritePermissions(user, {
+                        "KICK_MEMBERS": false
+                    })
+                        .then(updated => message.reply(`, ${lol} can no longer kick members.`))
+                        .catch(console.error);
+                }
+                else {
+                    message.channel.overwritePermissions(user, {
+                        "KICK_MEMBERS": true
+                    })
+                        .then(updated => message.reply(`, ${lol} can now kick members.`))
+                        .catch(console.error);
+                }
+                const banMembers = ["BAN_MEMBERS"];
+                if (banMembers.some(word => message.content.includes(word)) ) {
+                    if (user.hasPermission('BAN_MEMBERS')) {
+                        message.channel.overwritePermissions(user, {
+                            "BAN_MEMBERS": false
+                        })
+                            .then(updated => message.reply(`, ${lol} can no longer create ban members.`))
+                            .catch(console.error);
+                    }
+                    else {
+                        message.channel.overwritePermissions(user, {
+                            "BAN_MEMBERS": true
+                        })
+                            .then(updated => message.reply(`, ${lol} can now ban members.`))
+                            .catch(console.error);
+                    }
+                }
+            }
 
         }
 
