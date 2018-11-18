@@ -260,6 +260,12 @@ client.on('message', async message => {
             const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
             const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
             
+            // Clear the file to make sure that the data won't screw up
+
+            fs.writeFile('./json/all.txt', ' ', function (err, file) {
+                if (err) throw err;
+            })
+
             //Statements to trigger functions that append files
             if (v1 > 0.4) toxicity();
             if (v2 > 0.4) severeToxicity();
