@@ -243,6 +243,64 @@ client.on('message', async message => {
         message.channel.send({embed});
 
     }
+    else if (command === "setperms") {
+        if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+            return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        let mention = message.mentions.users.first();
+        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
+
+        if (!mention) return message.reply('Fatal: You must mention a valid member of this server.');
+
+        const v1 = user.hasPermission('CREATE_INSTANT_INVITE');
+        const v2 = user.hasPermission('KICK_MEMBERS');
+        const v3 = user.hasPermission('BAN_MEMBERS');
+        const v4 = user.hasPermission('ADMINISTRATOR');
+        const v5 = user.hasPermission('MANAGE_CHANNELS');
+        const v6 = user.hasPermission('MANAGE_GUILD');
+        const v7 = user.hasPermission('ADD_REACTIONS');
+        const v8 = user.hasPermission('READ_MESSAGES');
+        const v9 = user.hasPermission('SEND_MESSAGES');
+        const v10 = user.hasPermission('SEND_TTS_MESSAGES');
+        const v11 = user.hasPermission('MANAGE_MESSAGES');
+        const v12 = user.hasPermission('EMBED_LINKS');
+        const v13 = user.hasPermission('ATTACH_FILES');
+        const v14 = user.hasPermission('READ_MESSAGE_HISTORY');
+        const v15 = user.hasPermission('MENTION_EVERYONE');
+        const v16 = user.hasPermission('EXTERNAL_EMOJIS');
+        const v17 = user.hasPermission('CONNECT');
+        const v18 = user.hasPermission('SPEAK');
+        const v19 = user.hasPermission('MUTE_MEMBERS');
+        const v20 = user.hasPermission('DEAFEN_MEMBERS');
+        const v21 = user.hasPermission('MOVE_MEMBERS');
+        const v22 = user.hasPermission('USE_VAD');
+        const v23 = user.hasPermission('CHANGE_NICKNAME');
+        const v24 = user.hasPermission('MANAGE_NICKNAMES');
+        const v25 = user.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+        const v26 = user.hasPermission('MANAGE_WEBHOOKS');
+        const v27 = user.hasPermission('MANAGE_EMOJIES');
+
+        // Check for changing instant invite permissions
+        const instantInvite = ["CREATE_INSTANT_INVITE"];
+        if (instantInvite.some(word => message.content.includes(word)) ) {
+            if (user.hasPermission('CREATE_INSTANT_INVITE')) {
+                message.channel.overwritePermissions(user, {
+                    'CREATE_INSTANT_INVITE': false
+                })
+                    .then(updated => message.reply(`, ${lol} can no longer create instant invites.`))
+                    .catch(console.error);
+            }
+            else {
+                message.channel.overwritePermissions(user, {
+                    'CREATE_INSTANT_INVITE': true
+                })
+                    .then(updated => message.reply(`, ${lol} now has the ability to create instant invites.`))
+                    .catch(console.error);
+            }
+
+
+        }
+
+    }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
