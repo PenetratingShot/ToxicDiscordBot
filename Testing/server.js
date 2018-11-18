@@ -259,8 +259,18 @@ client.on('message', async message => {
             const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
             const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
             const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
-
             
+            //Statements to trigger functions that append files
+            if (v1 > 0.4) toxicity();
+            if (v2 > 0.4) severeToxicity();
+            if (v3 > 0.4) identityAttack();
+            if (v4 > 0.4) insult();
+            if (v5 > 0.4) profanity();
+            if (v6 > 0.4) sexuallyExplicit();
+            if (v7 > 0.4) threat();
+            if (v8 > 0.4) flirtation();
+            if (v9 > 0.4) attackOnAuthor();
+            if (v10 > 0.4) attackOnCommenter();
 
         })();
     }
