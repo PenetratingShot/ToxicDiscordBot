@@ -260,13 +260,8 @@ client.on('message', async message => {
             const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
             const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
 
-            if (v1 > 0.4 || v2 > 0.4 || v3 > 0.4 || v4 > 0.4 || v5 > 0.4 || v6 > 0.4 || v7 > 0.4 || v8 > 0.4 || v9 > 0.4 || v10 > 0.4) {
-                message.delete();
-                message.reply('Be careful! Your message was deleted for the following reasons:');
-                // Here we go again... :(
-                if
-            }
-            else {/*Don't need anything here*/}
+            
+
         })();
     }
     }
