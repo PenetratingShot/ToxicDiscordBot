@@ -20,6 +20,40 @@ const googleapis = require('googleapis');
 const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 const fs = require('fs');
+const Enmap = require('enmap');
+
+client.settings = new Enmap({
+    name: "settings",
+    fetchAll: false,
+    autoFetch: true,
+    cloneLevel: 'deep'
+});
+
+const defaultSettings = {
+    prefix: "!",
+    modLogChannel: "mod-log",
+    modRole: "Moderator",
+    adminRole: 'Admin',
+    welcomeChannel: 'welcome',
+    welcomeMessage: 'Say hello to {{user}} everyone!'
+}
+
+client.on("guildDelete", guild => {
+    client.settings.delete(guild.id);
+});
+
+client.on("guildMemberAdd", member => {
+    client.settings.ensure(member.guild.id, defaultSettings);
+
+    let welcomeMessage = client.settings.get(member.guild.id, "welcomeMessage");
+
+    welcomeMessage = welcomeMessage.replace("{{user}}", member.user.tag)
+
+    member.guild.channels
+        .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
+        .send(welcomeMessage)
+        .catch(console.error);
+})
 
 // Functions for appending files 'yes'
 
@@ -99,7 +133,7 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     const prefix = "!";
-
+    const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
@@ -111,6 +145,32 @@ client.on('message', async message => {
         .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
       message.author.send(embed);
+    }
+    else if (command === "setconf") {
+        // Command is admin only, let's grab the admin value:
+        const adminRole = message.guild.roles.find("name", guildConf.adminRole);
+        if(!adminRole) return message.reply("Administrator Role Not Found");
+
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply("You're not an admin, sorry!");
+        }
+
+        const [prop, ...value] = args;
+
+        if(!client.settings.has(message.guild.id, prop)) {
+            return message.reply("This key is not in the configuration.");
+        }
+
+        client.settings.set(message.guild.id, value.join(" "), prop);
+
+        message.channel.send(`Guild configuration item ${prop} has been changed to:\n\`${value.join(" ")}\``);
+    }
+    else if(command === "showconf") {
+        let configProps = Object.keys(guildConf).map(prop => {
+            return `${prop}  :  ${guildConf[prop]}\n`;
+        });
+        message.channel.send(`The following are the server's current configuration:
+    \`\`\`${configProps}\`\`\``);
     }
     else if (command === "purge") {
       if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
@@ -241,9 +301,6 @@ client.on('message', async message => {
             .setThumbnail(lol.avatarURL);
 
         message.channel.send({embed});
-
-    }
-    else if (command === "newviewperms") {
 
     }
     else {
