@@ -278,6 +278,17 @@ client.on('message', async message => {
             if (v9 > 0.4) attackOnAuthor();
             if (v10 > 0.4) attackOnCommenter();
 
+            // Now we have the completed file with all the reasons
+
+            fs.readFile('./json/all.txt', function (err, data) {
+                if (data == ' ') {
+                    return;
+                }
+                else {
+                    message.channel.send(`${message.author}, your message was deleted for the following reasons: ${data}`);
+                }
+            })
+
         })();
     }
     }
