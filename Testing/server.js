@@ -243,8 +243,8 @@ client.on('message', async message => {
         message.channel.send({embed});
 
     }
-    else if (command === "setperms") {
-        
+    else if (command === "newviewperms") {
+
     }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
