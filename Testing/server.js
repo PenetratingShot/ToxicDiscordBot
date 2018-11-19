@@ -32,7 +32,7 @@ client.settings = new Enmap({
 const defaultSettings = {
     prefix: "!",
     modLogChannel: "mod-log",
-    modRole: "Moderator",
+    modRole: "Mod",
     adminRole: 'Admin',
     welcomeChannel: 'welcome',
     welcomeMessage: 'Say hello to {{user}} everyone!'
@@ -132,8 +132,8 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    const prefix = "!";
     const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
+    const adminRole = message.guild.roles.find("name", guildConf.adminRole);
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
@@ -152,7 +152,7 @@ client.on('message', async message => {
         if(!adminRole) return message.reply("Administrator Role Not Found");
 
         if(!message.member.roles.has(adminRole.id)) {
-            return message.reply("You're not an admin, sorry!");
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
         }
 
         const [prop, ...value] = args;

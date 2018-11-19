@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,12 +35,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2464" />
+          <entry key="js" value="2560" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2464" />
+          <entry key="JavaScript" value="2560" />
         </counts>
       </usages-collector>
     </session>
@@ -53,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="683">
-              <caret line="189" column="7" lean-forward="true" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
+            <state relative-caret-position="-330">
+              <caret line="133" column="39" selection-start-line="133" selection-start-column="39" selection-end-line="133" selection-end-column="39" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -463,24 +460,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542520941894</updated>
-      <workItem from="1542520944621" duration="4166000" />
+      <workItem from="1542520944621" duration="4643000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4166000" />
+    <option name="totallyTimeSpent" value="4643000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="3440" height="1349" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="809" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10353905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.18614021" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32952926" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -520,8 +517,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="189" column="7" lean-forward="true" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
+        <state relative-caret-position="-330">
+          <caret line="133" column="39" selection-start-line="133" selection-start-column="39" selection-end-line="133" selection-end-column="39" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
