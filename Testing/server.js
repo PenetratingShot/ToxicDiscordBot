@@ -128,12 +128,11 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 
-// WHen bot joins a guild
+// When bot joins a guild
 client.on("guildCreate", guild => {
     console.log(`Joined a new guild: ` + guild.name);
 });
 
-// Don't need guildDelete here
 
 client.on('ready', () => {
     console.log('It works I guess..');
