@@ -149,7 +149,7 @@ client.on('message', async message => {
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
     
-    if (message.content === '!help') {
+    if (command === 'help') {
       const embed = new Discord.RichEmbed()
         .setTitle("Toxicity Help Section")
         .setColor(936362)
