@@ -352,7 +352,7 @@ client.on('message', async message => {
             // Now we have the completed file with all the reasons
 
             fs.readFile('./json/all.txt', function (err, data) {
-                if (data === ' ') {
+                if (data == ' ') {
                     return;
                 }
                 else {
