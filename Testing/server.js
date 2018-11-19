@@ -173,28 +173,27 @@ client.on('message', async message => {
     \`\`\`${configProps}\`\`\``);
     }
     else if (command === "purge") {
-      if(message.member.roles.some(r=>["Admin"].includes(r.name)) ) {
-        
-      const user = message.mentions.users.first();
-      const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
-      if (!amount) return message.reply('Must specify an amount to delete!');
-      if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
-      message.channel.fetchMessages({
-       limit: amount,
-      }).then((messages) => {
-       if (user) {
-         const filterBy = user ? user.id : client.user.id;
-         messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
-       }
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
+        const user = message.mentions.users.first();
+        const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
+        if (!amount) return message.reply('Must specify an amount to delete!');
+        if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
+         message.channel.fetchMessages({
+             limit: amount,
+         }).then((messages) => {
+             if (user) {
+                const filterBy = user ? user.id : client.user.id;
+                messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
+             }
          message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
 }    );
-      } else {
-        message.channel.send(`${message.author} you don't have the necessary role {Admin} for this command.`);
-      }
     }
     else if (command === "kick") {
-      if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply("${message.author} you don't have the necessary role {Admin} for this command.");
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
 
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!member)
@@ -226,8 +225,9 @@ client.on('message', async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "mute") {
-        if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-            return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
         let member = message.mentions.members.first();
 
         if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
@@ -241,8 +241,9 @@ client.on('message', async message => {
         }
     }
     else if (command === "unmute") {
-        if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-            return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
         let member = message.mentions.members.first();
 
         if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
@@ -341,7 +342,7 @@ client.on('message', async message => {
             // Now we have the completed file with all the reasons
 
             fs.readFile('./json/all.txt', function (err, data) {
-                if (data == ' ') {
+                if (data === ' ') {
                     return;
                 }
                 else {
