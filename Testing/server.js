@@ -144,6 +144,7 @@ client.on('ready', () => {
 client.on('message', async message => {
     const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
     const adminRole = message.guild.roles.find("name", guildConf.adminRole);
+    const prefix = guildConf.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
