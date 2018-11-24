@@ -184,7 +184,32 @@ client.on('message', async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "mute") {
-
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
+        let user = message.mentions.members.first();
+        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
+        if (!user) return message.reply('Fatal: you must mention a valid member on this server. Please try again.');
+        let mutedRole = message.guild.roles.find('name', 'ToxicBotMutedRole');
+        if (!mutedRole) {
+            try {
+                mutedRole = await message.guild.createRole({
+                    name: 'ToxicBotMutedRole',
+                    color: '#000000',
+                    permissions: []
+                })
+                message.guild.channels.forEach(async (channel, id) => {
+                    await channel.overwritePermissions(mutedRole, {
+                        SEND_MESSAGES: false,
+                        ADD_REACTIONS: false
+                    });
+                });
+            } catch (e) {
+                console.log(e.stack)
+            }
+        }
+        await (user.addRole(mutedRole.id));
+        message.reply(`${lol} has been muted`);
     }
     else if (command === "unmute") {
 
