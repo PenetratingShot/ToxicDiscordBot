@@ -21,6 +21,7 @@ const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?ve
 const fs = require('fs');
 const Enmap = require('enmap');
 const StringBuilder = require('string-builder');
+let sb = new StringBuilder();
 
 client.settings = new Enmap({
     name: "settings",
@@ -275,6 +276,22 @@ client.on('message', async message => {
                 const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
                 const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
 
+                if (v1 > 0.5 || v2 > 0.5 || v3 > 0.5 || v4 > 0.5 || v6 > 0.5 || v7 > 0.5 || v8 > 0.5 || v9 > 0.5 || v10 > 0.5) {
+                    sb.clear();
+                    if (v1 > 0.5) sb.append('Toxicity  ');
+                    if (v2 > 0.5) sb.append('Severe Toxicity  ');
+                    if (v3 > 0.5) sb.append('Identity Attack  ');
+                    if (v4 > 0.5) sb.append('Insult  ');
+                    if (v5 > 0.5) sb.append('Profanity  ');
+                    if (v6 > 0.5) sb.append('Sexually Explicit  ');
+                    if (v7 > 0.5) sb.append('Threat  ');
+                    if (v8 > 0.5) sb.append('Flirtation  ');
+                    if (v9 > 0.5) sb.append('Attack on Author  ');
+                    if (v10 > 0.5) sb.append('Attack on Commenter  ');
+
+                    message.delete();
+                    message.reply(`your message was deleted for the following reasons: ${sb.toString()}`);
+                }
 
             })();
         }
