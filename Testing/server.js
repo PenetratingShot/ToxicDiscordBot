@@ -212,7 +212,15 @@ client.on('message', async message => {
         message.reply(`${lol} has been muted`);
     }
     else if (command === "unmute") {
-
+        let user = message.mentions.members.first();
+        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
+        let mutedRole = message.guild.roles.find('name', 'ToxicBotMutedRole');
+        if (!user) return message.reply('Fatal: you must mention a valid member on this server. Please try again.');
+        if (!mutedRole) return message.reply(` literally no one in the server has been muted yet. Try muting someone now.`);
+        if (message.user.roles.find('name', 'ToxicBotMutedRole')) {
+            await(user.removeRole(mutedRole.id));
+            message.reply(` ${lol} has been unmuted.`);
+        }
     }
     /*(else if (command === "viewperms") {
         let user = message.mentions.members.first();
