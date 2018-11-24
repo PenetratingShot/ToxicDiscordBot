@@ -20,6 +20,7 @@ const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 const fs = require('fs');
 const Enmap = require('enmap');
+const StringBuilder = require('string-builder');
 
 client.settings = new Enmap({
     name: "settings",
@@ -260,7 +261,22 @@ client.on('message', async message => {
     else {
         const vowels = ["a", "e", "i", "o", "u", "y"];
         if (vowels.some(word => message.content.includes(word)) ) {
-            message.reply("You have said a message.");
+            const text = message.content;
+            (async () => {
+                const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter']});
+                const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
+                const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
+                const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
+                const v4 = `${result.attributeScores.INSULT.summaryScore.value}`;
+                const v5 = `${result.attributeScores.PROFANITY.summaryScore.value}`;
+                const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
+                const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
+                const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
+                const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
+                const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
+
+
+            })();
         }
         else {
             message.reply("Looks like you found a loophole :/");

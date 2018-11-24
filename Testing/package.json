@@ -17,7 +17,8 @@
     "googleapis": "^34.0.0",
     "jimp": "^0.5.4",
     "perspective-api-client": "^3.0.0",
-    "randomcolor": "^0.5.3"
+    "randomcolor": "^0.5.3",
+    "string-builder": "^0.1.6"
   },
   "engines": {
     "node": "10.x"
