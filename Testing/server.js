@@ -34,7 +34,7 @@ const defaultSettings = {
     modLogChannel: "mod-log",
     modRole: "Mod",
     adminRole: 'Admin',
-    welcomeChannel: 'welcome',
+    /*welcomeChannel: 'welcome',
     welcomeMessage: 'Say hello to {{user}} everyone!',
     warnBuffer: 8, // Amount of messages sent to warrant a warning
     maxBuffer: 10, // Amount of messages sent to warrant a ban
@@ -45,7 +45,7 @@ const defaultSettings = {
     maxDuplicatesBan: 10, // Maximum number of duplicate messages in a specified interval for ban
     deleteMessagesAfterBanForPastDays: 7, // When someone gets banned, 7 days of message history will be deleted
     exemptRoles: [],
-    exemptUsers: []
+    exemptUsers: []*/
 }
 
 client.on("guildDelete", guild => {
@@ -240,9 +240,9 @@ client.on('message', async message => {
         }
         let member = message.mentions.members.first();
 
-        if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
-        if (!member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already isn't able to speak in chat.`)
-        if (member.hasPermission('SEND_MESSAGES')) {
+        if (!message.member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+        if (!message.member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already isn't able to speak in chat.`)
+        if (message.member.hasPermission('SEND_MESSAGES')) {
             message.channel.overwritePermissions(member, {
                 SEND_MESSAGES: false
             })
@@ -256,14 +256,14 @@ client.on('message', async message => {
         }
         let member = message.mentions.members.first();
 
-        if (!member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
-        if (member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already has permission to send messages`);
-        if (!member.hasPermission('SEND_MESSAGES')) {
-         message.channel.overwritePermissions(member, {
-             SEND_MESSAGES: true
-         })
-             .then(updated => message.reply(`Successfully unmuted ${member} indefinitely. `))
-             .catch(console.error);
+        if (!message.member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
+        if (message.member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} is able to speak in chat.`)
+        if (!message.member.hasPermission('SEND_MESSAGES')) {
+            message.channel.overwritePermissions(member, {
+                SEND_MESSAGES: true
+            })
+                .then(updated => message.reply(`Successfully unmuted ${member} indefinitely`))
+                .catch(console.error);
         }
     }
     else if (command === "viewperms") {
@@ -314,6 +314,9 @@ client.on('message', async message => {
         message.channel.send({embed});
 
     }
+    else if (command === "setperms") {
+
+    }
     else {
       const vowels = ["a", "e", "i", "o", "u", "y"];
       if ( vowels.some(word => message.content.includes(word)) ) {
@@ -356,6 +359,7 @@ client.on('message', async message => {
                     return;
                 }
                 else {
+                    message.delete();
                     message.channel.send(`${message.author}, your message was deleted for the following reasons: ${data}`);
                 }
             })
