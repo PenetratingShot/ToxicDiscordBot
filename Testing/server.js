@@ -15,7 +15,6 @@ const express = require('express');
 const app = express();
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
-const Jimp = require('jimp');
 const googleapis = require('googleapis');
 const API_KEY = `${process.env.PERSPECTIVE1}`;
 const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
@@ -63,60 +62,7 @@ client.on("guildMemberAdd", member => {
         .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
         .send(welcomeMessage)
         .catch(console.error);
-})
-
-// Functions for appending files 'yes'
-
-function attackOnAuthor() {
-    fs.appendFile('./json/all.txt', 'Attack on Author  ', function (err) {
-        if (err) throw err;
-    })
-}
-function attackOnCommenter() {
-    fs.appendFile('./json/all.txt', 'Attack on Commenter  ', function (err) {
-        if (err) throw err;
-    })
-}
-function flirtation() {
-    fs.appendFile('./json/all.txt', 'Flirting  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function identityAttack() {
-    fs.appendFile('./json/all.txt', 'Identity Attack  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function insult() {
-    fs.appendFile('./json/all.txt', 'Insult  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function profanity() {
-    fs.appendFile('./json/all.txt', 'Profanity  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function severeToxicity() {
-    fs.appendFile('./json/all.txt', 'Severe Toxicity  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function sexuallyExplicit() {
-    fs.appendFile('./json/all.txt', 'Sexually Explicit  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function threat() {
-    fs.appendFile('./json/all.txt', 'Threat  ', function (err, file) {
-        if (err) throw err;
-    })
-}
-function toxicity() {
-    fs.appendFile('./json/all.txt', 'Toxic  ', function (err, file) {
-        if (err) throw err;
-    })
-}
+});
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -266,13 +212,10 @@ client.on('message', async message => {
                 .catch(console.error);
         }
     }
-    else if (command === "viewperms") {
+    /*(else if (command === "viewperms") {
         let user = message.mentions.members.first();
         let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
-        /*const possiblePermissions = ["CREATE_INSTANT_INVITE", "KICK_MEMBERS", "BAN_MEMBERS", "ADMINISTRATOR", "MANAGE_CHANNELS", "MANAGE_GUILD", "ADD_REACTIONS", "READ_MESSAGES", "SEND_MESSAGES", "SEND_TTS_MESSAGE", "MANAGE_MESSAGES", "EMBED_LINKS", "ATTACH_FILES", "READ_MESSAGE_HISTORY", "MENTION_EVERYONE", "EXTERNAL_EMOJIS", "CONNECT", "SPEAK", "MUTE_MEMBERS", "DEAFEN_MEMBERS", "MOVE_MEMBERS", "USE_VAD", "CHANGE_NICKNAME", "MANAGE_NICKNAMES", "MANAGE_ROLES_OR_PERMISSIONS", "MANAGE_WEBHOOKS", "MANAGE_EMOJIS"];
-        if (possiblePermissions.some(word => message.content.includes(word)) ) {
 
-        }*/
 
         if (!lol) return message.reply(`Fatal: You must mention a valid member on this server. Please try again.`);
 
@@ -313,59 +256,9 @@ client.on('message', async message => {
 
         message.channel.send({embed});
 
-    }
-    else if (command === "setperms") {
-
-    }
+    }*/
     else {
-      const vowels = ["a", "e", "i", "o", "u", "y"];
-      if ( vowels.some(word => message.content.includes(word)) ) {
-        const text = `${message.content}`;
-        (async () => {
-            const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter']});
-            const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
-            const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
-            const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
-            const v4 = `${result.attributeScores.INSULT.summaryScore.value}`;
-            const v5 = `${result.attributeScores.PROFANITY.summaryScore.value}`;
-            const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
-            const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
-            const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
-            const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
-            const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
-            
-            // Clear the file to make sure that the data won't screw up
 
-            fs.writeFile('./json/all.txt', ' ', function (err, file) {
-                if (err) throw err;
-            })
-
-            //Statements to trigger functions that append files
-            if (v1 > 0.4) toxicity();
-            if (v2 > 0.4) severeToxicity();
-            if (v3 > 0.4) identityAttack();
-            if (v4 > 0.4) insult();
-            if (v5 > 0.4) profanity();
-            if (v6 > 0.4) sexuallyExplicit();
-            if (v7 > 0.4) threat();
-            if (v8 > 0.4) flirtation();
-            if (v9 > 0.4) attackOnAuthor();
-            if (v10 > 0.4) attackOnCommenter();
-
-            // Now we have the completed file with all the reasons
-
-            fs.readFile('./json/all.txt', function (err, data) {
-                if (data == ' ') {
-                    return;
-                }
-                else {
-                    message.delete();
-                    message.channel.send(`${message.author}, your message was deleted for the following reasons: ${data}`);
-                }
-            })
-
-        })();
-    }
     }
 });
 
