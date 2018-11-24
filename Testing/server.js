@@ -167,8 +167,9 @@ client.on('message', async message => {
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "ban") {
-      if (!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply(`${message.author} you don't have the necessary role {Admin} for this command.`);
+        if(!message.member.roles.has(adminRole.id)) {
+            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        }
     
     let member = message.mentions.members.first();
     if (!member)
@@ -186,7 +187,7 @@ client.on('message', async message => {
 
     }
     else if (command === "unmute") {
-        
+
     }
     /*(else if (command === "viewperms") {
         let user = message.mentions.members.first();
