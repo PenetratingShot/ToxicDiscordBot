@@ -183,36 +183,10 @@ client.on('message', async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "mute") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
-        }
-        let member = message.mentions.members.first();
 
-        if (!message.member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
-        if (!message.member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} already isn't able to speak in chat.`)
-        if (message.member.hasPermission('SEND_MESSAGES')) {
-            message.channel.overwritePermissions(member, {
-                SEND_MESSAGES: false
-            })
-                .then(updated => message.reply(`Successfully muted ${member} indefinitely`))
-                .catch(console.error);
-        }
     }
     else if (command === "unmute") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
-        }
-        let member = message.mentions.members.first();
-
-        if (!message.member) return message.reply("Fatal: You must mention a valid member on this server. Please try again.");
-        if (message.member.hasPermission('SEND_MESSAGES')) return message.reply(`Fatal: ${member} is able to speak in chat.`)
-        if (!message.member.hasPermission('SEND_MESSAGES')) {
-            message.channel.overwritePermissions(member, {
-                SEND_MESSAGES: true
-            })
-                .then(updated => message.reply(`Successfully unmuted ${member} indefinitely`))
-                .catch(console.error);
-        }
+        
     }
     /*(else if (command === "viewperms") {
         let user = message.mentions.members.first();
