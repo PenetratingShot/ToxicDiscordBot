@@ -258,7 +258,13 @@ client.on('message', async message => {
 
     }*/
     else {
-
+        const vowels = ["a", "e", "i", "o", "u", "y"];
+        if (vowels.some(word => message.content.includes(word)) ) {
+            message.reply("You have said a message.");
+        }
+        else {
+            message.reply("Looks like you found a loophole :/");
+        }
     }
 });
 
