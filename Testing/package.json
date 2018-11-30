@@ -6,7 +6,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "better-sqlite-pool": "^0.1.2",
     "claudia-bot-builder": "^4.5.0",
     "delay": "^4.0.1",
     "discord-anti-spam": "^1.1.2",

@@ -23,12 +23,7 @@ const Enmap = require('enmap');
 const StringBuilder = require('string-builder');
 let sb = new StringBuilder();
 
-client.settings = new Enmap({
-    name: "settings",
-    fetchAll: false,
-    autoFetch: true,
-    cloneLevel: 'deep'
-});
+client.settings = new Enmap();
 
 const defaultSettings = {
     prefix: "!",
@@ -187,40 +182,39 @@ client.on('message', async message => {
         if(!message.member.roles.has(adminRole.id)) {
             return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
         }
-        let user = message.mentions.members.first();
-        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
-        if (!user) return message.reply('Fatal: you must mention a valid member on this server. Please try again.');
-        let mutedRole = message.guild.roles.find('name', 'ToxicBotMutedRole');
-        if (!mutedRole) {
-            try {
+        let user = message.mentions.users.first();
+        if(!user) return message.reply("Couldn't find user.");
+        if(user.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute them!");
+        let mutedRole = message.guild.roles.find(`name`, "ToxicBotMutedRole");
+        //start of create role
+        if(!mutedRole){
+            try{
                 mutedRole = await message.guild.createRole({
-                    name: 'ToxicBotMutedRole',
-                    color: '#000000',
-                    permissions: []
+                    name: "ToxicBotMutedRole",
+                    color: "#000000",
+                    permissions:[]
                 })
                 message.guild.channels.forEach(async (channel, id) => {
-                    await channel.overwritePermissions(mutedRole, {
+                    await channel.overwritePermissions(muterole, {
                         SEND_MESSAGES: false,
                         ADD_REACTIONS: false
                     });
                 });
-            } catch (e) {
-                console.log(e.stack)
+            }catch(e){
+                console.log(e.stack);
             }
         }
-        await (user.addRole(mutedRole.id));
-        message.reply(`${lol} has been muted`);
-    }
-    else if (command === "unmute") {
-        let user = message.mentions.members.first();
-        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
-        let mutedRole = message.guild.roles.find('name', 'ToxicBotMutedRole');
-        if (!user) return message.reply('Fatal: you must mention a valid member on this server. Please try again.');
-        if (!mutedRole) return message.reply(` literally no one in the server has been muted yet. Try muting someone now.`);
-        if (message.user.roles.find('name', 'ToxicBotMutedRole')) {
-            await(user.removeRole(mutedRole.id));
-            message.reply(` ${lol} has been unmuted.`);
-        }
+        //end of create role
+        let mutetime = args[1];
+        if(!mutetime) return message.reply("You didn't specify a time!");
+
+        await(user.addRole(muterole.id));
+        message.reply(`<@${user.id}> has been muted for ${mutetime}`);
+
+        setTimeout(function(){
+            user.removeRole(mutedRole.id);
+            message.channel.send(`<@${user.id}> has been unmuted!`);
+        }, (mutetime));
     }
     /*(else if (command === "viewperms") {
         let user = message.mentions.members.first();
