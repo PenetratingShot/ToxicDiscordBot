@@ -26,7 +26,6 @@ let sb = new StringBuilder();
 client.settings = new Enmap();
 
 const defaultSettings = {
-    prefix: "!",
     modLogChannel: "mod-log",
     modRole: "Mod",
     adminRole: 'Admin',

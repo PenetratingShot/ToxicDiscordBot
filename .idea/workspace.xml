@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="184">
+              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -76,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="299">
@@ -93,8 +93,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Testing/server.js" />
         <option value="$PROJECT_DIR$/Testing/package.json" />
+        <option value="$PROJECT_DIR$/Testing/server.js" />
       </list>
     </option>
   </component>
@@ -209,12 +209,12 @@
       <workItem from="1543175145578" duration="348000" />
       <workItem from="1543465061771" duration="41000" />
       <workItem from="1543541737156" duration="92000" />
-      <workItem from="1543560867659" duration="66000" />
+      <workItem from="1543560867659" duration="340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14399000" />
+    <option name="totallyTimeSpent" value="14673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -271,20 +271,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/all.txt" />
-    <entry file="file://$PROJECT_DIR$/Testing/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testing/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
