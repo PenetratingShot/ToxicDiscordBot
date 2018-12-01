@@ -187,9 +187,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${value}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Moderator Role to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "adminRole") {
@@ -199,9 +202,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${value}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Administrator Role to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "warnBuffer") {
@@ -211,9 +217,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${value}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Warn Buffer to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "maxBuffer") {
@@ -223,9 +232,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${value}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Max Buffer to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "interval") {
@@ -235,9 +247,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${value}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Interval Time to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "warningMessage") {
@@ -247,9 +262,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${value}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Warning Message to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "banMessage") {
@@ -259,9 +277,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${value}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Ban Message to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "maxDuplicatesWarning") {
@@ -271,9 +292,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${value}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Max Duplicates Warning to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "maxDuplicatesBan") {
@@ -283,9 +307,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${value}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Max Duplicates Ban to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "deleteMessagesAfterBanForPastDays") {
@@ -295,9 +322,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${value}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Delete Messages After Ban for Past Days to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else {
