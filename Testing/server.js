@@ -151,7 +151,7 @@ client.on('message', async message => {
                 shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
             });
         }
-        else if (settting === "adminRole") {
+        else if (setting === "adminRole") {
             if (value === config.adminRole) {
                 message.reply('that key is already stored in the config.')
             }
