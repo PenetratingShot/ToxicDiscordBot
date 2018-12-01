@@ -88,9 +88,10 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    const guildConf = client.settings.ensure(message.guild.id, defaultSettings);
-    const adminRole = message.guild.roles.find("name", guildConf.adminRole);
-    const prefix = guildConf.prefix;
+    let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
+    let config = JSON.parse(rawdata);
+    const adminRole = message.member.roles.find("name", config.adminRole);
+    const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
@@ -106,8 +107,6 @@ client.on('message', async message => {
     else if (command === "showconf") {
         try {
             if (fs.existsSync('./json/' + message.guild.id + '.json')) {
-                let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
-                let config = JSON.parse(rawdata);
                 message.channel.send({embed: {
                     title: "Settings for this Guild",
                     color: 12458242,
@@ -117,6 +116,12 @@ client.on('message', async message => {
         } catch (err) {
             console.log(err);
         }
+    }
+    else if (command === "setconf") {
+        if(!adminRole) {
+            return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+        }
+        message.channel.send('yes');
     }
     /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:
