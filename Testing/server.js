@@ -127,28 +127,46 @@ client.on('message', async message => {
         if (!setting) return message.reply(`you need to supply the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
         if (!value) return message.reply(`you need to supply the value of the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
 
-        //shell.cd('json');
-        //shell.cp(`${message.guild.id}.json`, `hi.json`);
-        //let rawdata1 = fs.readFileSync(`./json/hi.json`);
-        //let config1 = JSON.parse(rawdata1);
+        /*shell.cd('json');
+        shell.cp(`${message.guild.id}.json`, `${message.guild.id}1.json`);
+        let rawdata1 = fs.readFileSync(`./json/${message.guild.id}1.json`);
+        let config1 = JSON.parse(rawdata1);*/
 
         if (setting === "prefix") {
             if (value === config.prefix) {
-                message.reply('that config variable is already stored.');
+                message.reply('that key is already stored in the config.')
             }
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}" }`, function (err) {
                 if (err) throw err;
-
+                message.reply(`successfully changed prefix to: ${value}`);
                 shell.cd('json');
                 shell.rm(`${message.guild.id}.json`);
                 shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
             });
         }
         else if (setting === "modRole") {
-
+            if (value === config.modRole) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${value}", "adminRole": "${config.adminRole}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Moderator Role to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (settting === "adminRole") {
-
+            if (value === config.adminRole) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${value}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Administrator Role to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
     }
     /*else if (command === "setconf") {
