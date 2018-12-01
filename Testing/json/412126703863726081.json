@@ -1,5 +1,1 @@
-{
-  "prefix": "!",
-  "modRole": "Mod",
-  "adminRole": "Admin"
-}
+{ "prefix": "%", "config": "Moderator", "adminRole": "Admin" }

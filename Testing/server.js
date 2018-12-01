@@ -121,8 +121,32 @@ client.on('message', async message => {
         if(!adminRole) {
             return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
         }
-        let setting = args[1];
-        let value = args[2];
+        let setting = args[0];
+        let value = args[1];
+
+        if (!setting) return message.reply(`you need to supply the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
+        if (!value) return message.reply(`you need to supply the value of the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
+
+        //shell.cd('json');
+        //shell.cp(`${message.guild.id}.json`, `hi.json`);
+        //let rawdata1 = fs.readFileSync(`./json/hi.json`);
+        //let config1 = JSON.parse(rawdata1);
+
+        if (setting === "prefix") {
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "config": "${config.modRole}", "adminRole": "${config.adminRole}" }`, function (err) {
+                if (err) throw err;
+
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
+        }
+        else if (setting === "modRole") {
+
+        }
+        else if (settting === "adminRole") {
+
+        }
     }
     /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:
