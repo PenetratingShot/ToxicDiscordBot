@@ -171,9 +171,12 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed prefix to: ${value}`);
-                shell.cd('json');
-                shell.rm(`${message.guild.id}.json`);
-                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+                fs.unlink(`./json/${message.guild.id}1.json`, function (err) {
+                    if (err) throw err;
+                });
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}`, function (err) {
+                    if (err) throw err;
+                });
             });
         }
         else if (setting === "modRole") {
