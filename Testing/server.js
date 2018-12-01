@@ -171,31 +171,103 @@ client.on('message', async message => {
             });
         }
         else if (setting === "warnBuffer") {
-
+            if (value === config.warnBuffer) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${value}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Warn Buffer to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "maxBuffer") {
-
+            if (value === config.maxBuffer) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${value}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Max Buffer to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "interval") {
-
+            if (value === config.interval) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${value}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Interval Time to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "warningMessage") {
-
+            if (value === config.warningMessage) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${value}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Warning Message to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "banMessage") {
-
+            if (value === config.banMessage) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${value}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Ban Message to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "maxDuplicatesWarning") {
-
+            if (value === config.maxDuplicatesWarning) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${value}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Max Duplicates Warning to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "maxDuplicatesBan") {
-
+            if (value === config.maxDuplicatesBan) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${value}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Max Duplicates Ban to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else if (setting === "deleteMessagesAfterBanForPastDays") {
-
+            if (value === config.deleteMessagesAfterBanForPastDays) {
+                message.reply('that key is already stored in the config.')
+            }
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}, "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${value}" }`, function (err) {
+                if (err) throw err;
+                message.reply(`successfully changed Delete Messages After Ban for Past Days to: ${value}`);
+                shell.cd('json');
+                shell.rm(`${message.guild.id}.json`);
+                shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
+            });
         }
         else {
-            message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the availible commands.`);
+            message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the available commands.`);
         }
     }
     /*else if (command === "setconf") {
