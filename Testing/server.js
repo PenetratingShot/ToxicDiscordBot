@@ -15,17 +15,11 @@ const express = require('express');
 const app = express();
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
-const googleapis = require('googleapis');
-const API_KEY = `${process.env.PERSPECTIVE1}`;
-const DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 const fs = require('fs');
-const Enmap = require('enmap');
 const StringBuilder = require('string-builder');
 let sb = new StringBuilder();
 const defaultSettings = require('./json/default.json');
 const shell = require('shelljs');
-
-client.settings = new Enmap();
 
 /*const defaultSettings = {
     modLogChannel: "mod-log",
