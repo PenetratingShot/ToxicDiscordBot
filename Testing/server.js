@@ -1,8 +1,6 @@
 // - Add role command
 // - Add kick user from voice channel command
-// Add mute command (working on it)
 // Allow Admins to remove certain permissions for a specific user
-// - Retry anti-spam
 // - Add funny "banned" image after ban
 
 const Discord = require("discord.js");
@@ -270,50 +268,6 @@ client.on('message', async message => {
             message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the available commands.`);
         }
     }
-    /*else if (command === "setconf") {
-        // Command is admin only, let's grab the admin value:
-        const adminRole = message.guild.roles.find("name", guildConf.adminRole);
-        if(!adminRole) return message.reply("Administrator Role Not Found");
-
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
-        }
-
-        const [prop, ...value] = args;
-
-        if(!client.settings.has(message.guild.id, prop)) {
-            return message.reply("This key is not in the configuration.");
-        }
-
-        client.settings.set(message.guild.id, value.join(" "), prop);
-
-        message.channel.send(`Guild configuration item ${prop} has been changed to:\n\`${value.join(" ")}\``);
-    }
-    else if(command === "showconf") {
-        let configProps = Object.keys(guildConf).map(prop => {
-            return `${prop}  :  ${guildConf[prop]}\n`;
-        });
-        message.channel.send(`The following are the server's current configuration:
-    \`\`\`${configProps}\`\`\``);
-    }
-    else if (command === "purge") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
-        }
-        const user = message.mentions.users.first();
-        const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
-        if (!amount) return message.reply('Must specify an amount to delete!');
-        if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
-         message.channel.fetchMessages({
-             limit: amount,
-         }).then((messages) => {
-             if (user) {
-                const filterBy = user ? user.id : client.user.id;
-                messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
-             }
-         message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
-}    );
-    }*/
     else if (command === "kick") {
         if(!modRole) {
             return message.reply(`you don't have the necessary role ${config.modRole} for this command.`);
@@ -387,51 +341,6 @@ client.on('message', async message => {
             message.channel.send(`<@${user.id}> has been unmuted!`);
         }, (mutetime));
     }
-    /*(else if (command === "viewperms") {
-        let user = message.mentions.members.first();
-        let lol = message.guild.member(args[0].replace(/[<@!>]/g,"")).user;
-
-
-        if (!lol) return message.reply(`Fatal: You must mention a valid member on this server. Please try again.`);
-
-        const v1 = user.hasPermission('CREATE_INSTANT_INVITE');
-        const v2 = user.hasPermission('KICK_MEMBERS');
-        const v3 = user.hasPermission('BAN_MEMBERS');
-        const v4 = user.hasPermission('ADMINISTRATOR');
-        const v5 = user.hasPermission('MANAGE_CHANNELS');
-        const v6 = user.hasPermission('MANAGE_GUILD');
-        const v7 = user.hasPermission('ADD_REACTIONS');
-        const v8 = user.hasPermission('READ_MESSAGES');
-        const v9 = user.hasPermission('SEND_MESSAGES');
-        const v10 = user.hasPermission('SEND_TTS_MESSAGES');
-        const v11 = user.hasPermission('MANAGE_MESSAGES');
-        const v12 = user.hasPermission('EMBED_LINKS');
-        const v13 = user.hasPermission('ATTACH_FILES');
-        const v14 = user.hasPermission('READ_MESSAGE_HISTORY');
-        const v15 = user.hasPermission('MENTION_EVERYONE');
-        const v16 = user.hasPermission('EXTERNAL_EMOJIS');
-        const v17 = user.hasPermission('CONNECT');
-        const v18 = user.hasPermission('SPEAK');
-        const v19 = user.hasPermission('MUTE_MEMBERS');
-        const v20 = user.hasPermission('DEAFEN_MEMBERS');
-        const v21 = user.hasPermission('MOVE_MEMBERS');
-        const v22 = user.hasPermission('USE_VAD');
-        const v23 = user.hasPermission('CHANGE_NICKNAME');
-        const v24 = user.hasPermission('MANAGE_NICKNAMES');
-        const v25 = user.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
-        const v26 = user.hasPermission('MANAGE_WEBHOOKS');
-        const v27 = user.hasPermission('MANAGE_EMOJIES');
-
-        const embed = new Discord.RichEmbed()
-            .setTitle(`Viewing Permissions for ${lol.username}`)
-            .setColor(0x00AE86)
-            .setTimestamp()
-            .setDescription(`\n**Create Invites:** ${v1}\n**Kick Members:** ${v2}\n**Ban Members:** ${v3}\n**Administrator:** ${v4}\n**Manage Channels:** ${v5}\n**Manage Guild:** ${v6}\n**Add Reactions:** ${v7}\n**Read Messages:** ${v8}\n**Send Messages:** ${v9}\n**Send TTS Messages:** ${v10}\n**Manage Messages:** ${v11}\n**Embed Links:** ${v12}\n**Attach Files:** ${v13}\n**Read Message History:** ${v14}\n**Mention Everyone:** ${v15}\n**External Emojies:** ${v16}\n**Connect to Voice:** ${v17}\n**Speak in Voice:** ${v18}\n**Mute People:** ${v19}\n**Deafen People:** ${v20}\n**Move People:** ${v21}\n**VAD:** ${v22}\n**Change Nickname:** ${v23}\n**Manage Nicknames:** ${v24}\n**Manage Roles/Permissions:** ${v25}\n**Manage Webhooks:** ${v26}\n**Manage Emojies:** ${v27}`)
-            .setThumbnail(lol.avatarURL);
-
-        message.channel.send({embed});
-
-    }*/
     else {
         const vowels = ["a", "e", "i", "o", "u", "y"];
         if (vowels.some(word => message.content.includes(word)) ) {
