@@ -19,24 +19,6 @@ let sb = new StringBuilder();
 const defaultSettings = require('./json/default.json');
 const shell = require('shelljs');
 
-/*const defaultSettings = {
-    modLogChannel: "mod-log",
-    modRole: "Mod",
-    adminRole: 'Admin',
-    welcomeChannel: 'welcome',
-    welcomeMessage: 'Say hello to {{user}} everyone!',
-    warnBuffer: 8, // Amount of messages sent to warrant a warning
-    maxBuffer: 10, // Amount of messages sent to warrant a ban
-    interval: 1000, //1 second interval between buffers
-    warningMessage: 'please stop spamming messages. You need to chill.', // Message for when someone has been warned
-    banMessage: 'has been banned for spamming messages. Better not do it again.', // Message for when bot bans someone
-    maxDuplicatesWarning: 7, // Maximum number of duplicate messages in specified interval for warning
-    maxDuplicatesBan: 10, // Maximum number of duplicate messages in a specified interval for ban
-    deleteMessagesAfterBanForPastDays: 7, // When someone gets banned, 7 days of message history will be deleted
-    exemptRoles: [],
-    exemptUsers: []
-}()*/
-
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
 
