@@ -77,8 +77,8 @@ client.on('message', async message => {
         warnBuffer: config.warnBuffer, //Maximum amount of messages allowed to send in the interval time before getting warned.
         maxBuffer: config.maxBuffer, // Maximum amount of messages allowed to send in the interval time before getting banned.
         interval: config.interval, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
-        warningMessage: "stop spamming or I'll whack your head off.", // Warning message send to the user indicating they are going to fast.
-        banMessage: "has been banned for spamming, anyone else?", // Ban message, always tags the banned user in front of it.
+        warningMessage: config.warningMessage, // Warning message send to the user indicating they are going to fast.
+        banMessage: config.banMessage, // Ban message, always tags the banned user in front of it.
         maxDuplicatesWarning: config.maxDuplicatesWarning,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
         maxDuplicatesBan: config.maxDuplicatesBan, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
         deleteMessagesAfterBanForPastDays: config.deleteMessagesAfterBanForPastDays // Delete the spammed messages after banning for the past x days.
