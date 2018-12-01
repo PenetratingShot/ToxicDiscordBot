@@ -1,5 +1,13 @@
 {
   "prefix": "!",
   "modRole": "Mod",
-  "adminRole": "Admin"
+  "adminRole": "Admin",
+  "warnbuffer": "3",
+  "maxBuffer": "5",
+  "interval": "2",
+  "warningMessage": "stop spamming pls. Do it a bit faster and you'll get banned.",
+  "banMessage": "has been banned for spamming. Better not...",
+  "maxDuplicatesWarning": "7",
+  "maxDuplicatesBan": "10",
+  "deleteMessagesAfterBanForPastDays": "7"
 }
