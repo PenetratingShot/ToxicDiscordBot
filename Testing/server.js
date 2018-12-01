@@ -18,6 +18,7 @@ const defaultSettings = require('./json/default.json');
 const shell = require('shelljs');
 const express = require('express');
 const app = express();
+const fileExists = require('file-exists');
 
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
@@ -171,10 +172,10 @@ client.on('message', async message => {
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "warnBuffer": "${config.warnBuffer}", "maxBuffer": "${config.maxBuffer}", "interval": "${config.interval}", "warningMessage": "${config.warningMessage}", "banMessage": "${config.banMessage}", "maxDuplicatesWarning": "${config.maxDuplicatesWarning}", "maxDuplicatesBan": "${config.maxDuplicatesBan}", "deleteMessagesAfterBanForPastDays": "${config.deleteMessagesAfterBanForPastDays}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed prefix to: ${value}`);
-                fs.unlink(`./json/${message.guild.id}1.json`, function (err) {
+                fs.unlink(`./json/${message.guild.id}.json`, function (err) {
                     if (err) throw err;
                 });
-                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}`, function (err) {
+                fs.rename(`./json/${message.guild.id}1.json`, `./json/${message.guild.id}.json`, function (err) {
                     if (err) throw err;
                 });
             });
