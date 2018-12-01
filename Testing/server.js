@@ -111,7 +111,36 @@ client.on('message', async message => {
                             "value": `**Description:** The setting for changing any command or moderation tools.`
                         },
                         {
-                            "name": "Warn Buffer"
+                            "name": "Warn Buffer",
+                            "value": "How many messages anyone can send in the interval period before getting warned. Warning is the display of the warning message in chat."
+                        },
+                        {
+                            "name": "Max Buffer",
+                            "value": "How many messages anyone can send in the interval period before getting banned. Perpetrators won't get banned if they have a higher role than the bot or if the bot has insufficient permissions."
+                        },
+                        {
+                            "name": "Interval",
+                            "value": "Amount of time, in milliseconds, for the warnBuffer and maxBuffer to take effect. A higher interval means that it will be easier for people to get warned or banned, while a lower interval will make it harder for people to get warned or banned."
+                        },
+                        {
+                            "name": "Warning Message",
+                            "value": "When someone exceeds the warnBuffer in the specified interval, they'll get a mention with this customizable message."
+                        },
+                        {
+                            "name": "Ban Message",
+                            "value": "When someone exceeds the maxBuffer in the spcified intercal, this message will be sent in chat showing that they've been banned."
+                        },
+                        {
+                            "name": "Max Duplicates Warning",
+                            "value": "Maximum number of duplicate messages that any user can send in the specified interval before being warned."
+                        },
+                        {
+                            "name": "Max Duplicates Ban",
+                            "value": "Maximum number of duplicate messages that any user can send in the specified interval before being banned."
+                        },
+                        {
+                            "name": "Delete Messages After Ban for Past Days",
+                            "value": "When a user gets banned by the bot, their messages for the past specified number of says will be deleted from chat history."
                         }
                     ]
                 }})
