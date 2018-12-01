@@ -22,14 +22,16 @@ const fs = require('fs');
 const Enmap = require('enmap');
 const StringBuilder = require('string-builder');
 let sb = new StringBuilder();
+const defaultSettings = require('./json/default.json');
+const shell = require('shelljs');
 
 client.settings = new Enmap();
 
-const defaultSettings = {
+/*const defaultSettings = {
     modLogChannel: "mod-log",
     modRole: "Mod",
     adminRole: 'Admin',
-    /*welcomeChannel: 'welcome',
+    welcomeChannel: 'welcome',
     welcomeMessage: 'Say hello to {{user}} everyone!',
     warnBuffer: 8, // Amount of messages sent to warrant a warning
     maxBuffer: 10, // Amount of messages sent to warrant a ban
@@ -40,14 +42,15 @@ const defaultSettings = {
     maxDuplicatesBan: 10, // Maximum number of duplicate messages in a specified interval for ban
     deleteMessagesAfterBanForPastDays: 7, // When someone gets banned, 7 days of message history will be deleted
     exemptRoles: [],
-    exemptUsers: []*/
-}
+    exemptUsers: []
+}()*/
 
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
+
 });
 
-client.on("guildMemberAdd", member => {
+/*client.on("guildMemberAdd", member => {
     client.settings.ensure(member.guild.id, defaultSettings);
 
     let welcomeMessage = client.settings.get(member.guild.id, "welcomeMessage");
@@ -58,7 +61,7 @@ client.on("guildMemberAdd", member => {
         .find("name", client.settings.get(member.guild.id, "welcomeChannel"))
         .send(welcomeMessage)
         .catch(console.error);
-});
+});*/
 
 const http = require('http');
 app.get("/", (request, response) => {
@@ -72,7 +75,9 @@ setInterval(() => {
 
 // When bot joins a guild
 client.on("guildCreate", guild => {
-    console.log(`Joined a new guild: ` + guild.name);
+    console.log(`Joined a new guild: ` + guild.name + guild.id);
+    shell.cd('json');
+    shell.cp('default.json', `${guild.id}` + '.json');
 });
 
 
@@ -97,6 +102,10 @@ client.on('message', async message => {
         .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
       message.author.send(embed);
+    }
+    else if (command === "type") {
+        shell.cd('json');
+        shell.cp('default.json', `${message.guild.id}` + '.json');
     }
     else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:

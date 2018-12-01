@@ -17,6 +17,7 @@
     "jimp": "^0.5.4",
     "perspective-api-client": "^3.0.0",
     "randomcolor": "^0.5.3",
+    "shelljs": "^0.8.3",
     "string-builder": "^0.1.6"
   },
   "engines": {
