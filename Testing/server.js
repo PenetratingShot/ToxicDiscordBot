@@ -133,6 +133,9 @@ client.on('message', async message => {
         //let config1 = JSON.parse(rawdata1);
 
         if (setting === "prefix") {
+            if (value === config.prefix) {
+                message.reply('that config variable is already stored.');
+            }
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}" }`, function (err) {
                 if (err) throw err;
 
