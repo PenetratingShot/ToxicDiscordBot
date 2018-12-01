@@ -170,6 +170,9 @@ client.on('message', async message => {
                 shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
             });
         }
+        else {
+            message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the availible commands.`);
+        }
     }
     /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:

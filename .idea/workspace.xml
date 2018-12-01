@@ -45,14 +45,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="11004" />
+          <entry key="js" value="11170" />
           <entry key="json" value="437" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="437" />
-          <entry key="JavaScript" value="11004" />
+          <entry key="JavaScript" value="11170" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="80" column="37" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+            <state relative-caret-position="371">
+              <caret line="173" column="150" selection-start-line="173" selection-start-column="150" selection-end-line="173" selection-end-column="150" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -244,12 +244,12 @@
       <workItem from="1543175145578" duration="348000" />
       <workItem from="1543465061771" duration="41000" />
       <workItem from="1543541737156" duration="92000" />
-      <workItem from="1543560867659" duration="9598000" />
+      <workItem from="1543560867659" duration="9739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23931000" />
+    <option name="totallyTimeSpent" value="24072000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -345,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="80" column="37" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+        <state relative-caret-position="371">
+          <caret line="173" column="150" selection-start-line="173" selection-start-column="150" selection-end-line="173" selection-end-column="150" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
