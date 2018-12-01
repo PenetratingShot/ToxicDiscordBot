@@ -66,8 +66,8 @@ client.on('ready', () => {
 client.on('message', async message => {
     let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
     let config = JSON.parse(rawdata);
-    const adminRole = message.member.roles.find("name", config.adminRole);
-    const modRole = message.member.roles.find("name", config.modRole);
+    const adminRole = message.member.roles.find(role => role.name === config.adminRole);
+    const modRole = message.member.roles.find(role => role.name === config.modRole);
     const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
