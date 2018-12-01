@@ -170,6 +170,30 @@ client.on('message', async message => {
                 shell.mv(`${message.guild.id}1.json`, `${message.guild.id}.json`);
             });
         }
+        else if (setting === "warnBuffer") {
+
+        }
+        else if (setting === "maxBuffer") {
+
+        }
+        else if (setting === "interval") {
+
+        }
+        else if (setting === "warningMessage") {
+
+        }
+        else if (setting === "banMessage") {
+
+        }
+        else if (setting === "maxDuplicatesWarning") {
+
+        }
+        else if (setting === "maxDuplicatesBan") {
+
+        }
+        else if (setting === "deleteMessagesAfterBanForPastDays") {
+
+        }
         else {
             message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the availible commands.`);
         }
