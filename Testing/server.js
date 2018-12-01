@@ -11,7 +11,6 @@ require('events').EventEmitter.defaultMaxListeners = 15;
 const client = new Discord.Client;
 const Perspective = require('perspective-api-client');
 const perspective = new Perspective({apiKey: process.env.PERSPECTIVE1})
-const express = require('express');
 const app = express();
 const delay = require('delay');
 const antispam = require('discord-anti-spam');
