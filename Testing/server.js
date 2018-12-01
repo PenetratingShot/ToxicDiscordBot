@@ -91,6 +91,7 @@ client.on('message', async message => {
     let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
     let config = JSON.parse(rawdata);
     const adminRole = message.member.roles.find("name", config.adminRole);
+    const modRole = message.member.roles.find("name", config.modRole);
     const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -214,8 +215,8 @@ client.on('message', async message => {
 }    );
     }*/
     else if (command === "kick") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        if(!modRole) {
+            return message.reply(`you don't have the necessary role ${config.modRole} for this command.`);
         }
 
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -232,8 +233,8 @@ client.on('message', async message => {
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "ban") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        if(!adminRole) {
+            return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
         }
     
     let member = message.mentions.members.first();
@@ -249,8 +250,8 @@ client.on('message', async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
     else if (command === "mute") {
-        if(!message.member.roles.has(adminRole.id)) {
-            return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
+        if(!adminRole) {
+            return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
         }
         let user = message.mentions.users.first();
         if(!user) return message.reply("Couldn't find user.");
