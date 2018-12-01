@@ -103,11 +103,7 @@ client.on('message', async message => {
 
       message.author.send(embed);
     }
-    else if (command === "type") {
-        shell.cd('json');
-        shell.cp('default.json', `${message.guild.id}` + '.json');
-    }
-    else if (command === "setconf") {
+    /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:
         const adminRole = message.guild.roles.find("name", guildConf.adminRole);
         if(!adminRole) return message.reply("Administrator Role Not Found");
@@ -150,7 +146,7 @@ client.on('message', async message => {
              }
          message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
 }    );
-    }
+    }*/
     else if (command === "kick") {
         if(!message.member.roles.has(adminRole.id)) {
             return message.reply(`, you don't have the necessary role ${adminrole} for this command.`);
