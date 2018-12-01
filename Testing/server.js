@@ -103,6 +103,21 @@ client.on('message', async message => {
 
       message.author.send(embed);
     }
+    else if (command === "showconf") {
+        try {
+            if (fs.existsSync('./json/' + message.guild.id + '.json')) {
+                let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
+                let config = JSON.parse(rawdata);
+                message.channel.send({embed: {
+                    title: "Settings for this Guild",
+                    color: 12458242,
+                    description: `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}`
+                }})
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
     /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:
         const adminRole = message.guild.roles.find("name", guildConf.adminRole);
