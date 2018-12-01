@@ -45,14 +45,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="12354" />
+          <entry key="js" value="12360" />
           <entry key="json" value="441" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="441" />
-          <entry key="JavaScript" value="12354" />
+          <entry key="JavaScript" value="12360" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
+            <state relative-caret-position="118">
+              <caret line="471" column="18" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -236,12 +236,12 @@
       <workItem from="1543175145578" duration="348000" />
       <workItem from="1543465061771" duration="41000" />
       <workItem from="1543541737156" duration="92000" />
-      <workItem from="1543560867659" duration="11263000" />
+      <workItem from="1543560867659" duration="11619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25596000" />
+    <option name="totallyTimeSpent" value="25952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -256,7 +256,7 @@
     <frame x="0" y="23" width="1440" height="809" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5207469" side_tool="true" weight="0.24947146" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -270,7 +270,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31241083" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31241083" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -337,8 +337,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="269" column="137" selection-start-line="269" selection-start-column="137" selection-end-line="269" selection-end-column="137" />
+        <state relative-caret-position="118">
+          <caret line="471" column="18" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

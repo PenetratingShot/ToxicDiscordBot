@@ -469,7 +469,7 @@ client.on('message', async message => {
             })();
         }
         else {
-            message.reply("Looks like you found a loophole :/");
+            //no u
         }
     }
 });
