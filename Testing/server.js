@@ -133,7 +133,7 @@ client.on('message', async message => {
         //let config1 = JSON.parse(rawdata1);
 
         if (setting === "prefix") {
-            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "config": "${config.modRole}", "adminRole": "${config.adminRole}" }`, function (err) {
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}" }`, function (err) {
                 if (err) throw err;
 
                 shell.cd('json');

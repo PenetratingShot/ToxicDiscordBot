@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/json/412126703863726081.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/412126703863726081.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -47,14 +45,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="9340" />
+          <entry key="js" value="9350" />
           <entry key="json" value="88" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="88" />
-          <entry key="JavaScript" value="9340" />
+          <entry key="JavaScript" value="9350" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -69,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="134" column="35" lean-forward="true" selection-start-line="134" selection-start-column="35" selection-end-line="134" selection-end-column="35" />
+            <state relative-caret-position="243">
+              <caret line="135" column="94" selection-start-line="135" selection-start-column="94" selection-end-line="135" selection-end-column="94" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -90,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/json/default.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="1" lean-forward="true" selection-end-line="4" selection-end-column="1" />
+            <state>
+              <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -123,8 +121,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Testing/package.json" />
-        <option value="$PROJECT_DIR$/Testing/json/default.json" />
         <option value="$PROJECT_DIR$/Testing/json/412126703863726081.json" />
+        <option value="$PROJECT_DIR$/Testing/json/default.json" />
         <option value="$PROJECT_DIR$/Testing/server.js" />
       </list>
     </option>
@@ -246,12 +244,12 @@
       <workItem from="1543175145578" duration="348000" />
       <workItem from="1543465061771" duration="41000" />
       <workItem from="1543541737156" duration="92000" />
-      <workItem from="1543560867659" duration="6098000" />
+      <workItem from="1543560867659" duration="6181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20431000" />
+    <option name="totallyTimeSpent" value="20514000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -266,7 +264,7 @@
     <frame x="0" y="23" width="1440" height="809" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5207469" side_tool="true" weight="0.24947146" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -280,7 +278,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31241083" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.31241083" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -325,18 +323,18 @@
     <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/json/default.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="1" lean-forward="true" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/hi.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/4121267038637260811.json">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/json/default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -347,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="134" column="35" lean-forward="true" selection-start-line="134" selection-start-column="35" selection-end-line="134" selection-end-column="35" />
+        <state relative-caret-position="243">
+          <caret line="135" column="94" selection-start-line="135" selection-start-column="94" selection-end-line="135" selection-end-column="94" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
