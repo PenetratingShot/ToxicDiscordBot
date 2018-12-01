@@ -96,19 +96,22 @@ client.on('message', async message => {
                 message.channel.send({embed: {
                     "title": "Settings for this Guild",
                     "color": 12458242,
-                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}`,
+                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Warn Buffer:** ${config.warnBuffer}\n**Max Buffer:** ${config.maxBuffer}\n**Interval:** ${config.interval}\n**Warning Message:** ${config.warningMessage}\n**Ban Message:** ${config.banMessage}\n**Max Duplicate Messages Warning:** ${config.maxDuplicatesWarning}\n**Max Duplicate Messages Ban:** ${config.maxDuplicatesBan}\n**Delete Messages After Ban for Past Days:** ${config.deleteMessagesAfterBanForPastDays}`,
                     "fields": [
                         {
                             "name": "Prefix",
-                            "value": `**Description:** This setting sets the global prefix for all commands on your server.\nThe current server prefix is: **${config.prefix}**`
+                            "value": `**Description:** This setting sets the global prefix for all commands on your server.`
                         },
                         {
                             "name": "Moderator Role",
-                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command\nThe current moderator role is: **${config.modRole}**`
+                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
                         },
                         {
                             "name": "Administrator Role",
-                            "value": `**Description:** The setting for changing any command or moderation tools.\nThe current Administrator Role is: **${config.adminRole}**`
+                            "value": `**Description:** The setting for changing any command or moderation tools.`
+                        },
+                        {
+                            "name": "Warn Buffer"
                         }
                     ]
                 }})
