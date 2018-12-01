@@ -18,6 +18,8 @@ const StringBuilder = require('string-builder');
 let sb = new StringBuilder();
 const defaultSettings = require('./json/default.json');
 const shell = require('shelljs');
+const express = require('express');
+const app = express();
 
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
@@ -70,7 +72,18 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
-    
+
+    antispam(client, {
+        warnBuffer: config.warnBuffer, //Maximum amount of messages allowed to send in the interval time before getting warned.
+        maxBuffer: config.maxBuffer, // Maximum amount of messages allowed to send in the interval time before getting banned.
+        interval: config.interval, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
+        warningMessage: "stop spamming or I'll whack your head off.", // Warning message send to the user indicating they are going to fast.
+        banMessage: "has been banned for spamming, anyone else?", // Ban message, always tags the banned user in front of it.
+        maxDuplicatesWarning: config.maxDuplicatesWarning,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
+        maxDuplicatesBan: config.maxDuplicatesBan, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
+        deleteMessagesAfterBanForPastDays: config.deleteMessagesAfterBanForPastDays // Delete the spammed messages after banning for the past x days.
+    });
+
     if (command === 'help') {
       const embed = new Discord.RichEmbed()
         .setTitle("Toxicity Help Section")
@@ -83,9 +96,23 @@ client.on('message', async message => {
         try {
             if (fs.existsSync('./json/' + message.guild.id + '.json')) {
                 message.channel.send({embed: {
-                    title: "Settings for this Guild",
-                    color: 12458242,
-                    description: `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}`
+                    "title": "Settings for this Guild",
+                    "color": 12458242,
+                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}`,
+                    "fields": [
+                        {
+                            "name": "Prefix",
+                            "value": `**Description:** This setting sets the global prefix for all commands on your server.\nThe current server prefix is: **${config.prefix}**`
+                        },
+                        {
+                            "name": "Moderator Role",
+                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command\nThe current moderator role is: **${config.modRole}**`
+                        },
+                        {
+                            "name": "Administrator Role",
+                            "value": `**Description:** The setting for changing any command or moderation tools.\nThe current Administrator Role is: **${config.adminRole}**`
+                        }
+                    ]
                 }})
             }
         } catch (err) {
