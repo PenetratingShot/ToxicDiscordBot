@@ -121,7 +121,8 @@ client.on('message', async message => {
         if(!adminRole) {
             return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
         }
-        message.channel.send('yes');
+        let setting = args[1];
+        let value = args[2];
     }
     /*else if (command === "setconf") {
         // Command is admin only, let's grab the admin value:
