@@ -72,7 +72,7 @@ client.on('message', async message => {
     const command = args.shift().toLowerCase();
     if (message.author.bot) return;
 
-    antispam(client, {
+    /*antispam(client, {
         warnBuffer: config.warnBuffer, //Maximum amount of messages allowed to send in the interval time before getting warned.
         maxBuffer: config.maxBuffer, // Maximum amount of messages allowed to send in the interval time before getting banned.
         interval: config.interval, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
@@ -81,7 +81,7 @@ client.on('message', async message => {
         maxDuplicatesWarning: config.maxDuplicatesWarning,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
         maxDuplicatesBan: config.maxDuplicatesBan, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
         deleteMessagesAfterBanForPastDays: config.deleteMessagesAfterBanForPastDays // Delete the spammed messages after banning for the past x days.
-    });
+    });*/
 
     if (command === 'help') {
       const embed = new Discord.RichEmbed()
