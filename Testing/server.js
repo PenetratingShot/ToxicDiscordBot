@@ -156,7 +156,7 @@ client.on('message', async message => {
             if (value === config.modRole) {
                 message.reply('that key is already stored in the config.')
             }
-            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "on": "${config.on}" }`, function (err) {
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${value}", "adminRole": "${config.adminRole}", "on": "${config.on}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Moderator Role to: ${value}`);
                 fs.unlink(`./json/${message.guild.id}.json`, function (err) {
@@ -171,7 +171,7 @@ client.on('message', async message => {
             if (value === config.adminRole) {
                 message.reply('that key is already stored in the config.')
             }
-            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "on": "${config.on}" }`, function (err) {
+            fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.value}", "modRole": "${config.modRole}", "adminRole": "${value}", "on": "${config.on}" }`, function (err) {
                 if (err) throw err;
                 message.reply(`successfully changed Administrator Role to: ${value}`);
                 fs.unlink(`./json/${message.guild.id}.json`, function (err) {
