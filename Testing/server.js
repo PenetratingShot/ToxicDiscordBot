@@ -112,7 +112,7 @@ client.on('message', async message => {
                             "value": `**Description:** The setting for changing any command or moderation tools.`
                         },
                         {
-                            "name": "On",
+                            "name": "Toggle On/Off",
                             "value": "This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
                         }
                     ]
@@ -191,7 +191,7 @@ client.on('message', async message => {
             }
             fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "on": "${value}" }`, function (err) {
                 if (err) throw err;
-                message.reply(`successfully changed Administrator Role to: ${value}`);
+                message.reply(`successfully changed Toggle On/Off to: ${value}`);
                 fs.unlink(`./json/${message.guild.id}.json`, function (err) {
                     if (err) throw err;
                 });

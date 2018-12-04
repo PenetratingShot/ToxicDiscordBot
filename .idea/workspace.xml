@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Testing/json/412126703863726081.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/412126703863726081.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -45,14 +46,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="15733" />
+          <entry key="js" value="15770" />
           <entry key="json" value="463" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="463" />
-          <entry key="JavaScript" value="15733" />
+          <entry key="JavaScript" value="15770" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -67,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="291" column="64" selection-start-line="291" selection-start-column="64" selection-end-line="291" selection-end-column="64" />
+            <state relative-caret-position="250">
+              <caret line="187" column="13" lean-forward="true" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -79,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+            <state>
+              <caret column="71" selection-start-column="71" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -242,12 +243,12 @@
       <workItem from="1543465061771" duration="41000" />
       <workItem from="1543541737156" duration="92000" />
       <workItem from="1543560867659" duration="16266000" />
-      <workItem from="1543888536543" duration="618000" />
+      <workItem from="1543888536543" duration="754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31217000" />
+    <option name="totallyTimeSpent" value="31353000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -330,15 +331,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        <state>
+          <caret column="71" selection-start-column="71" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="291" column="64" selection-start-line="291" selection-start-column="64" selection-end-line="291" selection-end-column="64" />
+        <state relative-caret-position="250">
+          <caret line="187" column="13" lean-forward="true" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

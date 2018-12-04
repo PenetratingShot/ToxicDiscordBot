@@ -1,6 +1,1 @@
-{
-  "prefix": "!",
-  "modRole": "Mod",
-  "adminRole": "Admin",
-  "on": "on"
-}
+{ "prefix": "!", "modRole": "Mod", "adminRole": "Admin", "on": "true" }
