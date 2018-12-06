@@ -2,5 +2,6 @@
   "prefix": "!",
   "modRole": "Mod",
   "adminRole": "Admin",
-  "on": "on"
+  "on": "true",
+  "logChannel": "#mod-log"
 }

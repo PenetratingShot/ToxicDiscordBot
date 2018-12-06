@@ -62,6 +62,12 @@ client.on('ready', () => {
     client.user.setStatus('dnd');
 });
 
+// Function for creating a channel
+function makeChannel(message) {
+    const server = message.guild;
+    server.create(config.logChannel, "text");
+}
+
 client.on('message', async message => {
     let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
     let config = JSON.parse(rawdata);
@@ -289,7 +295,7 @@ client.on('message', async message => {
     }
     else {
         if (config.on === "false") {
-            // Do nothing since the owners don't want it to work
+
         } else {
             const vowels = ["a", "e", "i", "o", "u", "y"];
             if (vowels.some(word => message.content.includes(word))) {
@@ -297,31 +303,27 @@ client.on('message', async message => {
                 (async () => {
                     const result = await perspective.analyze(text, {attributes: ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'profanity', 'sexually_explicit', 'threat', 'flirtation', 'attack_on_author', 'attack_on_commenter']});
                     const v1 = `${result.attributeScores.TOXICITY.summaryScore.value}`;
-                    const v2 = `${result.attributeScores.SEVERE_TOXICITY.summaryScore.value}`;
-                    const v3 = `${result.attributeScores.IDENTITY_ATTACK.summaryScore.value}`;
                     const v4 = `${result.attributeScores.INSULT.summaryScore.value}`;
                     const v5 = `${result.attributeScores.PROFANITY.summaryScore.value}`;
                     const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
                     const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
-                    const v8 = `${result.attributeScores.FLIRTATION.summaryScore.value}`;
-                    const v9 = `${result.attributeScores.ATTACK_ON_AUTHOR.summaryScore.value}`;
-                    const v10 = `${result.attributeScores.ATTACK_ON_COMMENTER.summaryScore.value}`;
 
-                    if (v1 > 0.5 || v2 > 0.5 || v3 > 0.5 || v4 > 0.5 || v6 > 0.5 || v7 > 0.5 || v8 > 0.5 || v9 > 0.5 || v10 > 0.5) {
+                    if (v1 > 0.5 || v4 > 0.5 || v6 > 0.5 || v7 > 0.5) {
                         sb.clear();
                         if (v1 > 0.5) sb.append('**Toxicity**  ');
-                        if (v2 > 0.5) sb.append('**Severe Toxicity**  ');
-                        if (v3 > 0.5) sb.append('**Identity Attack**  ');
                         if (v4 > 0.5) sb.append('**Insult**  ');
                         if (v5 > 0.5) sb.append('**Profanity**  ');
                         if (v6 > 0.5) sb.append('**Sexually Explicit**  ');
                         if (v7 > 0.5) sb.append('**Threat**  ');
-                        if (v8 > 0.5) sb.append('**Flirtation**  ');
-                        if (v9 > 0.5) sb.append('**Attack on Author**  ');
-                        if (v10 > 0.5) sb.append('**Attack on Commenter**  ');
 
                         message.delete();
                         message.reply(`your message was deleted for the following reasons: ${sb.toString()}`);
+                        if (message.guild.channels.exists('name', config.logChannel)) {
+                            // log the infractions
+                            return;
+                        } else {
+                            // create channel with that name
+                        }
                     }
 
                 })();

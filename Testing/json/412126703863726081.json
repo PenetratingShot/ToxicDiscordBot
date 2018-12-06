@@ -1,1 +1,7 @@
-{ "prefix": "!", "modRole": "Mod", "adminRole": "Admin", "on": "true" }
+{
+  "prefix": "!",
+  "modRole": "Mod",
+  "adminRole": "Admin",
+  "on": "true",
+  "logChannel": "#mod-log"
+}
