@@ -3,6 +3,8 @@
 // Allow Admins to remove certain permissions for a specific user
 // - Add funny "banned" image after ban
 
+import {Guild as guild} from "discord.js";
+
 const Discord = require("discord.js");
 require('dotenv').config();
 require('events').EventEmitter.defaultMaxListeners = 15;
@@ -316,7 +318,9 @@ client.on('message', async message => {
                         if (message.guild.channels.exists('name', config.logChannel)) {
                             client.channels.get(loggingChannel).send("hi");
                         } else {
-                           makeChannel();
+                            message.guild.createChannel(config.logChannel, "text")
+                                .then(console.log)
+                                .catch(console.error);
                         }
                     }
 
