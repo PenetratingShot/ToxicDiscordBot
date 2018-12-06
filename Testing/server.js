@@ -3,8 +3,6 @@
 // Allow Admins to remove certain permissions for a specific user
 // - Add funny "banned" image after ban
 
-import {Guild as guild} from "discord.js";
-
 const Discord = require("discord.js");
 require('dotenv').config();
 require('events').EventEmitter.defaultMaxListeners = 15;
