@@ -62,19 +62,12 @@ client.on('ready', () => {
     client.user.setStatus('dnd');
 });
 
-// Function for creating a channel
-function makeChannel(message) {
-    const server = message.guild;
-    server.create(config.logChannel, "text");
-}
-
 client.on('message', async message => {
     let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
     let config = JSON.parse(rawdata);
     const adminRole = message.member.roles.find(role => role.name === config.adminRole);
     const modRole = message.member.roles.find(role => role.name === config.modRole);
     const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
-    const loggingChannelID = loggingChannel.id;
     const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -321,7 +314,7 @@ client.on('message', async message => {
                         message.delete();
                         message.reply(`your message was deleted for the following reasons: ${sb.toString()}`);
                         if (message.guild.channels.exists('name', config.logChannel)) {
-                            
+                            client.channels.get(loggingChannel).send("hi");
                         } else {
                            makeChannel();
                         }
