@@ -313,12 +313,7 @@ client.on('message', async message => {
 
                         message.delete();
                         message.reply(`your message was deleted for the following reasons: ${sb.toString()}`);
-                        if (message.guild.channels.find('name', config.logChannel)) {
-                            client.channels.get(loggingChannel).send("hi");
-                        } else {
-                            message.guild.createChannel(config.logChannel, "text")
-                                .catch(console.error);
-                        }
+
                     }
 
                 })();
