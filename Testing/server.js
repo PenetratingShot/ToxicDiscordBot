@@ -305,15 +305,17 @@ client.on('message', async message => {
 
                     if (v1 > 0.5 || v4 > 0.5 || v6 > 0.5 || v7 > 0.5) {
                         sb.clear();
-                        if (v1 > 0.5) sb.append('**Toxicity**  ');
-                        if (v4 > 0.5) sb.append('**Insult**  ');
-                        if (v5 > 0.5) sb.append('**Profanity**  ');
-                        if (v6 > 0.5) sb.append('**Sexually Explicit**  ');
-                        if (v7 > 0.5) sb.append('**Threat**  ');
+                        if (v1 > 0.5) sb.append('*Toxicity*  ');
+                        if (v4 > 0.5) sb.append('*Insult*  ');
+                        if (v5 > 0.5) sb.append('*Profanity*  ');
+                        if (v6 > 0.5) sb.append('*Sexually Explicit*  ');
+                        if (v7 > 0.5) sb.append('*Threat*  ');
 
                         message.delete();
                         message.reply(`your message was deleted for the following reasons: ${sb.toString()}`);
-
+                        fs.writeFile('./json/reasons.json', `{ "reasons": "${sb.toString()}" }`, function (err) {
+                            if (err) throw err;
+                        });
                     }
 
                 })();
@@ -323,6 +325,23 @@ client.on('message', async message => {
             }
         }
     }
+});
+
+client.on("messageDelete", (message) => {
+    let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
+    let config = JSON.parse(rawdata);
+    let rawdata2 = fs.readFileSync('./json/reasons.json');
+    let data2 = JSON.parse(rawdata2);
+    message.guild.channels.find("name", "mod-log").send({embed: {
+            "title": `<:messagedelete:439643744833241101> Deleted Message`,
+            "timestamp": new Date(),
+            "footer": {
+                "icon_url": `${message.author.avatarURL}`,
+                "text": `${message.author.tag}`
+            },
+            "color": 293173,
+            "description": `• **Channel:** ${message.channel}\n• **Message:** ${message.content}\n• **Author:** ${message.author}\n• **Reason(s):** ${data2.reasons}`
+    }});
 });
 
 client.login(process.env.DISCORD);
