@@ -333,7 +333,7 @@ client.on("messageDelete", (message) => {
     let rawdata2 = fs.readFileSync('./json/reasons.json');
     let data2 = JSON.parse(rawdata2);
     message.guild.channels.find("name", "mod-log").send({embed: {
-            "title": `<:messagedelete:439643744833241101> Deleted Message`,
+            "title": `<:messagedelete:439643744833241101> Message Deleted`,
             "timestamp": new Date(),
             "footer": {
                 "icon_url": `${message.author.avatarURL}`,
