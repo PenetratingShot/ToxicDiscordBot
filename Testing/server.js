@@ -22,6 +22,10 @@ const fileExists = require('file-exists');
 const redis = require('redis');
 const redisClient = redis.createClient();
 
+redisClient.on('error', function(err) {
+    console.log('Something went wrong: ', err);
+});
+
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
 
