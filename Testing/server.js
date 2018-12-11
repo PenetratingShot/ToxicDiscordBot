@@ -20,6 +20,7 @@ const express = require('express');
 const app = express();
 const fileExists = require('file-exists');
 const redis = require('redis');
+const redisClient = redis.createClient();
 
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
@@ -63,6 +64,8 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
+    redisClient.hgetall(guild.id, function (err, result) {
+    
     let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
     let config = JSON.parse(rawdata);
     const adminRole = message.member.roles.find(role => role.name === config.adminRole);
@@ -325,6 +328,7 @@ client.on('message', async message => {
             }
         }
     }
+    }); // end redis client function
 });
 
 client.on("messageDelete", (message) => {
