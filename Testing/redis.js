@@ -11,6 +11,4 @@ redisClient.hmset('02-34892', 'adminRole', 'Admin');
 redisClient.hmset('02-34892', 'on', 'true');
 redisClient.hmset('02-34892', 'logChannel', 'mod-log');
 
-redisClient.hgetall('02-34892', function (err, result) {
-
-});
+console.log(redisClient.hget('02-34892', 'prefix'));
