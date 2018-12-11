@@ -59,8 +59,12 @@ client.on("guildCreate", guild => {
     console.log(`Joined a new guild: ` + guild.name + guild.id);
     shell.cd('json');
     shell.cp('default.json', `${guild.id}` + '.json');
+    redisClient.hset(`${guild.id}`, 'prefix', '!');
+    redisClient.hset(`${guild.id}`, 'modRole', 'Mod');
+    redisClient.hset(`${guild.id}`, 'adminRole', 'Admin');
+    redisClient.hset(`${guild.id}`, 'on', 'true');
+    redisClient.hset(`${guild.id}`, 'logChannel', '#mod-log');
 });
-
 
 client.on('ready', () => {
     console.log('It works I guess..');
