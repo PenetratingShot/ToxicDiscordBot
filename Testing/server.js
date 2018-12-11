@@ -19,8 +19,7 @@ const shell = require('shelljs');
 const express = require('express');
 const app = express();
 const fileExists = require('file-exists');
-const redis = require('redis')i;
-
+const redis = require('redis');
 
 client.on("guildDelete", guild => {
     client.settings.delete(guild.id);
