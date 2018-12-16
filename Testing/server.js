@@ -117,7 +117,7 @@ client.on('message', async message => {
                         },
                         {
                             "name": "Toggle On/Off",
-                            "value": "This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
+                            "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
                         }
                     ]
                 }})
