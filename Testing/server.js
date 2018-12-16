@@ -101,7 +101,7 @@ client.on('message', async message => {
                 message.channel.send({embed: {
                     "title": "Settings for this Guild",
                     "color": 12458242,
-                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}`,
+                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
                     "fields": [
                         {
                             "name": "Prefix",
