@@ -27,6 +27,14 @@ client.on("guildDelete", guild => {
 
 });
 
+function redisGetSet() {
+    redisClient.hmset(guild.id, 'prefix', '!');
+    redisClient.hmset(guild.id, 'modRole', 'Mod');
+    redisClient.hmset(guild.id, 'adminRole', 'Admin');
+    redisClient.hmset(guild.id, 'on', 'true');
+    redisClient.hmset(guild.id, 'logChannel', '#mod-log');
+}
+
 /*client.on("guildMemberAdd", member => {
     client.settings.ensure(member.guild.id, defaultSettings);
 
@@ -55,6 +63,7 @@ client.on("guildCreate", guild => {
     console.log(`Joined a new guild: ` + guild.name + guild.id);
     shell.cd('json');
     shell.cp('default.json', `${guild.id}` + '.json');
+    redisGetSet();
 });
 
 client.on('ready', () => {
@@ -65,10 +74,9 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     redisClient.hget(message.guild.id, function (err, result) {
-
-
-        let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
-        let config = JSON.parse(rawdata);
+        //let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
+        //let config = JSON.parse(rawdata);
+        let config = JSON.parse(result);
         const adminRole = message.member.roles.find(role => role.name === config.adminRole);
         const modRole = message.member.roles.find(role => role.name === config.modRole);
         const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
@@ -96,9 +104,13 @@ client.on('message', async message => {
 
             message.author.send(embed);
         }
+        else if (command === "reset") {
+            redisGetSet();
+        }
         else if (command === "showconf") {
             try {
-                if (fs.existsSync('./json/' + message.guild.id + '.json')) {
+
+                /*if (fs.existsSync('./json/' + message.guild.id + '.json')) {
                     message.channel.send({embed: {
                         "title": "Settings for this Guild",
                         "color": 12458242,
@@ -122,7 +134,7 @@ client.on('message', async message => {
                             }
                         ]
                     }})
-                }
+                }*/
             } catch (err) {
                 console.log(err);
             }
