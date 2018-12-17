@@ -27,14 +27,6 @@ client.on("guildDelete", guild => {
 
 });
 
-function redisGetSet() {
-    redisClient.hmset(guild.id, 'prefix', '!');
-    redisClient.hmset(guild.id, 'modRole', 'Mod');
-    redisClient.hmset(guild.id, 'adminRole', 'Admin');
-    redisClient.hmset(guild.id, 'on', 'true');
-    redisClient.hmset(guild.id, 'logChannel', '#mod-log');
-}
-
 /*client.on("guildMemberAdd", member => {
     client.settings.ensure(member.guild.id, defaultSettings);
 
@@ -73,10 +65,9 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    redisClient.hget(message.guild.id, function (err, result) {
+    redisClient.hgetall(message.guild.id, function (err, result) {
         //let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
-        //let config = JSON.parse(rawdata);
-        let config = JSON.parse(result);
+        let config = result;
         const adminRole = message.member.roles.find(role => role.name === config.adminRole);
         const modRole = message.member.roles.find(role => role.name === config.modRole);
         const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
@@ -105,11 +96,37 @@ client.on('message', async message => {
             message.author.send(embed);
         }
         else if (command === "reset") {
-            redisGetSet();
+            redisClient.hmset(message.guild.id, 'prefix', '!');
+            redisClient.hmset(message.guild.id, 'modRole', 'Mod');
+            redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
+            redisClient.hmset(message.guild.id, 'on', 'true');
+            redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
         else if (command === "showconf") {
             try {
-
+                message.channel.send({embed: {
+                    "title": "Settings for this guild",
+                    "color": 12458242,
+                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
+                        "fields": [
+                            {
+                                "name": "Prefix",
+                                "value": `**Description:** This setting sets the global prefix for all commands on your server.`
+                            },
+                            {
+                                "name": "Moderator Role",
+                                "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
+                            },
+                            {
+                                "name": "Administrator Role",
+                                "value": `**Description:** The setting for changing any command or moderation tools.`
+                            },
+                            {
+                                "name": "Toggle On/Off",
+                                "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
+                            }
+                        ]
+                }});
                 /*if (fs.existsSync('./json/' + message.guild.id + '.json')) {
                     message.channel.send({embed: {
                         "title": "Settings for this Guild",
@@ -155,7 +172,7 @@ client.on('message', async message => {
             let config1 = JSON.parse(rawdata1);*/
 
             if (setting === "prefix") {
-                if (value === config.prefix) {
+                if (value === result.prefix) {
                     message.reply('that key is already stored in the config.')
                 }
                 fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${value}", "modRole": "${config.modRole}", "adminRole": "${config.adminRole}", "on": "${config.on}" }`, function (err) {
@@ -170,7 +187,7 @@ client.on('message', async message => {
                 });
             }
             else if (setting === "modRole") {
-                if (value === config.modRole) {
+                if (value === result.modRole) {
                     message.reply('that key is already stored in the config.')
                 }
                 fs.writeFile(`./json/${message.guild.id}1.json`, `{ "prefix": "${config.prefix}", "modRole": "${value}", "adminRole": "${config.adminRole}", "on": "${config.on}" }`, function (err) {
@@ -300,7 +317,7 @@ client.on('message', async message => {
             if(!deleteCount || deleteCount < 2 || deleteCount > 100)
                 return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
 
-            const fetched = await message.channel.fetchMessages({limit: deleteCount});
+            const fetched = message.channel.fetchMessages({limit: deleteCount});
             message.channel.bulkDelete(fetched)
                 .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
         }
