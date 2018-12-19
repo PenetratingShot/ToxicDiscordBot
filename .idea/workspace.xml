@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/json/reasons.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/reasons.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/servertest.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/servertest.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,7 +18,7 @@
     <session id="-441823312">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="1" />
@@ -27,8 +26,8 @@
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -36,13 +35,13 @@
           <entry key="412126703863726081" value="1" />
           <entry key="env" value="1" />
           <entry key="js" value="7" />
-          <entry key="json" value="17" />
+          <entry key="json" value="18" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="16" />
+          <entry key="JSON" value="17" />
           <entry key="JavaScript" value="7" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="tsconfig" value="1" />
@@ -66,14 +65,59 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-54085372">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="env" value="2" />
+          <entry key="gitignore" value="1" />
+          <entry key="js" value="4" />
+          <entry key="json" value="1" />
+          <entry key="md" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key=".env file" value="1" />
+          <entry key="JSON" value="1" />
+          <entry key="JavaScript" value="4" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="env" value="43" />
+          <entry key="js" value="4780" />
+          <entry key="json" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key=".env file" value="1" />
+          <entry key="JSON" value="1" />
+          <entry key="JavaScript" value="4780" />
+          <entry key="PLAIN_TEXT" value="42" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="338" column="38" selection-start-line="338" selection-start-column="38" selection-end-line="338" selection-end-column="38" />
+            <state relative-caret-position="299">
+              <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="74" selection-end-column="51" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -81,34 +125,38 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Testing/servertest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing/json/reasons.json">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/Testing/redis.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+            <state relative-caret-position="92">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing/json/default.json">
+        <entry file="file://$PROJECT_DIR$/Testing/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="19" selection-end-line="6" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            <state>
+              <caret selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -125,6 +173,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>purge</find>
+      <find>config</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,19 +183,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Testing/package.json" />
-        <option value="$PROJECT_DIR$/Testing/.env" />
         <option value="$PROJECT_DIR$/Testing/json/default.json" />
-        <option value="$PROJECT_DIR$/Testing/json/412126703863726081.json" />
         <option value="$PROJECT_DIR$/Testing/json/tsconfig.json" />
         <option value="$PROJECT_DIR$/Testing/json/reasons.json" />
+        <option value="$PROJECT_DIR$/Testing/redis.js" />
+        <option value="$PROJECT_DIR$/Testing/.env" />
+        <option value="$PROJECT_DIR$/Testing/json/412126703863726081.json" />
         <option value="$PROJECT_DIR$/Testing/server.js" />
+        <option value="$PROJECT_DIR$/Testing/servertest.js" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
-    <package-json value="$PROJECT_DIR$/package.json" />
-  </component>
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -162,42 +211,36 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="47" />
-    <option name="y" value="23" />
+    <option name="y" value="89" />
     <option name="width" value="1440" />
-    <option name="height" value="809" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="toxicbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="toxicbot" type="462c0819:PsiDirectoryNode" />
+              <item name="toxicdiscordbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="toxicdiscordbot" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="toxicbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="toxicbot" type="462c0819:PsiDirectoryNode" />
+              <item name="toxicdiscordbot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="toxicdiscordbot" type="462c0819:PsiDirectoryNode" />
               <item name="Testing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="toxicbot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="toxicbot" type="462c0819:PsiDirectoryNode" />
-              <item name="Testing" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/shreyaslad/toxicdiscordbot/Testing/json/412126703863726081.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="9.11.1" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -218,7 +261,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
-    <configuration name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/Testing">
+    <configuration name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/Testing">
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
@@ -238,7 +281,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="Node.js.server.js" />
       </list>
     </recent_temporary>
   </component>
@@ -269,11 +311,19 @@
       <workItem from="1544059721613" duration="36000" />
       <workItem from="1544132957028" duration="2368000" />
       <workItem from="1544146719500" duration="1820000" />
+      <workItem from="1544194964574" duration="495000" />
+      <workItem from="1544248059790" duration="880000" />
+      <workItem from="1544248959616" duration="95000" />
+      <workItem from="1544249212569" duration="662000" />
+      <workItem from="1544419847802" duration="5833000" />
+      <workItem from="1544987588623" duration="2573000" />
+      <workItem from="1545111206848" duration="654000" />
+      <workItem from="1545196673083" duration="1863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37083000" />
+    <option name="totallyTimeSpent" value="50138000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,14 +335,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="809" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="807" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.2653791" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.29542202" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5207469" side_tool="true" weight="0.24947146" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32952926" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32904148" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32952926" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39942938" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -301,7 +351,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.17261055" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49928468" visible="true" weight="0.19971469" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49928468" visible="true" weight="0.24606581" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -315,69 +365,81 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/client/websocket/packets/handlers/MessageCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/structures/GuildMember.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="320" column="22" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/client/websocket/packets/handlers/MessageCreate.js" />
+    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/structures/GuildMember.js" />
     <entry file="file://$PROJECT_DIR$/Testing/json/all.txt" />
     <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081" />
     <entry file="file://$PROJECT_DIR$/Testing/json/hi.json" />
     <entry file="file://$PROJECT_DIR$/Testing/json/4121267038637260811.json" />
-    <entry file="file://$PROJECT_DIR$/Testing/.env">
+    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/util/Collection.js" />
+    <entry file="file://$PROJECT_DIR$/package.json" />
+    <entry file="file://$PROJECT_DIR$/Testing/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="50" lean-forward="true" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+        <state relative-caret-position="230">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/node_modules/discord.js/src/util/Collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="354" column="25" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
+    <entry file="file://$PROJECT_DIR$/Testing/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
+    <entry file="file://$PROJECT_DIR$/Testing/json/reasons.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        <state>
+          <caret selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/json/default.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="19" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="138">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/json/reasons.json">
+    <entry file="file://$PROJECT_DIR$/Testing/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/json/412126703863726081.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="338" column="38" selection-start-line="338" selection-start-column="38" selection-end-line="338" selection-end-column="38" />
+        <state relative-caret-position="299">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="74" selection-end-column="51" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/redis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/servertest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>

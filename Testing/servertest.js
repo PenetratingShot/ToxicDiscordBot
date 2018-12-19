@@ -28,41 +28,7 @@ redisClient.on('connect', () => {
 
 client.on('message', message => {
     redisClient.hgetall(message.guild.id, function(err, config) {
-        redisClient.hexists(message.guild.id, 'prefix', function(err, obj) {
-            if (obj === 1) {
-                redisClient.hmset(message.guild.id, 'prefix', '!');
-            } else {
 
-            }
-        });
-        redisClient.hexists(message.guild.id, 'modRole', function(err, obj) {
-            if (obj === 1) {
-                redisClient.hmset(message.guild.id, 'modRole', 'Mod');
-            } else {
-
-            }
-        });
-        redisClient.hexists(message.guild.id, 'adminRole', function(err, obj) {
-            if (obj === 1) {
-                redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
-            } else {
-
-            }
-        });
-        redisClient.hexists(message.guild.id, 'on', function(err, obj) {
-            if (obj === 1) {
-                redisClient.hmset(message.guild.id, 'on', 'true');
-            } else {
-
-            }
-        });
-        redisClient.hexists(message.guild.id, 'logChannel', function(err, obj) {
-            if (obj === 1) {
-                redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
-            } else {
-
-            }
-        });
         const prefix = config.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
