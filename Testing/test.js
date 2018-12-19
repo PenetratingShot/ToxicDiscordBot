@@ -27,6 +27,13 @@ redisClient.on('connect', () => {
 });
 
 client.on('message', message => {
+    if (message.content === "!reset") {
+        redisClient.hmset(guild.id, 'prefix', '!');
+        redisClient.hmset(guild.id, 'modRole', 'Mod');
+        redisClient.hmset(guild.id, 'adminRole', 'Admin');
+        redisClient.hmset(guild.id, 'on', 'true');
+        redisClient.hmset(guild.id, 'logChannel', '#mod-log');
+    }
     redisClient.hgetall(message.guild.id, function(err, config) {
 
         const prefix = config.prefix;
