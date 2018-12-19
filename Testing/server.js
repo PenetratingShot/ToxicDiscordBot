@@ -55,7 +55,6 @@ client.on("guildCreate", guild => {
     console.log(`Joined a new guild: ` + guild.name + guild.id);
     shell.cd('json');
     shell.cp('default.json', `${guild.id}` + '.json');
-    redisGetSet();
 });
 
 client.on('ready', () => {
@@ -172,16 +171,24 @@ client.on('message', async message => {
             let config1 = JSON.parse(rawdata1);*/
 
             if (setting === "prefix") {
-
+                redisClient.hmset(message.guild.id, "prefix", value);
+                message.reply(`successfully set Prefix to '${value}'`);
             }
             else if (setting === "modRole") {
-
+                redisClient.hmset(message.guild.id, "modRole", value);
+                message.reply(`successfully set Moderator Role to '${value}'`);
             }
             else if (setting === "adminRole") {
-
+                redisClient.hmset(message.guild.id, "adminRole", value);
+                message.reply(`successfully set Admin Role to '${value}'`);
             }
             else if (setting === "on") {
-
+                redisClient.hmset(message.guild.id, "on", value);
+                message.reply(`successfully set Toggle On/Off to '${value}'`);
+            }
+            else if (setting === "logChannel") {
+                redisClient.hmset(message.guild.id, "logChannel", "#" + value);
+                message.reply(`successfully set Logging Channel to '${value}'`);
             }
             else {
                 message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the available commands.`);
