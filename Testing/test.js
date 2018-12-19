@@ -28,13 +28,20 @@ redisClient.on('connect', () => {
 
 client.on('message', message => {
     // Basic override command
-    if (message.content === "!reset") {
-        redisClient.hmset(message.guild.id, 'prefix', '!');
-        redisClient.hmset(message.guild.id, 'modRole', 'Mod');
-        redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
-        redisClient.hmset(message.guild.id, 'on', 'true');
-        redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
-    }
+    redisClient.hgetall(message.guild.id, function (err, config) {
+        if (err) throw err;
+        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
+        if (message.content === "!reset") {
+            if (!adminRole) {
+                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+            }
+            redisClient.hmset(message.guild.id, 'prefix', '!');
+            redisClient.hmset(message.guild.id, 'modRole', 'Mod');
+            redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
+            redisClient.hmset(message.guild.id, 'on', 'true');
+            redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
+        }
+    });
     redisClient.hgetall(message.guild.id, function(err, config) {
         if (!message.content.startsWith(config.prefix)) return;
         const prefix = config.prefix;
