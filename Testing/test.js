@@ -77,7 +77,24 @@ client.on('message', message => {
             }
             let setting = args[0];
             let value = args[1];
-            
+            if (setting === "prefix") {
+
+            }
+            if (setting === "modRole") {
+
+            }
+            if (setting === "adminRole") {
+
+            }
+            if (setting === "on") {
+
+            }
+            if (setting === "logChannel") {
+
+            }
+            else {
+                message.reply(`the argument you entered is not a valid setting. Try the command ${prefix}showconf to see the available commands.`);
+            }
         }
     })
 });
