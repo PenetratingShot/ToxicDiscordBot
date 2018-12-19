@@ -67,10 +67,10 @@ client.on('message', async message => {
     redisClient.hgetall(message.guild.id, function (err, result) {
         //let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
         let config = result;
-        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
-        const modRole = message.member.roles.find(role => role.name === config.modRole);
-        const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
-        const prefix = config.prefix;
+        const adminRole = message.member.roles.find(role => role.name === result.adminRole);
+        const modRole = message.member.roles.find(role => role.name === result.modRole);
+        const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
+        const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
         if (message.author.bot) return;
@@ -106,7 +106,7 @@ client.on('message', async message => {
                 message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
-                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
+                    "description": `**Prefix:** ${result.prefix}\n**Moderator Role:** ${result.modRole}\n**Administrator Role:** ${result.adminRole}\n**Logging Channel:** ${result.logChannel}\n**On**: ${result.on}`,
                         "fields": [
                             {
                                 "name": "Prefix",
@@ -157,13 +157,13 @@ client.on('message', async message => {
         }
         else if (command === "setconf") {
             if(!adminRole) {
-                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
             }
             let setting = args[0];
             let value = args[1];
 
-            if (!setting) return message.reply(`you need to supply the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at a time.`);
-            if (!value) return message.reply(`you need to supply the value of the setting that you want to change. The command is: ${config.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
+            if (!setting) return message.reply(`you need to supply the setting that you want to change. The command is: ${result.prefix}setconf [setting] [value]. Note that you can only change one setting at a time.`);
+            if (!value) return message.reply(`you need to supply the value of the setting that you want to change. The command is: ${result.prefix}setconf [setting] [value]. Note that you can only change one setting at ae time.`);
 
             /*shell.cd('json');
             shell.cp(`${message.guild.id}.json`, `${message.guild.id}1.json`);
@@ -191,12 +191,12 @@ client.on('message', async message => {
                 message.reply(`successfully set Logging Channel to '${value}'`);
             }
             else {
-                message.reply(`the argument you entered is not a valid setting. Try the command ${config.prefix}showconf to see the available commands.`);
+                message.reply(`the argument you entered is not a valid setting. Try the command ${result.prefix}showconf to see the available commands.`);
             }
         }
         else if (command === "kick") {
             if(!modRole) {
-                return message.reply(`you don't have the necessary role ${config.modRole} for this command.`);
+                return message.reply(`you don't have the necessary role ${result.modRole} for this command.`);
             }
 
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -214,7 +214,7 @@ client.on('message', async message => {
         }
         else if (command === "ban") {
             if(!adminRole) {
-                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
             }
     
         let member = message.mentions.members.first();
@@ -231,7 +231,7 @@ client.on('message', async message => {
         }
         else if (command === "mute") {
             if(!adminRole) {
-                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
             }
             let user = message.mentions.users.first();
             if(!user) return message.reply("Couldn't find user.");
@@ -278,7 +278,7 @@ client.on('message', async message => {
                 .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
         }
         else {
-            if (config.on === "false") {
+            if (result.on === "false") {
 
             } else {
                 const vowels = ["a", "e", "i", "o", "u", "y"];
