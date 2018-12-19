@@ -36,7 +36,7 @@ client.on('message', message => {
         redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
     }
     redisClient.hgetall(message.guild.id, function(err, config) {
-
+        if (!message.content.startsWith(config.prefix)) return;
         const prefix = config.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
