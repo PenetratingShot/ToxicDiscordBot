@@ -44,9 +44,6 @@ client.on('message', message => {
         const modRole = message.member.roles.find(role => role.name === config.modRole);
         const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
         if (command === "showconfig") {
-            if (!modRole) {
-                return message.reply(`you don't have the necessary role ${config.modRole} for this command.`);
-            }
             message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
@@ -58,7 +55,7 @@ client.on('message', message => {
                         },
                         {
                             "name": "Moderator Role",
-                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
+                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command.`
                         },
                         {
                             "name": "Administrator Role",
