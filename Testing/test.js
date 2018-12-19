@@ -79,23 +79,23 @@ client.on('message', message => {
             let value = args[1];
             if (setting === "prefix") {
                 redisClient.hmset(message.guild.id, 'prefix', value);
-                message.reply(`successfully set Prefix to ${value}`);
+                message.reply(`successfully set Prefix (prefix) to ${value}`);
             }
             if (setting === "modRole") {
-                redisClient.hmset(message.guild.id, 'prefix', value);
-                message.reply(`successfully set Prefix to ${value}`);
+                redisClient.hmset(message.guild.id, 'modRole', value);
+                message.reply(`successfully set Moderator Role (modRole) to ${value}`);
             }
             if (setting === "adminRole") {
-                redisClient.hmset(message.guild.id, 'prefix', value);
-                message.reply(`successfully set Prefix to ${value}`);
+                redisClient.hmset(message.guild.id, 'adminRole', value);
+                message.reply(`successfully set Administrator Role (adminRole) to ${value}`);
             }
             if (setting === "on") {
-                redisClient.hmset(message.guild.id, 'prefix', value);
-                message.reply(`successfully set Prefix to ${value}`);
+                redisClient.hmset(message.guild.id, 'on', value);
+                message.reply(`successfully set Toggle On/Off (on) to ${value}`);
             }
             if (setting === "logChannel") {
-                redisClient.hmset(message.guild.id, 'prefix', value);
-                message.reply(`successfully set Prefix to ${value}`);
+                redisClient.hmset(message.guild.id, 'logChannel', value);
+                message.reply(`successfully set Logging Channel (logChannel) to ${value}`);
             }
             else {
                 message.reply(`the argument you entered is not a valid setting. Try the command ${prefix}showconf to see the available commands.`);
