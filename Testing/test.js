@@ -27,12 +27,13 @@ redisClient.on('connect', () => {
 });
 
 client.on('message', message => {
+    // Basic override command
     if (message.content === "!reset") {
-        redisClient.hmset(guild.id, 'prefix', '!');
-        redisClient.hmset(guild.id, 'modRole', 'Mod');
-        redisClient.hmset(guild.id, 'adminRole', 'Admin');
-        redisClient.hmset(guild.id, 'on', 'true');
-        redisClient.hmset(guild.id, 'logChannel', '#mod-log');
+        redisClient.hmset(message.guild.id, 'prefix', '!');
+        redisClient.hmset(message.guild.id, 'modRole', 'Mod');
+        redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
+        redisClient.hmset(message.guild.id, 'on', 'true');
+        redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
     }
     redisClient.hgetall(message.guild.id, function(err, config) {
 
