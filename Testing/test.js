@@ -40,9 +40,36 @@ client.on('message', message => {
         const prefix = config.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
-        const adminRole = config.adminRole;
+        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
+        const modRole = message.member.roles.find(role => role.name === config.modRole);
+        const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
         if (command === "showconfig") {
-            message.channel.send(config.adminRole);
+            if (!adminRole) {
+                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+            }
+            message.channel.send({embed: {
+                    "title": "Settings for this guild",
+                    "color": 12458242,
+                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
+                    "fields": [
+                        {
+                            "name": "Prefix",
+                            "value": `**Description:** This setting sets the global prefix for all commands on your server.`
+                        },
+                        {
+                            "name": "Moderator Role",
+                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
+                        },
+                        {
+                            "name": "Administrator Role",
+                            "value": `**Description:** The setting for changing any command or moderation tools.`
+                        },
+                        {
+                            "name": "Toggle On/Off",
+                            "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
+                        }
+                    ]
+            }})
         }
     })
 });
