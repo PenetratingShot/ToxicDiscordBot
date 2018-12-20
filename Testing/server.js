@@ -68,15 +68,6 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     redisClient.hgetall(message.guild.id, function (err, config) {
-        function noPermsAdmin() {
-            const embed = new Discord.RichEmbed()
-                .setTitle('Insufficient Permissions')
-                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`);
-                .setColor(16711680)
-                .setTimestamp()
-
-            message.channel.send(embed);
-        }
         if (err) throw err;
         const adminRole = message.member.roles.find(role => role.name === config.adminRole);
         if (message.content === "!reset") {
@@ -99,6 +90,15 @@ client.on('message', async message => {
         const modRole = message.member.roles.find(role => role.name === result.modRole);
         const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
         if (message.author.bot) return;
+        function noPermsAdmin() {
+            const embed = new Discord.RichEmbed()
+                .setTitle('Insufficient Permissions')
+                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`);
+        .setColor(16711680)
+                .setTimestamp()
+
+            message.channel.send(embed);
+        }
 
         if (command === 'help') {
             const embed = new Discord.RichEmbed()
@@ -135,7 +135,7 @@ client.on('message', async message => {
         }
         else if (command === "setconfig") {
             if (!adminRole) {
-                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
+                noPermsAdmin();
             }
             let setting = args[0];
             let value = args[1];
