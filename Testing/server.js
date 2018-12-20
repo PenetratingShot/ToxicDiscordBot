@@ -90,7 +90,7 @@ client.on('message', async message => {
         const adminRole = message.member.roles.find(role => role.name === config.adminRole);
         if (message.content === "!reset") {
             if (!adminRole) {
-                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+                noPermsAdmin();
             }
             redisClient.hmset(message.guild.id, 'prefix', '!');
             redisClient.hmset(message.guild.id, 'modRole', 'Mod');

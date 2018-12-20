@@ -1,4 +1,4 @@
-# Testing
+# ToxicTest Bot
 
 This is the folder for the testing version of the bot. All the normal code can be found in the root folder of this repository. The testing bot is separate from the main one and doesn't share the same codebase. Feel free to invite the bot to your own server, just remember that it won't be online most of the time. In addition, when it is online, nothing will work correctly since it's currently being tuned for the official testing server.
 
