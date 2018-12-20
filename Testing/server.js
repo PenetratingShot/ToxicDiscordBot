@@ -100,7 +100,6 @@ client.on('message', async message => {
         }
     });
     redisClient.hgetall(message.guild.id, function (err, result) {
-        if (!message.content.startsWith(result.prefix)) return;
         const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
