@@ -4,6 +4,31 @@ This is the folder for the testing version of the bot. All the normal code can b
 
 Also note that the normal bot doesn't work well either. The main feature functions I guess, it just doesn't work well and the commands aren't good. Still, you may choose to host it yourself. The instructions will be in the root directory README.md
 
+## Usage
+
+#### User Commands
+
+| Commands    | Arguments | Possible Arguments | Role Needed  |
+|-------------|-----------|--------------------|--------------|
+| !help       | No        |                    |              |
+| !kick       | Yes       | [mention]          | Mod or Admin |
+| !ban        | Yes       | [mention]          | Admin        |
+| !purge      | Yes       | [mention]          | Admin        |
+| !mute       | Yes       | [mention] [time]   | Admin        |
+| !showconfig | No        |                    |              |
+| !setconfig  | Yes       | [setting] [value]  | Admin        |
+| !reset      | No        |                    | Admin        |
+
+#### Server Settings
+
+| Settings   | Type    | Description                                                                        | Default Setting |
+|------------|---------|------------------------------------------------------------------------------------|-----------------|
+| prefix     | string  | The universal prefix for the server                                                | !               |
+| modRole    | string  | The Moderator role. Needed for the kick command.                                   | Mod             |
+| adminRole  | string  | The Administrator role. Needed for most of the settings.                           | Admin           |
+| on         | boolean | Can turn the filter on and off. true = on; false = off;                            | true            |
+| logChannel | string  | The channel to which the bot logs infractions. No need to put a # before the name. | mod-log         |
+
 ## Compiling from Source
 #### Prerequisites
 1. Get a token for the Perspective API [here](https://www.perspectiveapi.com/#/)
