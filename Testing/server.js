@@ -79,14 +79,13 @@ client.on('message', async message => {
         }
     });
     redisClient.hgetall(message.guild.id, function (err, result) {
-        //let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
-        let config = result;
-        const adminRole = message.member.roles.find(role => role.name === result.adminRole);
-        const modRole = message.member.roles.find(role => role.name === result.modRole);
-        const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
+        if (!message.content.startsWith(result.prefix)) return;
         const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
+        const adminRole = message.member.roles.find(role => role.name === result.adminRole);
+        const modRole = message.member.roles.find(role => role.name === result.modRole);
+        const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
         if (message.author.bot) return;
 
         /*antispam(client, {
@@ -109,58 +108,29 @@ client.on('message', async message => {
             message.author.send(embed);
         }
         else if (command === "showconf") {
-            try {
-                message.channel.send({embed: {
+            message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
                     "description": `**Prefix:** ${result.prefix}\n**Moderator Role:** ${result.modRole}\n**Administrator Role:** ${result.adminRole}\n**Logging Channel:** ${result.logChannel}\n**On**: ${result.on}`,
-                        "fields": [
-                            {
-                                "name": "Prefix",
-                                "value": `**Description:** This setting sets the global prefix for all commands on your server.`
-                            },
-                            {
-                                "name": "Moderator Role",
-                                "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
-                            },
-                            {
-                                "name": "Administrator Role",
-                                "value": `**Description:** The setting for changing any command or moderation tools.`
-                            },
-                            {
-                                "name": "Toggle On/Off",
-                                "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
-                            }
-                        ]
-                }});
-                /*if (fs.existsSync('./json/' + message.guild.id + '.json')) {
-                    message.channel.send({embed: {
-                        "title": "Settings for this Guild",
-                        "color": 12458242,
-                        "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
-                        "fields": [
-                            {
-                                "name": "Prefix",
-                                "value": `**Description:** This setting sets the global prefix for all commands on your server.`
-                            },
-                            {
-                                "name": "Moderator Role",
-                                "value": `**Description:** The setting for changing the mod role. Only difference is kick command`
-                            },
-                            {
-                                "name": "Administrator Role",
-                                "value": `**Description:** The setting for changing any command or moderation tools.`
-                            },
-                            {
-                                "name": "Toggle On/Off",
-                                "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
-                            }
-                        ]
-                    }})
-                }*/
-            } catch (err) {
-                console.log(err);
-            }
+                    "fields": [
+                        {
+                            "name": "Prefix",
+                            "value": `**Description:** This setting sets the global prefix for all commands on your server.`
+                        },
+                        {
+                            "name": "Moderator Role",
+                            "value": `**Description:** The setting for changing the mod role. Only difference is kick command.`
+                        },
+                        {
+                            "name": "Administrator Role",
+                            "value": `**Description:** The setting for changing any command or moderation tools.`
+                        },
+                        {
+                            "name": "Toggle On/Off",
+                            "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
+                        }
+                    ]
+                }})
         }
         else if (command === "setconf") {
             if(!adminRole) {
