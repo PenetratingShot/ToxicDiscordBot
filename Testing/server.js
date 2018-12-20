@@ -107,7 +107,7 @@ client.on('message', async message => {
 
             message.author.send(embed);
         }
-        else if (command === "showconf") {
+        else if (command === "showconfig") {
             message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
@@ -132,7 +132,7 @@ client.on('message', async message => {
                     ]
                 }})
         }
-        else if (command === "setconf") {
+        else if (command === "setconfig") {
             if (!adminRole) {
                 return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
             }
