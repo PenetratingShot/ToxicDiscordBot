@@ -17,7 +17,7 @@ Also note that the normal bot doesn't work well either. The main feature functio
     • Can't build a bot without the actual token...
 3. Verify that you have *node* and *npm* installed
     
-    • `node -v` and `npm-v`
+    • `node -v` and `npm -v`
 #### Cloning
 
 ```bash
