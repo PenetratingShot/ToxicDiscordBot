@@ -42,19 +42,19 @@ client.on('message', message => {
             redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
     });
-    redisClient.hgetall(message.guild.id, function(err, config) {
-        if (!message.content.startsWith(config.prefix)) return;
-        const prefix = config.prefix;
+    redisClient.hgetall(message.guild.id, function(err, result) {
+        if (!message.content.startsWith(result.prefix)) return;
+        const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
-        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
-        const modRole = message.member.roles.find(role => role.name === config.modRole);
-        const loggingChannel = message.guild.channels.find(channel => channel.name === config.logChannel);
+        const adminRole = message.member.roles.find(role => role.name === result.adminRole);
+        const modRole = message.member.roles.find(role => role.name === result.modRole);
+        const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
         if (command === "showconfig") {
             message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
-                    "description": `**Prefix:** ${config.prefix}\n**Moderator Role:** ${config.modRole}\n**Administrator Role:** ${config.adminRole}\n**Logging Channel:** ${config.logChannel}\n**On**: ${config.on}`,
+                    "description": `**Prefix:** ${result.prefix}\n**Moderator Role:** ${result.modRole}\n**Administrator Role:** ${result.adminRole}\n**Logging Channel:** ${result.logChannel}\n**On**: ${result.on}`,
                     "fields": [
                         {
                             "name": "Prefix",
@@ -77,7 +77,7 @@ client.on('message', message => {
         }
         if (command === "setconfig") {
             if (!adminRole) {
-                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
             }
             let setting = args[0];
             let value = args[1];

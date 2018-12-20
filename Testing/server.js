@@ -64,6 +64,20 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
+    redisClient.hgetall(message.guild.id, function (err, config) {
+        if (err) throw err;
+        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
+        if (message.content === "!reset") {
+            if (!adminRole) {
+                return message.reply(`you don't have the necessary role ${config.adminRole} for this command.`);
+            }
+            redisClient.hmset(message.guild.id, 'prefix', '!');
+            redisClient.hmset(message.guild.id, 'modRole', 'Mod');
+            redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
+            redisClient.hmset(message.guild.id, 'on', 'true');
+            redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
+        }
+    });
     redisClient.hgetall(message.guild.id, function (err, result) {
         //let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
         let config = result;
@@ -93,13 +107,6 @@ client.on('message', async message => {
             .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
             message.author.send(embed);
-        }
-        else if (command === "reset") {
-            redisClient.hmset(message.guild.id, 'prefix', '!');
-            redisClient.hmset(message.guild.id, 'modRole', 'Mod');
-            redisClient.hmset(message.guild.id, 'adminRole', 'Admin');
-            redisClient.hmset(message.guild.id, 'on', 'true');
-            redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
         else if (command === "showconf") {
             try {
