@@ -68,6 +68,24 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     redisClient.hgetall(message.guild.id, function (err, config) {
+        function noPermsAdmin() {
+            const embed = new Discord.RichEmbed()
+                .setTitle('Insufficient Permissions')
+                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`)
+                .setColor(16711680)
+                .setTimestamp();
+
+            message.channel.send(embed);
+        }
+        function noPermsMod() {
+            const embed = new Discord.RichEmbed()
+                .setTitle('Insufficient Permissions')
+                .setDescription(`You need the Admin Role {${config.modRole}} to successfully execute this command.`)
+                .setColor(16711680)
+                .setTimestamp();
+
+            message.channel.send(embed);
+        }
         if (err) throw err;
         const adminRole = message.member.roles.find(role => role.name === config.adminRole);
         if (message.content === "!reset") {
