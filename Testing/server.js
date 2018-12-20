@@ -192,7 +192,7 @@ client.on('message', async message => {
         }
         else if (command === "kick") {
             if(!modRole) {
-                return message.reply(`you don't have the necessary role ${result.modRole} for this command.`);
+                noPermsMod();
             }
 
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
