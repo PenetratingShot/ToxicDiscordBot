@@ -183,7 +183,7 @@ client.on('message', async message => {
         }
         else if (command === "ban") {
             if(!adminRole) {
-                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
+                noPermsAdmin();
             }
     
         let member = message.mentions.members.first();
@@ -200,7 +200,7 @@ client.on('message', async message => {
         }
         else if (command === "mute") {
             if(!adminRole) {
-                return message.reply(`you don't have the necessary role ${result.adminRole} for this command.`);
+                noPermsAdmin();
             }
             let user = message.mentions.users.first();
             if(!user) return message.reply("Couldn't find user.");
@@ -237,6 +237,9 @@ client.on('message', async message => {
             }, (mutetime));
         }
         else if (command === "purge") {
+            if (!adminRole) {
+                noPermsAdmin();
+            }
             const deleteCount = parseInt(args[0], 10);
 
             if(!deleteCount || deleteCount < 2 || deleteCount > 100)
