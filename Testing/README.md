@@ -29,6 +29,8 @@ Also note that the normal bot doesn't work well either. The main feature functio
 | on         | boolean | Can turn the filter on and off. true = on; false = off;                            | true            |
 | logChannel | string  | The channel to which the bot logs infractions. No need to put a # before the name. | mod-log         |
 
+*Please note that the names for the settings are case-sensitive. The bot won't work if you spell it incorrectly.*
+
 ## Compiling from Source
 #### Prerequisites
 1. Get a token for the Perspective API [here](https://www.perspectiveapi.com/#/)
