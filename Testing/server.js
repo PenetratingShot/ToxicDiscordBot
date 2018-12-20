@@ -53,8 +53,11 @@ setInterval(() => {
 // When bot joins a guild
 client.on("guildCreate", guild => {
     console.log(`Joined a new guild: ` + guild.name + guild.id);
-    shell.cd('json');
-    shell.cp('default.json', `${guild.id}` + '.json');
+    redisClient.hmset(guild.id, 'prefix', '!');
+    redisClient.hmset(guild.id, 'modRole', 'Mod');
+    redisClient.hmset(guild.id, 'adminRole', 'Admin');
+    redisClient.hmset(guild.id, 'on', 'true');
+    redisClient.hmset(guild.id, 'logChannel', '#mod-log');
 });
 
 client.on('ready', () => {
@@ -90,7 +93,7 @@ client.on('message', async message => {
 
         if (command === 'help') {
             const embed = new Discord.RichEmbed()
-            .setTitle("Toxicity Help Section")
+            .setTitle("ToxicTest Help Section")
             .setColor(936362)
             .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
 
