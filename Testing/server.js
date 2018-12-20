@@ -93,9 +93,18 @@ client.on('message', async message => {
         function noPermsAdmin() {
             const embed = new Discord.RichEmbed()
                 .setTitle('Insufficient Permissions')
-                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`);
-        .setColor(16711680)
-                .setTimestamp()
+                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`)
+                .setColor(16711680)
+                .setTimestamp();
+
+            message.channel.send(embed);
+        }
+        function noPermsMod() {
+            const embed = new Discord.RichEmbed()
+                .setTitle('Insufficient Permissions')
+                .setDescription(`You need the Admin Role {${config.modRole}} to successfully execute this command.`)
+                .setColor(16711680)
+                .setTimestamp();
 
             message.channel.send(embed);
         }
