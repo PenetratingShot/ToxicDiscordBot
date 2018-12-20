@@ -108,6 +108,9 @@ client.on('message', async message => {
         const modRole = message.member.roles.find(role => role.name === result.modRole);
         const loggingChannel = message.guild.channels.find(channel => channel.name === result.logChannel);
         if (message.author.bot) return;
+        if (message.isMentioned(client.user)) {
+            message.channel.send(`The current prefix for this server is: **${result.prefix}**`);
+        }
         function noPermsAdmin() {
             const embed = new Discord.RichEmbed()
                 .setTitle('Insufficient Permissions')
