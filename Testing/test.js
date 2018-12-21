@@ -43,6 +43,9 @@ client.on('message', message => {
         }
     });
     redisClient.hgetall(message.guild.id, function(err, result) {
+        if (message.content === "!prefix") {
+            message.channel.send(result.prefix);
+        }
         if (!message.content.startsWith(result.prefix)) return;
         const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
