@@ -67,11 +67,11 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    redisClient.hgetall(message.guild.id, function (err, config) {
+    redisClient.hgetall(message.guild.id, function (err, result) {
         function noPermsAdmin() {
             const embed = new Discord.RichEmbed()
                 .setTitle('Insufficient Permissions')
-                .setDescription(`You need the Admin Role {${config.adminRole}} to successfully execute this command.`)
+                .setDescription(`You need the Admin Role {${result.adminRole}} to successfully execute this command.`)
                 .setColor(16711680)
                 .setTimestamp();
 
@@ -80,14 +80,14 @@ client.on('message', async message => {
         function noPermsMod() {
             const embed = new Discord.RichEmbed()
                 .setTitle('Insufficient Permissions')
-                .setDescription(`You need the Admin Role {${config.modRole}} to successfully execute this command.`)
+                .setDescription(`You need the Admin Role {${result.modRole}} to successfully execute this command.`)
                 .setColor(16711680)
                 .setTimestamp();
 
             message.channel.send(embed);
         }
         if (err) throw err;
-        const adminRole = message.member.roles.find(role => role.name === config.adminRole);
+        const adminRole = message.member.roles.find(role => role.name === result.adminRole);
         if (message.content === "!reset") {
             if (!adminRole) {
                 noPermsAdmin();
@@ -99,8 +99,8 @@ client.on('message', async message => {
             redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
     });
-    redisClient.hgetall(message.guild.id, function (result) {
-        console.error();
+    redisClient.hgetall(message.guild.id, function (err, result) {
+        if (err) throw err;
         const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
