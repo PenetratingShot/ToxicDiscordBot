@@ -99,7 +99,8 @@ client.on('message', async message => {
             redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
     });
-    redisClient.hgetall(message.guild.id, function (err, result) {
+    redisClient.hgetall(message.guild.id, function (result) {
+        console.error();
         const prefix = result.prefix;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
