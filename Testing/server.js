@@ -66,7 +66,7 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    /*redisClient.hgetall(message.guild.id, function (err, result) {
+    redisClient.hgetall(message.guild.id, function (err, result) {
         if (err) throw err;
         const adminRole = message.member.roles.find(role => role.name === result.adminRole);
         if (message.content === "!reset") {
@@ -85,7 +85,7 @@ client.on('message', async message => {
             redisClient.hmset(message.guild.id, 'on', 'true');
             redisClient.hmset(message.guild.id, 'logChannel', '#mod-log');
         }
-    });*/
+    });
     redisClient.hgetall(message.guild.id, function (err, result) {
         if (err) throw err;
         const prefix = result.prefix;
