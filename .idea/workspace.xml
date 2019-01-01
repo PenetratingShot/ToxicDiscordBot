@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/json/412126703863726081.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/412126703863726081.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/json/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/redis.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/redis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="278" column="21" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+            <state relative-caret-position="276">
+              <caret line="153" column="196" selection-start-line="153" selection-start-column="196" selection-end-line="153" selection-end-column="196" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -210,12 +199,12 @@
       <workItem from="1546238659258" duration="435000" />
       <workItem from="1546239111129" duration="467000" />
       <workItem from="1546298273632" duration="360000" />
-      <workItem from="1546300923755" duration="353000" />
+      <workItem from="1546300923755" duration="1015000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51753000" />
+    <option name="totallyTimeSpent" value="52415000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -319,8 +308,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="278" column="21" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+        <state relative-caret-position="276">
+          <caret line="153" column="196" selection-start-line="153" selection-start-column="196" selection-end-line="153" selection-end-column="196" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

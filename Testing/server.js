@@ -148,6 +148,10 @@ client.on('message', async message => {
                         {
                             "name": "Toggle On/Off",
                             "value": "**Description:** This setting allows you control whether the main feature is on or off. This can be helpful for server admins because they don't have to deal with the bot is there are recurring errors."
+                        },
+                        {
+                            "name": "Log Channel",
+                            "value": "Specifies the channel in which to log events to. Make sure that when you set it, you don't include the channel # behind the name. Just put the name in there."
                         }
                     ]
                 }})
@@ -276,7 +280,7 @@ client.on('message', async message => {
         else {
             if (result.on === "false") {
 
-            } else { 
+            } else {
                 const vowels = ["a", "e", "i", "o", "u", "y"];
                 if (vowels.some(word => message.content.includes(word))) {
                     const text = message.content;
