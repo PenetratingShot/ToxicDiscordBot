@@ -118,6 +118,7 @@ client.on('message', async message => {
         }
 
         if (command === 'help') {
+            if (!message.content.startsWith(result.prefix)) return;
             const embed = new Discord.RichEmbed()
             .setTitle("ToxicTest Help Section")
             .setColor(936362)
@@ -126,6 +127,7 @@ client.on('message', async message => {
             message.author.send(embed);
         }
         else if (command === "showconfig") {
+            if (!message.content.startsWith(result.prefix)) return;
             message.channel.send({embed: {
                     "title": "Settings for this guild",
                     "color": 12458242,
@@ -151,6 +153,7 @@ client.on('message', async message => {
                 }})
         }
         else if (command === "setconfig") {
+            if (!message.content.startsWith(result.prefix)) return;
             if (!adminRole) {
                 noPermsAdmin();
             }
@@ -181,6 +184,7 @@ client.on('message', async message => {
             }
         }
         else if (command === "kick") {
+            if (!message.content.startsWith(result.prefix)) return;
             if(!modRole) {
                 noPermsMod();
             }
@@ -199,6 +203,7 @@ client.on('message', async message => {
             message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
         }
         else if (command === "ban") {
+            if (!message.content.startsWith(result.prefix)) return;
             if(!adminRole) {
                 noPermsAdmin();
             }
@@ -216,6 +221,7 @@ client.on('message', async message => {
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
         }
         else if (command === "mute") {
+            if (!message.content.startsWith(result.prefix)) return;
             if(!adminRole) {
                 noPermsAdmin();
             }
@@ -254,6 +260,7 @@ client.on('message', async message => {
             }, (mutetime));
         }
         else if (command === "purge") {
+            if (!message.content.startsWith(result.prefix)) return;
             if (!adminRole) {
                 noPermsAdmin();
             }
@@ -269,7 +276,7 @@ client.on('message', async message => {
         else {
             if (result.on === "false") {
 
-            } else {
+            } else { 
                 const vowels = ["a", "e", "i", "o", "u", "y"];
                 if (vowels.some(word => message.content.includes(word))) {
                     const text = message.content;
