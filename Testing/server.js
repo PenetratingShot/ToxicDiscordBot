@@ -120,11 +120,15 @@ client.on('message', async message => {
         if (command === 'help') {
             if (!message.content.startsWith(result.prefix)) return;
             const embed = new Discord.RichEmbed()
-            .setTitle("ToxicTest Help Section")
-            .setColor(936362)
-            .setDescription(`**Setup:**\nYou need to do some things before this bot can be fully operational.\n- you need to create a dummy role called 'Admin' and assign it to administrators\n- make sure that the bot has administrator permissions (don't uncheck the box)\n- make sure that the bot has a role higher than those of the people it has to moderate (otherwise it won't work)\n\n**Commands**\n!help: sends the help section to the person who requested it\n!purge [number]: purges a specified number of messages from the chat\n!kick [mention]: kicks a mentioned user from the server\n!ban [mention]: bans a mentioned user from the server`)
-
-            message.author.send(embed);
+                .setTitle('Help Section for ToxicTest')
+                .setDescription('**(Server Admins Only) Setup:** Before you can harness the true power of the bot, you need to do a couple things first\n1. Create a role called \'Admin\'\n2. Change the server configurations to whatever you want by running !showconfig and !setconfig\n3. Make sure that you gave the bot Administrator permissions when you invited it\n4. Make sure that the bot has a higher role than the people you want to moderate\n\nBelow are the lists of commands and how to use them. Be sure to replace the prefix with the one set in the server. if you\'re unsure about this, simply ping the bot and it will tell you its prefix.')
+                .addField("!help", "**Usage:** !help\n**Permission Level:** Normal\nRunning this command shows this message. Congrats...")
+                .addField("!purge", "**Usage:** !purge [number]\n**Permission Level:** Administrator\nThis command will obliterate the specified number of messages in the channel")
+                .addField("!kick","**Usage:** !kick [@mention]\n**Permission Level:** Moderator\nThis command will kick any mentioned user as long as the bot has a higher role than them")
+                .addField("!ban", "**Usage:** !ban [@mention]\n**Permission Level:** Administrator\nThis command will ban any member as long as the bot has a higher role than them")
+                .addField("!mute", "**Usage:** !mute [mention] [seconds]\n**Permission Level:** Administrator\nThis command will mute and member for a specified amount of time as long as the bot has a higher role than them")
+                .addField("showconfig", "**Usage:** !showconfig\n**Permission Level:** Normal\nThis command shows the current settings for the server. Using this, server Administrators can see what settings they can change.")
+                .addField("!setconfig", "**Usage:** !setconfig [setting] [value]\n**Permission Level:** Administrator\nThis command allows server Administrators to change any settings with a key value pair. You simply choose the name of the setting you want and the value it should be. Note that the setting names are CASE SENSITIVE and that the setting *on* can only be true or false")
         }
         else if (command === "showconfig") {
             if (!message.content.startsWith(result.prefix)) return;
