@@ -336,6 +336,9 @@ client.on("messageDelete", (message) => {
             "color": 293173,
             "description": `• **Channel:** ${message.channel}\n• **Message:** ${message.content}\n• **Author:** ${message.author}\n• **Reason(s):** ${data2.reasons}`
     }});
+    fs.writeFile('./json/reasons.json', ' ', function (err) {
+        if (err) throw err;
+    });
 });
 
 client.login(process.env.DISCORD);
