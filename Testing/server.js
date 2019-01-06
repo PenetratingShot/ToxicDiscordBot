@@ -320,7 +320,7 @@ client.on('message', async message => {
                                 });
                                 sb.clear();
                             }
-                            catch {
+                            catch(error) {
                                 console.error();
                             }
                         }
