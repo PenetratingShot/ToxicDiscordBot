@@ -193,7 +193,7 @@ client.on('message', async message => {
         }
         else if (command === "kick") {
             if (!message.content.startsWith(result.prefix)) return;
-            if(!modRole) {
+            if(!modRole || !adminRole) {
                 noPermsMod();
             }
 
