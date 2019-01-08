@@ -191,7 +191,7 @@ client.on('message', async message => {
                 message.reply(`the argument you entered is not a valid setting. Try the command ${prefix}showconf to see the available commands.`);
             }
         }
-        else if (command === "kick") {
+        /*else if (command === "kick") {
             if (!message.content.startsWith(result.prefix)) return;
             if(!modRole || !adminRole) {
                 noPermsMod();
@@ -209,8 +209,8 @@ client.on('message', async message => {
         member.kick(reason)
             .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of: ${error}`));
             message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
-        }
-        else if (command === "ban") {
+        }*/
+        /*else if (command === "ban") {
             if (!message.content.startsWith(result.prefix)) return;
             if(!adminRole) {
                 noPermsAdmin();
@@ -227,8 +227,8 @@ client.on('message', async message => {
         member.ban(reason)
             .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of: ${error}`));
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-        }
-        else if (command === "mute") {
+        }*/
+        /*else if (command === "mute") {
             if (!message.content.startsWith(result.prefix)) return;
             if(!adminRole) {
                 noPermsAdmin();
@@ -266,7 +266,7 @@ client.on('message', async message => {
                 user.removeRole(mutedRole.id);
                 message.channel.send(`<@${user.id}> has been unmuted!`);
             }, (mutetime));
-        }
+        }*/
         else if (command === "purge") {
             if (!message.content.startsWith(result.prefix)) return;
             if (!adminRole) {
