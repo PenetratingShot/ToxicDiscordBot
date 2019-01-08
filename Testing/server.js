@@ -327,22 +327,23 @@ client.on('message', async message => {
 
                             try {
                                 // This is the section where we will write to the json file
-                                const jsonstr = fs.readFileSync('./json/badWords.json');
+                                fs.readFile('./json/badWords.json', function (error, data) {
+                                    if (error) throw error;
+                                    const obj = JSON.parse(data);
+                                    // Insert preexisting phrase check here
 
-                                const obj = JSON.parse(jsonstr);
-                                // Insert preexisting phrase check here
-
-                                obj['data'].push({
-                                    "text": `${message.content}`,
-                                    "TOXICITY": `${v1}`,
-                                    "INSULT": `${v4}`,
-                                    "PROFANITY": `${v5}`,
-                                    "SEXUALLY_EXPLICIT": `${v6}`,
-                                    "THREAT": `${v7}`
-                                });
-                                const jsonStr = JSON.stringify(obj, null, 2);
-                                fs.writeFile('./json/badWords.json', jsonStr, function (err) {
-                                    if (err) throw err;
+                                    obj['data'].push({
+                                        "text": `${message.content}`,
+                                        "TOXICITY": `${v1}`,
+                                        "INSULT": `${v4}`,
+                                        "PROFANITY": `${v5}`,
+                                        "SEXUALLY_EXPLICIT": `${v6}`,
+                                        "THREAT": `${v7}`
+                                    });
+                                    const jsonStr = JSON.stringify(obj, null, 2);
+                                    fs.writeFile('./json/badWords.json', jsonStr, function (err) {
+                                        if (err) throw err;
+                                    });
                                 });
                             }
                             catch (error) {
