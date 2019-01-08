@@ -336,7 +336,8 @@ client.on('message', async message => {
                                     if (data.indexOf(lower) >= 0) {
                                         // Now we have to update the values just in case the models were trained more
                                         const badWords = './json/badWords.json';
-                                         badWords.TOXICITY = `${v1}`;
+                                         badWords.TOXICITY = v1.toString();
+                                         badWords.INSULT = v4.toString();
                                          message.channel.send("if it got this far, then the piece of shit code I wrote actually worked. Damn");
                                     } else {
                                         obj['data'].push({
