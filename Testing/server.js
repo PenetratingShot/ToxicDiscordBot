@@ -325,16 +325,52 @@ client.on('message', async message => {
                                 console.error();
                             }
 
-                            // This is the section where we will write to the json file
-                            const jsonstr = fs.readFileSync('./json/badWords.json');
+                            try {
+                                // This is the section where we will write to the json file
+                                const jsonstr = fs.readFileSync('./json/badWords.json');
+
+                                const obj = JSON.parse(jsonstr);
+                                // Insert preexisting phrase check here
+
+                                obj['data'].push({
+                                    "text": `${message.content}`,
+                                    "TOXICITY": `${v1}`,
+                                    "INSULT": `${v4}`,
+                                    "PROFANITY": `${v5}`,
+                                    "SEXUALLY_EXPLICIT": `${v6}`,
+                                    "THREAT": `${v7}`
+                                });
+                                const jsonStr = JSON.stringify(obj, null, 2);
+                                fs.writeFile('./json/badWords.json', jsonStr, function (err) {
+                                    if (err) throw err;
+                                });
+                            }
+                            catch (error) {
+                                console.error();
+                            }
+
+                        }
+
+                        // This is where we write to the goodWords.json file
+                        if (v1 < 0.5 || v4 < 0.5 || v5 < 0.5 || v6 < 0.5 || v7 < 0.5) {
+                            // Insert preexisting phrase check here
+                            const jsonstr = fs.readFileSync('./json/goodWords.json');
 
                             const obj = JSON.parse(jsonstr);
-                            obj['data'].push({"text":`${message.content}`,"TOXICITY":`${v1}`,"INSULT":`${v4}`,"PROFANITY":`${v5}`,"SEXUALLY_EXPLICIT":`${v6}`,"THREAT":`${v7}`});
+                            // Insert preexisting phrase check here
+
+                            obj['data'].push({
+                                "text": `${message.content}`,
+                                "TOXICITY": `${v1}`,
+                                "INSULT": `${v4}`,
+                                "PROFANITY": `${v5}`,
+                                "SEXUALLY_EXPLICIT": `${v6}`,
+                                "THREAT": `${v7}`
+                            });
                             const jsonStr = JSON.stringify(obj, null, 2);
-                            fs.writeFile('./json/badWords.json', jsonStr, function (err) {
+                            fs.writeFile('./json/goodWords.json', jsonStr, function (err) {
                                 if (err) throw err;
                             });
-
                         }
 
                     })();

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Testing/json/badWords.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/badWords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="326" lean-forward="true" selection-start-line="326" selection-end-line="326" />
+            <state relative-caret-position="744">
+              <caret line="370" column="58" selection-start-line="370" selection-start-column="58" selection-end-line="370" selection-end-column="58" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -213,12 +212,12 @@
       <workItem from="1546397339673" duration="2356000" />
       <workItem from="1546652665543" duration="770000" />
       <workItem from="1546735083909" duration="2044000" />
-      <workItem from="1546926924555" duration="2124000" />
+      <workItem from="1546926924555" duration="2905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59813000" />
+    <option name="totallyTimeSpent" value="60594000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,8 +335,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="326" lean-forward="true" selection-start-line="326" selection-end-line="326" />
+        <state relative-caret-position="744">
+          <caret line="370" column="58" selection-start-line="370" selection-start-column="58" selection-end-line="370" selection-end-column="58" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
