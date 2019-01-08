@@ -338,6 +338,14 @@ client.on('message', async message => {
                                         const badWords = './json/badWords.json';
                                          badWords.TOXICITY = v1.toString();
                                          badWords.INSULT = v4.toString();
+                                         badWords.PROFANITY = v5.toString();
+                                         badWords.SEXUALLY_EXPLICIT = v6.toString();
+                                         badWords.INSULT = v7.toString();
+                                         // Now we actually have to write the changes to the file
+                                        fs.writeFile(filename, JSON.stringify(file, null, 2), function (err) {
+                                            if (err) throw err;
+                                            // And now the updated values have been stored
+                                        });
                                          message.channel.send("if it got this far, then the piece of shit code I wrote actually worked. Damn");
                                     } else {
                                         obj['data'].push({
