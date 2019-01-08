@@ -18,7 +18,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
+            <state relative-caret-position="107">
               <caret line="195" column="37" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -203,12 +203,12 @@
       <workItem from="1546300923755" duration="1119000" />
       <workItem from="1546397339673" duration="2356000" />
       <workItem from="1546652665543" duration="770000" />
-      <workItem from="1546735083909" duration="1696000" />
+      <workItem from="1546735083909" duration="2044000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57341000" />
+    <option name="totallyTimeSpent" value="57689000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -221,7 +221,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4792531" visible="true" weight="0.10800843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -291,7 +290,7 @@
     <entry file="file://$PROJECT_DIR$/Testing/servertest.js" />
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
+        <state relative-caret-position="107">
           <caret line="195" column="37" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
