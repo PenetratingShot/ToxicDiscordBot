@@ -1,5 +1,12 @@
 {
   "data": [
-
+    {
+      "text": "fuck",
+      "TOXICITY": "0.96509165",
+      "INSULT": "0.6042462",
+      "PROFANITY": "0.9831821",
+      "SEXUALLY_EXPLICIT": "0.46413833",
+      "THREAT": "0.1836541"
+    }
   ]
 }

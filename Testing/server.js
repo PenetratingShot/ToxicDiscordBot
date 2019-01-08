@@ -325,15 +325,16 @@ client.on('message', async message => {
                                 console.error();
                             }
 
-
-
-                        }
-
-                        // Run it another time to actually log the data, might be too slow and corrupt sometimes :/
-                        if (v1 >= 0.5 || v4 >= 0.5 || v6 >= 0.5 || v7 >= 0.5) {
+                            // This is the section where we will write to the json file
                             const jsonstr = fs.readFileSync('./json/badWords.json');
 
                             const obj = JSON.parse(jsonstr);
+                            obj['data'].push({"text":`${message.content}`,"TOXICITY":`${v1}`,"INSULT":`${v4}`,"PROFANITY":`${v5}`,"SEXUALLY_EXPLICIT":`${v6}`,"THREAT":`${v7}`});
+                            const jsonStr = JSON.stringify(obj, null, 2);
+                            fs.writeFile('./json/badWords.json', jsonStr, function (err) {
+                                if (err) throw err;
+                            });
+
                         }
 
                     })();
