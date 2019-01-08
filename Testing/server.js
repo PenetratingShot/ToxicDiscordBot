@@ -296,7 +296,8 @@ client.on('message', async message => {
                         const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
                         const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
 
-                        if (v1 > 0.5 || v4 > 0.5 || v6 > 0.5 || v7 > 0.5) {
+                        // Run this first to delete the message as that's the first priority
+                        if (v1 >= 0.5 || v4 >= 0.5 || v6 >= 0.5 || v7 >= 0.5) {
                             sb.clear();
                             if (v1 > 0.5) sb.append('*Toxicity*  ');
                             if (v4 > 0.5) sb.append('*Insult*  ');
