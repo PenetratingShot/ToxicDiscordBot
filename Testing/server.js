@@ -330,20 +330,25 @@ client.on('message', async message => {
                                 fs.readFile('./json/badWords.json', function (error, data) {
                                     if (error) throw error;
                                     const obj = JSON.parse(data);
+                                    const content = message.content;
+                                    const lower = content.toLowerCase();
                                     // Insert preexisting phrase check here
-
-                                    obj['data'].push({
-                                        "text": `${message.content}`,
-                                        "TOXICITY": `${v1}`,
-                                        "INSULT": `${v4}`,
-                                        "PROFANITY": `${v5}`,
-                                        "SEXUALLY_EXPLICIT": `${v6}`,
-                                        "THREAT": `${v7}`
-                                    });
-                                    const jsonStr = JSON.stringify(obj, null, 2);
-                                    fs.writeFile('./json/badWords.json', jsonStr, function (err) {
-                                        if (err) throw err;
-                                    });
+                                    if (data.indexOf(lower) >= 0) {
+                                        message.channel.send("It's already in the file");
+                                    } else {
+                                        obj['data'].push({
+                                            "text": `${lower}`,
+                                            "TOXICITY": `${v1}`,
+                                            "INSULT": `${v4}`,
+                                            "PROFANITY": `${v5}`,
+                                            "SEXUALLY_EXPLICIT": `${v6}`,
+                                            "THREAT": `${v7}`
+                                        });
+                                        const jsonStr = JSON.stringify(obj, null, 2);
+                                        fs.writeFile('./json/badWords.json', jsonStr, function (err) {
+                                            if (err) throw err;
+                                        });
+                                    }
                                 });
                             }
                             catch (error) {
@@ -353,7 +358,7 @@ client.on('message', async message => {
                         }
 
                         // This is where we write to the goodWords.json file
-                        if (v1 < 0.5 || v4 < 0.5 || v5 < 0.5 || v6 < 0.5 || v7 < 0.5) {
+                        /*if (v1 < 0.5 || v4 < 0.5 || v5 < 0.5 || v6 < 0.5 || v7 < 0.5) {
                             // Insert preexisting phrase check here
                             const jsonstr = fs.readFileSync('./json/goodWords.json');
 
@@ -372,7 +377,7 @@ client.on('message', async message => {
                             fs.writeFile('./json/goodWords.json', jsonStr, function (err) {
                                 if (err) throw err;
                             });
-                        }
+                        }*/
 
                     })();
                 }

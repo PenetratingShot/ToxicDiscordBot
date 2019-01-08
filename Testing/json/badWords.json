@@ -7,6 +7,14 @@
       "PROFANITY": "0.9831821",
       "SEXUALLY_EXPLICIT": "0.46413833",
       "THREAT": "0.1836541"
+    },
+    {
+      "text": "shit",
+      "TOXICITY": "0.95877254",
+      "INSULT": "0.63153666",
+      "PROFANITY": "0.984515",
+      "SEXUALLY_EXPLICIT": "0.15683506",
+      "THREAT": "0.13612844"
     }
   ]
 }
