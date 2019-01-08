@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3abba73-deaf-45c3-a7f0-372cb33311df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Testing/json/badWords.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/badWords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/json/goodWords.json" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/json/goodWords.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/server.js" afterDir="false" />
     </list>
@@ -16,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="299" column="72" selection-start-line="299" selection-start-column="72" selection-end-line="299" selection-end-column="72" />
+            <state relative-caret-position="790">
+              <caret line="330" selection-start-line="330" selection-end-line="330" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -30,14 +31,18 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/json/badWords.json">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" selection-end-line="4" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/json/goodWords.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="92">
+              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -72,8 +77,9 @@
         <option value="$PROJECT_DIR$/Testing/json/412126703863726081.json" />
         <option value="$PROJECT_DIR$/Testing/servertest.js" />
         <option value="$PROJECT_DIR$/Testing/.env" />
-        <option value="$PROJECT_DIR$/Testing/json/goodWords.json" />
         <option value="$PROJECT_DIR$/Testing/server.js" />
+        <option value="$PROJECT_DIR$/Testing/json/badWords.json" />
+        <option value="$PROJECT_DIR$/Testing/json/goodWords.json" />
       </list>
     </option>
   </component>
@@ -199,12 +205,12 @@
       <workItem from="1546397339673" duration="2356000" />
       <workItem from="1546652665543" duration="770000" />
       <workItem from="1546735083909" duration="2044000" />
-      <workItem from="1546926924555" duration="373000" />
+      <workItem from="1546926924555" duration="792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58062000" />
+    <option name="totallyTimeSpent" value="58481000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -306,23 +312,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/json/badWords.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/json/goodWords.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="299" column="72" selection-start-line="299" selection-start-column="72" selection-end-line="299" selection-end-column="72" />
+        <state relative-caret-position="790">
+          <caret line="330" selection-start-line="330" selection-end-line="330" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/json/badWords.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/json/goodWords.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
       </provider>
     </entry>

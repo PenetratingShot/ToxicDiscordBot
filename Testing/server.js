@@ -326,6 +326,11 @@ client.on('message', async message => {
                             }
                         }
 
+                        // Run it another time to actually log the data, might be too slow and corrupt sometimes :/
+                        if (v1 >= 0.5 || v4 >= 0.5 || v6 >= 0.5 || v7 >= 0.5) {
+
+                        }
+
                     })();
                 }
                 else {
