@@ -334,6 +334,8 @@ client.on('message', async message => {
                                     const lower = content.toLowerCase();
                                     // Insert preexisting phrase check here
                                     if (data.indexOf(lower) >= 0) {
+                                        const fileName = `./json/badWords.json`;
+                                        const file = require(fileName);
                                         // Now we have to update the values just in case the models were trained more
                                         const badWords = './json/badWords.json';
                                          badWords.TOXICITY = v1.toString();
@@ -342,7 +344,7 @@ client.on('message', async message => {
                                          badWords.SEXUALLY_EXPLICIT = v6.toString();
                                          badWords.INSULT = v7.toString();
                                          // Now we actually have to write the changes to the file
-                                        fs.writeFile(filename, JSON.stringify(file, null, 2), function (err) {
+                                        fs.writeFile(fileName, JSON.stringify(file, null, 2), function (err) {
                                             if (err) throw err;
                                             // And now the updated values have been stored
                                         });
