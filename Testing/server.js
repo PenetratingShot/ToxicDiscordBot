@@ -324,11 +324,16 @@ client.on('message', async message => {
                             catch(error) {
                                 console.error();
                             }
+
+
+
                         }
 
                         // Run it another time to actually log the data, might be too slow and corrupt sometimes :/
                         if (v1 >= 0.5 || v4 >= 0.5 || v6 >= 0.5 || v7 >= 0.5) {
+                            const jsonstr = fs.readFileSync('./json/badWords.json');
 
+                            const obj = JSON.parse(jsonstr);
                         }
 
                     })();
