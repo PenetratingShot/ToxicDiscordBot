@@ -334,7 +334,10 @@ client.on('message', async message => {
                                     const lower = content.toLowerCase();
                                     // Insert preexisting phrase check here
                                     if (data.indexOf(lower) >= 0) {
-                                        message.channel.send("It's already in the file");
+                                        // Now we have to update the values just in case the models were trained more
+                                        const badWords = './json/badWords.json';
+                                         badwords.TOXICITY = `${v1}`;
+                                         message.channel.send("if it got this far, then the piece of shit code I wrote actually worked. Damn");
                                     } else {
                                         obj['data'].push({
                                             "text": `${lower}`,
