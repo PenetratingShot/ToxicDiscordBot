@@ -1,7 +1,7 @@
-// - Add role command
-// - Add kick user from voice channel command
-// Allow Admins to remove certain permissions for a specific user
-// - Add funny "banned" image after ban
+// ToxicTest v0.5.7
+// Written by Shreyas Lad
+
+// All contributions are welcome; make sure not to screw anything up
 
 const Discord = require("discord.js");
 require('dotenv').config();
@@ -296,7 +296,6 @@ client.on('message', async message => {
                         const v6 = `${result.attributeScores.SEXUALLY_EXPLICIT.summaryScore.value}`;
                         const v7 = `${result.attributeScores.THREAT.summaryScore.value}`;
 
-                        // Run this first to delete the message as that's the first priority
                         if (v1 >= 0.5 || v4 >= 0.5 || v6 >= 0.5 || v7 >= 0.5) {
                             sb.clear();
                             if (v1 > 0.5) sb.append('*Toxicity*  ');
@@ -326,24 +325,20 @@ client.on('message', async message => {
                             }
 
                             try {
-                                // This is the section where we will write to the json file
                                 fs.readFile('./json/badWords.json', function (error, data) {
                                     if (error) throw error;
                                     const obj = JSON.parse(data);
                                     const content = message.content;
                                     const lower = content.toLowerCase();
-                                    // Insert preexisting phrase check here
                                     if (data.indexOf(lower) >= 0) {
                                         const fileName = `./json/badWords.json`;
                                         const file = require(fileName);
-                                        // Now we have to update the values just in case the models were trained more
                                         const badWords = './json/badWords.json';
                                          badWords.TOXICITY = v1.toString();
                                          badWords.INSULT = v4.toString();
                                          badWords.PROFANITY = v5.toString();
                                          badWords.SEXUALLY_EXPLICIT = v6.toString();
                                          badWords.INSULT = v7.toString();
-                                         // Now we actually have to write the changes to the file
                                         fs.writeFile(fileName, JSON.stringify(file, null, 2), function (err) {
                                             if (err) throw err;
                                             // And now the updated values have been stored
@@ -371,28 +366,6 @@ client.on('message', async message => {
 
                         }
 
-                        // This is where we write to the goodWords.json file
-                        /*if (v1 < 0.5 || v4 < 0.5 || v5 < 0.5 || v6 < 0.5 || v7 < 0.5) {
-                            // Insert preexisting phrase check here
-                            const jsonstr = fs.readFileSync('./json/goodWords.json');
-
-                            const obj = JSON.parse(jsonstr);
-                            // Insert preexisting phrase check here
-
-                            obj['data'].push({
-                                "text": `${message.content}`,
-                                "TOXICITY": `${v1}`,
-                                "INSULT": `${v4}`,
-                                "PROFANITY": `${v5}`,
-                                "SEXUALLY_EXPLICIT": `${v6}`,
-                                "THREAT": `${v7}`
-                            });
-                            const jsonStr = JSON.stringify(obj, null, 2);
-                            fs.writeFile('./json/goodWords.json', jsonStr, function (err) {
-                                if (err) throw err;
-                            });
-                        }*/
-
                     })();
                 }
                 else {
@@ -402,12 +375,6 @@ client.on('message', async message => {
         }
         });
     });
-
-/*client.on("messageDelete", (message) => {
-    let rawdata = fs.readFileSync(`./json/${message.guild.id}.json`);
-    let config = JSON.parse(rawdata);
-
-});*/
 
 client.login(process.env.DISCORD);
 
